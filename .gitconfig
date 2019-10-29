@@ -1,0 +1,19 @@
+[fetch]
+    prune = true
+[core]
+    autocrlf = input
+    excludesfile = ~/.gitignore    
+[alias]
+    d = diff
+    s = status
+    c = commiti
+    cam = commit -am
+    co = checkout
+    cob = checkout -b
+    b = branch
+    ba = branch -a 
+    bd = branch -D
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    po = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
+

@@ -1,0 +1,19 @@
+.idea
+*.iml
+
+.DS_Store
+
+node_modules
+npm-debug.log
+package-lock.json
+yarn.lock
+
+yarn-error.log
+# vi temp file
+*.swp
+
+.vscode/settings.json
+
+.nvmrc
+
+dist/

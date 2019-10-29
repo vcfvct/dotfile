@@ -1,0 +1,8 @@
+{
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces":true,
+  "git.addGlameToBufferVar": true,
+  // "git.addGlameToVirtualText": true
+  // "java.jdt.ls.home": "~/Develop/jdt-ls-0.45.0",
+  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+}
