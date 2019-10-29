@@ -37,15 +37,15 @@ Both fihserman and oh-my-fish are good.
 * use the custom function mentioned below to set pw when renew password or on/off proxy. 
 
 ## config fish
-* Fish config file is under `~/.config/fish/config.fish`, [Example](https://www.github.com/vcfvct/devConfig/blob/master/.config/fish/config.fish)
-* custom function can be created under `~/.config/fish/functions/`. [Example](https://www.github.com/vcfvct/devConfig/tree/master/.config/fish/functions), where functions like setpw/setproxy/unsetproxy can be used when password change or activate/deactivate proxy.
+* Fish config file is under `~/.config/fish/config.fish`, [Example](.config/fish/config.fish)
+* custom function can be created under `~/.config/fish/functions/`. [Example](.config/fish/functions), where functions like setpw/setproxy/unsetproxy can be used when password change or activate/deactivate proxy.
 
 ## set fish as default shell
 * add fish path(for example `/usr/local/bin/fish`) to the `/etc/shells` file.
 * run `chsh -s /usr/local/bin/fish`
 
 ## comparison with `zsh`
-The advantage of `zsh` is its `POSIX` compatibility. However for a user shell in personal computer, I still think that is not that important as long as we are not writing scripts for other user/application. `Fish's` out of box configure is super. Other than the [**Long** configuration](https://www.github.com/vcfvct/devConfig/blob/master/.zshrc) of `zsh`, there are still some feature gap there. 
+The advantage of `zsh` is its `POSIX` compatibility. However for a user shell in personal computer, I still think that is not that important as long as we are not writing scripts for other user/application. `Fish's` out of box configure is super. Other than the [**Long** configuration](.zshrc) of `zsh`, there are still some feature gap there. 
   * The `zsh-autosuggestion` is not context-aware meaning that it cannot give relevant information based on what directory you are, which is quite handy. It is tracked by [this zsh github issue](https://github.com/zsh-users/zsh-autosuggestions/issues/42)
   * both shells are able to parse the `man` pages and give suggestions, however the `TAB` completion in fish on this is much more user friendly than the `zsh` one. Also fish will parse the `man` page exhaustively that all long or shorthand options are included. For example `tmux a` then tab, fish will give many options like `a/at/attach/attach-session`, while `zsh` only complete directly with `attach`.
   * It is not easy to get the `vi mode` indicator showing up at the beginning of the `prompt` in `zsh` comparing to what's in fish. 
