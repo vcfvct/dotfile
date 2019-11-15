@@ -1,6 +1,6 @@
-"use space as leader key
-let mapleader = "\<Space>"
-" set nu
+"use comma as leader key
+let mapleader = ","
+autocmd BufRead,BufNewFile *.ts,*.json,*.js,*.html,Jenkinsfile,Gearsfile,Bogiefile setlocal number
 color cobalt2 
 syntax on
 set hlsearch
@@ -59,11 +59,16 @@ if empty(argv())
 endif
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store$', '\~$', '\.git']
-" let g:NERDTreeChDirMode = 2
+let g:NERDTreeChDirMode = 2
 
 " map ctrl + m to toggle comment in normal/visual mode
 nmap <C-m> <leader>c<Space>
 vmap <C-m> <leader>c<Space>
+vmap <C-M> <leader>cs
+
+nmap <leader>rp :%s/
+nmap F :%s/
+
 " add extra space
 let NERDSpaceDelims=1
 
@@ -73,6 +78,23 @@ map <C-g> :Ag
 map <A-F> :Format<cr>
 
 map <C-t> :FZF<cr>
+
+" save using <A-s> in every mode
+" when in operator-pending or insert, takes you to normal mode
+nnoremap <A-s> :w<Cr>
+vnoremap <A-s> <C-c>:write<Cr>
+inoremap <A-s> <Esc>:w<Cr>
+onoremap <A-s> <Esc>:write<Cr>
+" use shift-enter to add trailing comma
+inoremap <S-CR> <ESC>A;<ESC>
+vnoremap <S-CR> <ESC>A;<ESC>
+nnoremap <S-CR> A;<ESC>
+
+" move line up/down
+nmap m :m -2<CR>
+nmap M :m +1<CR>
+vmap m :m -2<CR>
+vmap M :m +1<CR>
 
 " lightline
 let g:lightline = {
@@ -122,6 +144,9 @@ endfunction
 nnoremap H gT
 nnoremap L gt
 
+" does not work with ts optional chaining
+let g:polyglot_disabled = ['typescript', 'ts']
+
 call plug#begin()
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -134,16 +159,20 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
+Plug 'kkoomen/vim-doge'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
+
+source ~/.coc.vim
+
 " Custom syntax highlighting
-au BufNewFile,BufRead Jenkinsfile setf groovy
+au BufNewFile,BufRead Jenkinsfile setf groovy 
 au BufNewFile,BufRead *.ejs setf html
 au BufNewFile,BufRead Gearsfile,Bogiefile setf yaml
 " jsonc: https://code.visualstudio.com/docs/languages/json#_json-with-comments
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
-source ~/.coc.vim
 " map recording to 'Q' so it is less annoying 
 nnoremap Q q
 nnoremap q <Nop>
@@ -151,4 +180,5 @@ nnoremap q <Nop>
 nnoremap <leader>qq :q!<cr>
 nnoremap <leader>qw :wq<cr>
 nnoremap <leader>qa :qall!<cr>
+
 
