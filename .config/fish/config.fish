@@ -9,6 +9,8 @@ set -g theme_display_git_master_branch yes
 abbr top "htop"
 abbr vi "nvim"
 abbr cat "bat"
+abbr gpl "git pull"
+abbr gps "git push"
 # usage: yaml2js < test.yaml > out.json
 alias yaml2js="python3 -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)'"
 
