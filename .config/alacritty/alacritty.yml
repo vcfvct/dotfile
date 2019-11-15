@@ -549,7 +549,13 @@ key_bindings:
   - { key: Q,      mods: Command,         action: Quit             }
   - { key: W,      mods: Command,         action: Quit             }
   - { key: F,      mods: Command|Control, action: ToggleFullscreen }
-  - { key: N,         mods: Command,      action: SpawnNewInstance       }
+  - { key: N,      mods: Command,      action: SpawnNewInstance       }
+  # My Custom Bindings, http://defindit.com/ascii.html
+  - { key: Q,      mods: Control, chars: "\x11"  }
+  - { key: S,      mods: Alt,     chars: "\x1bs" }
+  - { key: F,      mods: Alt,     chars: "\x1bF" }
+  - { key: Return,   mods: Shift,     chars: "\x1b[13;2u" }
+  - { key: Return,   mods: Control,   chars: "\x1b[13;5u" }
 
   - { key: Paste,                   action: Paste                            }
   - { key: Copy,                    action: Copy                             }

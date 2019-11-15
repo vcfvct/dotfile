@@ -11,6 +11,6 @@ function wttr
   else
     set language (string split "_" -- $LANG)[1]
   end
-
-  curl -H "Accept-Language: $language" wttr.in/$location
+  # 'F' option to not show the "Follow" line
+  curl -H "Accept-Language: $language" "wttr.in/$location?F"
 end
