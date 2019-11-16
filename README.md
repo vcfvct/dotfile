@@ -1,12 +1,14 @@
 ## My configuration 
 * VIM
   * for fzf.vim, `ctrl+g` is mapped to `:GFiles` to search with .gitignore applied.
+     * The [executable path](https://github.com/junegunn/fzf#as-vim-plugin) should be mapped correctly in Plug or with `set rtp+=xxxx` to append to the `runtimepath`.
   * for `vim surround`, select the text in visual mode, and then press `S`(uppercase), then input the quote or parenthesis or `<anyHtmlTag>` etc.
 
 * GIT
 * Fish shell
   * with [fisherman fzf](https://github.com/fisherman/fzf) can be set using `ag/rg` to respect `.gitignore` in the result by: 
     * `set -U FZF_FIND_FILE_COMMAND "ag -l --hidden --ignore .git"`  **OR**  `set -U FZF_FIND_FILE_COMMAND 'rg --files --hidden --smartcase --glob --height=15 "!.git/*"'`
+    * `set -U FZF_OPEN_COMMAND "ag -l --hidden --ignore .git . \$dir 2> /dev/null"`
     * use `ctrl-o` to open file directly in vim/nvim. `ctrl-r` to search cmd history.
       * To use `ctrl-p` to open file, need to edit the key-bindings inside `~/.config/fish/functions/fish_user_key_bindings.fish`, change `\co` to `\cp`.
 
