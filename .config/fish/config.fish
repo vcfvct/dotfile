@@ -5,7 +5,6 @@
 set PATH $PYTHON3_HOME/bin $M2_HOME/bin $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $PATH 
 set -g theme_display_git_master_branch yes
 
-
 abbr top "htop"
 abbr vi "nvim"
 abbr cat "bat"
@@ -14,8 +13,8 @@ abbr gps "git push"
 # usage: yaml2js < test.yaml > out.json
 alias yaml2js="python3 -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)'"
 
-### set current session default node/npm version to lastest installed(silently for stdout).
-### -> comment this for now in favor of 'fnm'.
-# nvm alias default node >/dev/null
-
 fish_vi_key_bindings
+# fish completion to repalce 'right' arrow key for whole line and ctrl-w to complete word.
+bind -M insert \ce forward-char
+bind -M insert \cw forward-word
+
