@@ -10,6 +10,9 @@ abbr vi "nvim"
 abbr cat "bat"
 abbr gpl "git pull"
 abbr gps "git push"
+abbr ef "nvim ~/.config/fish/config.fish"
+abbr ev "nvim ~/.vimrc"
+abbr envim "nvim ~/.config/nvim/init.vim"
 # usage: yaml2js < test.yaml > out.json
 alias yaml2js="python3 -c 'import sys, yaml, json; json.dump(yaml.load(sys.stdin), sys.stdout, indent=4)'"
 
@@ -17,4 +20,7 @@ fish_vi_key_bindings
 # fish completion to repalce 'right' arrow key for whole line and ctrl-w to complete word.
 bind -M insert \ce forward-char
 bind -M insert \cw forward-word
+# ctrl+f/e to complete all/word
+bind -M insert \cf forward-char
+bind -M insert \ce forward-word
 
