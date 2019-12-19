@@ -77,8 +77,8 @@ nmap <F2> <Plug>(coc-rename)
 " Remap for format selected region
 xmap <leader>fs <Plug>(coc-format-selected)
 nmap <leader>fs <Plug>(coc-format-selected)
-xmap <leader>ff :Format<cr>
-nmap <leader>ff :Format<cr>
+map <A-F> :Format<cr>
+nmap <leader>le :CocList extensions<cr>
 
 augroup mygroup
   autocmd!
@@ -117,11 +117,15 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Using CocList
 " Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 " Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <leader>sc  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <leader>sa  :<C-u>CocList -I symbols<cr>
 " undo change with coc-git
 nnoremap <leader>z :CocCommand git.chunkUndo<cr> 
 

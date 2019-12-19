@@ -1,7 +1,10 @@
 {
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces":true,
+  "typescript.suggest.completeFunctionCalls": false,
+  "javascript.suggest.completeFunctionCalls": false,
   "git.addGBlameToBufferVar": true,
-  "java.jdt.ls.home": "{HOME}/Develop/jdt-ls-0.45.0",
-  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  // "git.addGBlameToVirtualText": true,
+  "java.jdt.ls.home": "/opt/jdt-ls-0.48.0",
+  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
 }

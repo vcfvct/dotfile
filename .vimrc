@@ -1,5 +1,5 @@
-"use comma as leader key
-let mapleader = ","
+"use single quote as leader key, comma is useful for previous char search in line
+let mapleader = "'"
 autocmd BufRead,BufNewFile *.ts,*.json,*.js,*.html,Jenkinsfile,Gearsfile,Bogiefile setlocal number
 color cobalt2 
 syntax on
@@ -33,8 +33,8 @@ set spellfile=~/Documents/backups/vi-spell-file.add
 set spellcapcheck=
 
 
-" map jj to esa for insert mode
-inoremap jj <ESC>
+" map jj to esa for insert mode and keep cursor position
+inoremap jj <ESC>`^
 
 " in visual mode, use Ctrl+c to copy selected text to system clipboard 
 " On Windows & MacOS there is no difference between `+`(clipboard) and `*`(Primary), since these systems only have a single clipboard, and both registers refer to the same thing (it doesn't matter which one you use).
@@ -60,6 +60,10 @@ endif
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store$', '\~$', '\.git']
 let g:NERDTreeChDirMode = 2
+nmap <leader>ff :NERDTreeFind<cr>
+
+" make large tree render faster with color
+" let g:NERDTreeHighlightCursorline = 0
 
 " map ctrl + m to toggle comment in normal/visual mode
 nmap <C-m> <leader>c<Space>
@@ -67,7 +71,7 @@ vmap <C-m> <leader>c<Space>
 vmap <C-M> <leader>cs
 
 nmap <leader>rp :%s/
-nmap F :%s/
+" nmap F :%s/
 
 " add extra space
 let NERDSpaceDelims=1
@@ -75,7 +79,7 @@ let NERDSpaceDelims=1
 " map ctrl + p to find file
 map <C-p> :GFiles<cr>
 map <C-g> :Ag 
-map <A-F> :Format<cr>
+com! FormatJSON %!python3 -m json.tool
 
 map <C-t> :FZF<cr>
 
@@ -139,19 +143,16 @@ function! LightLineFilename()
   return name
 endfunction
 
-
 " H/L to switch  between tabs.
 nnoremap H gT
 nnoremap L gt
-
-" does not work with ts optional chaining
-let g:polyglot_disabled = ['typescript', 'ts']
 
 call plug#begin()
 " On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdcommenter'
@@ -160,9 +161,16 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'kkoomen/vim-doge'
-Plug 'leafgarland/typescript-vim'
+Plug 'Yggdroot/indentLine'
+Plug 'easymotion/vim-easymotion'
+Plug 'Valloric/MatchTagAlways'
 call plug#end()
 
+" does not work with ts optional chaining
+" let g:polyglot_disabled = ['typescript', 'ts']
+let g:indentLine_fileTypeExclude = ['nerdtree', 'markdown']
+" use s to search 2 char in esaymotion
+nmap s <Plug>(easymotion-s2)
 
 source ~/.coc.vim
 
@@ -180,5 +188,7 @@ nnoremap q <Nop>
 nnoremap <leader>qq :q!<cr>
 nnoremap <leader>qw :wq<cr>
 nnoremap <leader>qa :qall!<cr>
+
+nnoremap <space> :
 
 
