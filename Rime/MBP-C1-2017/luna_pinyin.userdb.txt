@@ -1,0 +1,59 @@
+# Rime user dictionary
+#@/db_name	luna_pinyin.userdb
+#@/db_type	userdb
+#@/rime_version	1.5.3
+#@/tick	53
+#@/user_id	MBP-C1-2017
+ai guo 	愛國	c=1 d=1 t=44
+ba 	吧	c=0 d=0.097531 t=44
+ban jiao 	半角	c=2 d=1.96531 t=44
+bei fen 	備份	c=1 d=1 t=51
+bu shi 	不是	c=0 d=0.097531 t=44
+bu shi ba 	不是吧	c=1 d=0.980199 t=44
+ci dian 	詞典	c=0 d=0.1 t=49
+ci ku 	詞庫	c=2 d=1.99501 t=44
+di fang 	地方	c=1 d=0.980199 t=44
+fa 	發	c=2 d=1.99005 t=44
+fan ye 	翻頁	c=2 d=1.98511 t=44
+fei 	非	c=1 d=0.995012 t=44
+fu dan 	復旦	c=1 d=0.99005 t=44
+gou 	夠	c=1 d=0.995012 t=44
+ha ha 	哈哈	c=1 d=1 t=44
+heng shu 	橫豎	c=1 d=1 t=46
+heng xiang 	橫向	c=2 d=1.99501 t=44
+hong tao 	洪濤	c=0 d=0.1 t=47
+jia 	加	c=0 d=0.0995012 t=44
+jian ti 	簡體	c=3 d=2.90659 t=44
+jie ju 	結局	c=0 d=0.0995012 t=44
+jie ju jia 	結局加	c=1 d=1 t=44
+jin chi 	( ͡° ͜ʖ ͡°)	c=1 d=1 t=44
+jiu 	就	c=2 d=1.97045 t=44
+kao lv 	考慮	c=0 d=0.1 t=51
+kao lv liu ji 	考慮六級	c=1 d=1 t=52
+kuai jie jian 	快捷鍵	c=1 d=0.99005 t=44
+li 	黎	c=0 d=0.1 t=47
+li han 	黎翰	c=1 d=0.99005 t=44
+li hong tao 	黎洪濤	c=1 d=1 t=48
+li li 	李麗	c=0 d=0.1 t=48
+li li ping 	李麗萍	c=1 d=1 t=49
+liu 	流	c=0 d=0.0985112 t=44
+liu ji 	六級	c=0 d=0.1 t=51
+ming yue 	明月	c=2 d=1.96042 t=44
+ni ce 	你測	c=1 d=1 t=44
+pai lie 	排列	c=1 d=1 t=47
+peng lu 	彭璐	c=1 d=1.05735 t=44
+peng lu ping 	彭璐萍	c=1 d=0.970446 t=44
+ping 	萍	c=1 d=1.14114 t=48
+quan jiao 	全角	c=2 d=1.94092 t=44
+shu 	鼠	c=1 d=1 t=43
+shu ru fa 	輸入法	c=1 d=1 t=45
+shu xu guan 	鼠鬚管	c=1 d=1 t=44
+xi jin ping 	習近平	c=1 d=0.985112 t=44
+xia yi ge 	下一個	c=2 d=1.98012 t=44
+xiao ge 	校歌	c=1 d=0.995012 t=44
+xuan 	選	c=1 d=0.99005 t=44
+yong hu 	用戶	c=0 d=0.1 t=49
+yong hu ci dian 	用戶詞典	c=1 d=1 t=50
+yu ju 	語句	c=0 d=0.0985112 t=44
+yu ju liu 	語句流	c=2 d=1.98506 t=44
+zai 	在	c=2 d=1.956 t=53

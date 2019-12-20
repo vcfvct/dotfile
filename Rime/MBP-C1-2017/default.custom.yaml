@@ -6,6 +6,7 @@ patch:
   # - schema: luna_pinyin           # 朙月拼音
   # - schema: luna_pinyin_fluency   # 语句流
   # us_keyboard_layout: true
+  # style/horizontal: true
   switches:
     - name: ascii_mode
       reset: 0
@@ -23,7 +24,7 @@ patch:
     - { accept: "Control+k", send: Up, when: composing }
     - { accept: "Control+j", send: Down, when: composing }
     - { accept: "Control+h", send: Left, when: composing }
-    - { accept: "Control+l", send: Right, when: composing }
+    - { accept: "Control+l", send: Page_Down, when: composing }
     - { accept: "Control+a", send: Home, when: composing }
     - { accept: "Control+e", send: End, when: composing }
 
