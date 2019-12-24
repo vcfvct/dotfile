@@ -1,7 +1,6 @@
 "use single quote as leader key, comma is useful for previous char search in line
 let mapleader = "'"
 autocmd BufRead,BufNewFile *.ts,*.json,*.js,*.html,Jenkinsfile,Gearsfile,Bogiefile setlocal number
-color cobalt2 
 syntax on
 set hlsearch
 hi Search ctermbg=LightYellow
@@ -164,7 +163,11 @@ Plug 'kkoomen/vim-doge'
 Plug 'Yggdroot/indentLine'
 Plug 'easymotion/vim-easymotion'
 Plug 'Valloric/MatchTagAlways'
+Plug 'morhetz/gruvbox'
 call plug#end()
+
+colorscheme gruvbox
+" color cobalt2 
 
 " does not work with ts optional chaining
 " let g:polyglot_disabled = ['typescript', 'ts']
