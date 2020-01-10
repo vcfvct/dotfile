@@ -11,6 +11,7 @@
     * `set -U FZF_OPEN_COMMAND "ag -l --hidden --ignore .git . \$dir 2> /dev/null"`
     * use `ctrl-o` to open file directly in vim/nvim. `ctrl-r` to search cmd history.
       * To use `ctrl-p` to open file, need to edit the key-bindings inside `~/.config/fish/functions/fish_user_key_bindings.fish`, change `\co` to `\cp`.
+  * one difference between ag and rg is rg does not respect the global `.gitignore` file if it is already in a git repo, which is not good if what you expect is the combination of local and global ignore.
 
 NERDTree is awesome
   * use `N` `ctrl+w` and `>/<` to expend/subtract the width of file explore. `N` is the column size to move.
