@@ -9,5 +9,3 @@ import_tables:
   - luna_pinyin
   # 加入搜狗词库
   - luna_pinyin.sougou
-  - luna_pinyin.cn_en
-  - luna_pinyin.kaomoji
