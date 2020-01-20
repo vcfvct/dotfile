@@ -15,8 +15,8 @@ unmap('m');
 
 map("h", "S");
 map("l", "D");
-map("H", "E");
-map("L", "R");
+map("<Ctrl-h>", "E");
+map("<Ctrl-l>", "R");
 
 // editor theme: https://github.com/brookhong/Surfingkeys/issues/936#issuecomment-494894091
 settings.theme = `
