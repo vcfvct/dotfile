@@ -12,9 +12,10 @@ map("<Ctrl-o>", "<Ctrl-6>")
 //map mark key to 'M' to reduce accidental mark set
 map("M", 'm');
 unmap('m');
-
+// h/l for history back/forward
 map("h", "S");
 map("l", "D");
+// ctrl+h/l to switch tabs.
 map("<Ctrl-h>", "E");
 map("<Ctrl-l>", "R");
 
