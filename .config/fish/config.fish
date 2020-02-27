@@ -23,4 +23,6 @@ bind -M insert \cw forward-word
 # ctrl+f/e to complete all/word
 bind -M insert \cf forward-char
 bind -M insert \ce forward-word
+bind -M insert \cj history-search-forward
+bind -M insert \ck history-search-backward
 
