@@ -2,5 +2,21 @@
 #@/db_name	easy_en.userdb
 #@/db_type	userdb
 #@/rime_version	1.5.3
-#@/tick	0
+#@/tick	20
 #@/user_id	MBP-C1-2017
+android 	android	c=1 d=1 t=10
+appreciation 	appreciation	c=1 d=0.99005 t=20
+chrome 	chrome	c=1 d=1 t=11
+developer 	developer	c=1 d=1 t=13
+edition 	edition	c=1 d=1 t=14
+george 	george	c=1 d=1 t=15
+goog 	goog	c=1 d=1 t=9
+history 	history	c=2 d=1.99501 t=20
+language 	language	c=2 d=1.94092 t=20
+limitation 	limitation	c=1 d=0.985112 t=20
+manager 	manager	c=1 d=1 t=18
+renew 	renew	c=1 d=1 t=20
+review 	review	c=1 d=1 t=17
+server 	server	c=2 d=1.95064 t=20
+terminal 	terminal	c=1 d=1 t=12
+which 	which	c=2 d=1.98511 t=19
