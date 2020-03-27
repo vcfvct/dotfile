@@ -33,10 +33,10 @@ noremap  <leader>sp :sp<CR><C-w><C-w>:term<CR>i
 " inoremap <leader>vs  <Esc>:sp<CR><C-w><C-w>:term<CR>
 "
 " resize pane 
-nmap 7 :res +2<CR>
-nmap 8 :res -2<CR>
-nmap 9 :vertical res +2<CR>
-nmap 0 :vertical res -2<CR>
+nmap 6 :res +2<CR>
+nmap 7 :res -2<CR>
+nmap 8 :vertical res +2<CR>
+nmap 9 :vertical res -2<CR>
  
 " live preview substitution.
 set inccommand=nosplit
