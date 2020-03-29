@@ -5,6 +5,7 @@
   * for `vim surround`, select the text in visual mode, and then press `S`(uppercase), then input the quote or parenthesis or `<anyHtmlTag>` etc.
 
 * GIT
+  * for `git config --global user.email xxx`, can *NOT* surround email address with `""` like how user name is set.
 * Fish shell
   * with [fisherman fzf](https://github.com/fisherman/fzf) can be set using `ag/rg` to respect `.gitignore` in the result by: 
     * `set -U FZF_FIND_FILE_COMMAND "ag -l --hidden --ignore .git"`  **OR**  `set -U FZF_FIND_FILE_COMMAND 'rg --files --hidden --smartcase --glob --height=15 "!.git/*"'`
