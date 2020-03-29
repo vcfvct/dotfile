@@ -33,5 +33,6 @@ MacOS Mojave disables subpixel antialiasing, also known as font smoothing, by de
   * `"typescript.preferences.importModuleSpecifier": "relative",`
   * `"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces":true`
 * on MacOS, `Terminal->Preferences->Keyboard` set `Use Option as Meta Key`. then map <A-f> to `:Format<cr>`.
+  * For iterm2, need to make it `ESC` in profile->key, and then add specific mapping to the list
 
 
