@@ -76,8 +76,8 @@ nmap <leader>rp :%s/
 let NERDSpaceDelims=1
 
 " map ctrl + p to find file
-map <C-p> :GFiles<cr>
-map <C-g> :Ag 
+map <C-p> :Files<cr>
+map <C-g> :Rg 
 com! FormatJSON %!python3 -m json.tool
 
 map <C-t> :FZF<cr>

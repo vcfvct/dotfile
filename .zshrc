@@ -6,13 +6,16 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$HOME/develop/flutter/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export VISUAL=nvim
 export EDITOR=$VISUAL
 export ZSH_DISABLE_COMPFIX=true
+export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/rc 
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -114,14 +117,19 @@ prompt_context() {}
 # . $HOME/.zsh/plugins/bd/bd.zsh
 alias bd="cd .."
 alias ez="vi ~/.zshrc"
+alias ev="vi ~/.vimrc"
 alias cat="bat"
 alias vi=nvim
+alias gpl="git pull"
+alias gps="git push"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.custom.zsh ]] || source ~/.custom.zsh
 
 bindkey -v "^e" forward-word
 bindkey -v "^b" backward-word
 bindkey -v "^f" end-of-line 
 bindkey -v "^k" history-beginning-search-backward
 bindkey -v "^j" history-beginning-search-forward
+bindkey -s '^p' 'vi $(fzf)^M'
