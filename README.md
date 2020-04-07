@@ -9,7 +9,7 @@
 * Fish shell
   * with [fisherman fzf](https://github.com/fisherman/fzf) can be set using `ag/rg` to respect `.gitignore` in the result by: 
     * `set -U FZF_FIND_FILE_COMMAND "ag -l --hidden --ignore .git"`  **OR**  `set -U FZF_FIND_FILE_COMMAND 'rg --files --hidden --smartcase --glob --height=15 "!.git/*"'`
-    * `set -U FZF_OPEN_COMMAND "ag -l --hidden --ignore .git . \$dir 2> /dev/null"`
+    * `set -U FZF_OPEN_COMMAND "ag -l --hidden --ignore .git . \$dir 2> /dev/null"` **OR** `set -xU FZF_OPEN_COMMAND 'rg --files --no-ignore-vcs --hidden'`
     * use `ctrl-o` to open file directly in vim/nvim. `ctrl-r` to search cmd history.
       * To use `ctrl-p` to open file, need to edit the key-bindings inside `~/.config/fish/functions/fish_user_key_bindings.fish`, change `\co` to `\cp`.
   * one difference between ag and rg is rg does not respect the global `.gitignore` file if it is already in a git repo, which is not good if what you expect is the combination of local and global ignore.
