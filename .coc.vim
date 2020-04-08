@@ -125,7 +125,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Find symbol of current document
 nnoremap <silent> <leader>sc  :<C-u>CocList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <leader>sa  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <leader>sy  :<C-u>CocList -I symbols<cr>
 " undo change with coc-git
 nnoremap <leader>z :CocCommand git.chunkUndo<cr> 
 

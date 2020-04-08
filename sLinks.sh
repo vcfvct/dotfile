@@ -18,9 +18,9 @@ rm ~/.gitconfig
 ln -s ${repoPath}/.gitconfig ~/.gitconfig
 
 rm ~/.gitignore
-rm ~/.rgignore
+rm ~/.ignore
 ln -s ${repoPath}/.gitignore ~/.gitignore
-ln -s ${repoPath}/.gitignore ~/.rgignore
+ln -s ${repoPath}/.gitignore ~/.ignore
 
 rm ~/.vim/autoload/lightline/colorscheme/onedark.vim
 ln -s ${repoPath}/.vim/autoload/lightline/colorscheme/onedark.vim ~/.vim/autoload/lightline/colorscheme/onedark.vim
