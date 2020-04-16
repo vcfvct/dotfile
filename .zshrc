@@ -117,6 +117,7 @@ prompt_context() {}
 
 # zsh-bd
 # . $HOME/.zsh/plugins/bd/bd.zsh
+alias ll="ls -lrth"
 alias bd="cd .."
 alias ez="vi ~/.zshrc"
 alias ev="vi ~/.vimrc"
