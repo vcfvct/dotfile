@@ -1,3 +1,4 @@
+# git log and pipe to fzf
 function fzf_git_log() {
     local selections=$(
       git ll --color=always "$@" |
@@ -10,3 +11,15 @@ function fzf_git_log() {
         git show $commits
     fi
 }
+
+# fuzzy find file and edit.
+fzf_find_edit() {
+    local file=$(
+      fzf --no-multi --select-1 --exit-0 \
+          --preview 'bat --color=always --line-range :500 {}'
+      )
+    if [[ -n $file ]]; then
+        $EDITOR "$file"
+    fi
+}
+

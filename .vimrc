@@ -206,4 +206,8 @@ nnoremap <leader>qa :qall!<cr>
 nnoremap <space> :
 :map <F4> @:
 
-
+let g:fzf_layout = { 'window': {
+      \ 'width': 0.9,
+      \ 'height': 0.7,
+      \ 'highlight': 'Comment',
+      \ 'rounded': v:false } }

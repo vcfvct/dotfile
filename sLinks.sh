@@ -22,8 +22,8 @@ rm ~/.ignore
 ln -s ${repoPath}/.gitignore ~/.gitignore
 ln -s ${repoPath}/.gitignore ~/.ignore
 
-rm ~/.oh-my-zsh/custom/fzf_git_log.zsh
-ln -s ${repoPath}/.oh-my-zsh/custom/fzf_git_log.zsh ~/.oh-my-zsh/custom/fzf_git_log.zsh
+rm ~/.oh-my-zsh/custom/fzf_integration.zsh
+ln -s ${repoPath}/.oh-my-zsh/custom/fzf_integration.zsh ~/.oh-my-zsh/custom/fzf_integration.zsh
 
 rm ~/.vim/autoload/lightline/colorscheme/onedark.vim
 ln -s ${repoPath}/.vim/autoload/lightline/colorscheme/onedark.vim ~/.vim/autoload/lightline/colorscheme/onedark.vim

@@ -17,7 +17,7 @@ export ZSH_DISABLE_COMPFIX=true
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/rc 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 # From https://bluz71.github.io/2018/11/26/fuzzy-finding-in-bash-with-fzf.html
-export FZF_DEFAULT_OPTS='--height 75% --multi --reverse --bind ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-f:page-down,ctrl-b:page-up'
+export FZF_DEFAULT_OPTS='--height 75% --multi --reverse --bind ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-f:page-down,ctrl-b:page-up,ctrl-e:preview-up,ctrl-y:preview-down'
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="agnoster"
@@ -56,4 +56,15 @@ bindkey -v "^b" backward-word
 bindkey -v "^f" end-of-line 
 bindkey -v "^k" history-beginning-search-backward
 bindkey -v "^j" history-beginning-search-forward
-bindkey -s '^p' 'vi $(fzf)^M'
+# bindkey -s '^p' 'vi $(fzf)^M'
+bindkey -s '^p' 'fzf_find_edit^M'
+
+fzf_find_edit() {
+    local file=$(
+      fzf --no-multi --select-1 --exit-0 \
+          --preview 'bat --color=always --line-range :500 {}'
+      )
+    if [[ -n $file ]]; then
+        $EDITOR "$file"
+    fi
+}

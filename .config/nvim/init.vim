@@ -7,16 +7,16 @@ source ~/.vimrc
 tnoremap <C-q> <C-\><C-n> 
 "" navication
 tnoremap <C-h> <C-\><C-n><C-w>h
-tnoremap <C-j> <C-\><C-n><C-w>j
-tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <leader>jj <C-\><C-n><C-w>j
+tnoremap <leader>kk <C-\><C-n><C-w>k
 tnoremap <C-l> <C-\><C-n><C-w>l
 noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
+noremap <leader>jj <C-w>j
+noremap <leader>kk <C-w>k
 noremap <C-l> <C-w>l
 inoremap <C-h> <Esc><C-w>h
-inoremap <C-j> <Esc><C-w>j
-inoremap <C-k> <Esc><C-w>k
+inoremap <leader>jj <Esc><C-w>j
+inoremap <leader>kk <Esc><C-w>k
 inoremap <C-l> <Esc><C-w>l
 
 " Quickly create a new terminal in a vertical split
