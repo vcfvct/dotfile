@@ -204,5 +204,6 @@ nnoremap <leader>qw :wq<cr>
 nnoremap <leader>qa :qall!<cr>
 
 nnoremap <space> :
+:map <F4> @:
 
 

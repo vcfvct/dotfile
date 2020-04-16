@@ -16,6 +16,8 @@ export EDITOR=$VISUAL
 export ZSH_DISABLE_COMPFIX=true
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/rc 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+# From https://bluz71.github.io/2018/11/26/fuzzy-finding-in-bash-with-fzf.html
+export FZF_DEFAULT_OPTS='--height 75% --multi --reverse --bind ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-f:page-down,ctrl-b:page-up'
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -122,6 +124,7 @@ alias cat="bat"
 alias vi=nvim
 alias gpl="git pull"
 alias gps="git push"
+alias gll="fzf_git_log"
 alias powerstat="system_profiler SPPowerDataType | rg 'Cycle|Condition|Wattage'"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

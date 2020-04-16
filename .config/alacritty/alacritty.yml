@@ -281,7 +281,7 @@ schemes:
       cyan:    '0x8ec07c'
       white:   '0xebdbb2'
 # Colors (Tomorrow Night Bright)
-colors: *gruvbox
+colors: *cobalt2
 
 # Visual Bell
 #
