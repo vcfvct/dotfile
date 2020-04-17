@@ -5,7 +5,7 @@ function gll
             --preview "echo {} | grep -o '[a-f0-9]\{7\}' | head -1 |
                        xargs -I@ sh -c 'git show --color=always @'"
       )
-    if test -z $selections 
+    if test -n $selections 
         set -l commits (echo "$selections" | cut -d' ' -f2 | tr '\n' ' ')
         git show $commits
     end 

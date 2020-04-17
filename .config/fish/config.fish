@@ -2,7 +2,7 @@
 #set -xU M2_HOME /usr/local/maven3
 #set -xU PYTHON3_HOME ~/Library/Python/3.7
 #set -xU GIT_USER $USER
-#set -Ux FZF_DEFAULT_OPTS '--height 75% --multi --reverse --bind ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-f:page-down,ctrl-b:page-up'
+#set -Ux FZF_DEFAULT_OPTS '--height 75% --multi --reverse --bind ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-f:page-down,ctrl-b:page-up,ctrl-e:preview-page-up,ctrl-y:preview-page-down'
 
 set PATH $PYTHON3_HOME/bin $M2_HOME/bin $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $PATH 
 set -g theme_display_git_master_branch yes

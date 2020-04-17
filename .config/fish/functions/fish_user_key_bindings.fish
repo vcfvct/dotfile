@@ -29,7 +29,8 @@ function fish_user_key_bindings
             bind -M insert \eo '__fzf_cd'
             bind -M insert \eO '__fzf_cd --hidden'
             # bind -M insert \cg '__fzf_open'
-            bind -M insert \cp '__fzf_open --editor'
+            bind -M insert \cp 'fzf_find_edit'
+            # bind -M insert \cp '__fzf_open --editor'
             bind -M insert \co '__fzf_open --editor'
         end
     end
@@ -40,4 +41,3 @@ function fish_user_key_bindings
 end
 
 # fzf_key_bindings
-
