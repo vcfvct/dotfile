@@ -22,21 +22,18 @@ rm ~/.ignore
 ln -s ${repoPath}/.gitignore ~/.gitignore
 ln -s ${repoPath}/.gitignore ~/.ignore
 
-rm ~/.oh-my-zsh/custom/fzf_integration.zsh
-ln -s ${repoPath}/.oh-my-zsh/custom/fzf_integration.zsh ~/.oh-my-zsh/custom/fzf_integration.zsh
+rm ~/.oh-my-zsh/custom/vcfvct.zsh
+ln -s ${repoPath}/.oh-my-zsh/custom/vcfvct.zsh ~/.oh-my-zsh/custom/vcfvct.zsh
 
-rm ~/.vim/autoload/lightline/colorscheme/onedark.vim
-ln -s ${repoPath}/.vim/autoload/lightline/colorscheme/onedark.vim ~/.vim/autoload/lightline/colorscheme/onedark.vim
+rm -rf ~/.vim/autoload/lightline
+ln -s ${repoPath}/.vim/autoload/lightline ~/.vim/autoload
 
-rm ~/.config/alacritty/alacritty.yml
-ln -s ${repoPath}/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+rm -rf ~/.config/alacritty
+ln -s ${repoPath}/.config/alacritty ~/.config
 
-rm ~/.config/nvim/init.vim
-ln -s ${repoPath}/.config/nvim/init.vim ~/.config/nvim/init.vim
+rm -rf ~/.config/nvim
+ln -s ${repoPath}/.config/nvim ~/.config
 
-rm ~/.config/nvim/coc-settings.json
-ln -s ${repoPath}/.config/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
-
-rm ~/.config/ripgrep/rc
-ln -s ${repoPath}/.config/ripgrep/rc ~/.config/ripgrep/rc
+rm -rf ~/.config/ripgrep
+ln -s ${repoPath}/.config/ripgrep ~/.config
 

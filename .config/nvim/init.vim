@@ -15,8 +15,8 @@ noremap <leader>jj <C-w>j
 noremap <leader>kk <C-w>k
 noremap <C-l> <C-w>l
 inoremap <C-h> <Esc><C-w>h
-inoremap <leader>jj <Esc><C-w>j
-inoremap <leader>kk <Esc><C-w>k
+" inoremap <leader>jj <Esc><C-w>j
+" inoremap <leader>kk <Esc><C-w>k
 inoremap <C-l> <Esc><C-w>l
 
 " Quickly create a new terminal in a vertical split

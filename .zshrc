@@ -58,13 +58,3 @@ bindkey -v "^k" history-beginning-search-backward
 bindkey -v "^j" history-beginning-search-forward
 # bindkey -s '^p' 'vi $(fzf)^M'
 bindkey -s '^p' 'fzf_find_edit^M'
-
-fzf_find_edit() {
-    local file=$(
-      fzf --no-multi --select-1 --exit-0 \
-          --preview 'bat --color=always --line-range :500 {}'
-      )
-    if [[ -n $file ]]; then
-        $EDITOR "$file"
-    fi
-}

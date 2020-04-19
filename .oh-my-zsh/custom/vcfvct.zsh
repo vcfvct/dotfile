@@ -13,7 +13,7 @@ function fzf_git_log() {
 }
 
 # fuzzy find file and edit.
-fzf_find_edit() {
+function fzf_find_edit() {
     local file=$(
       fzf --no-multi --select-1 --exit-0 \
           --preview 'bat --color=always --line-range :500 {}'

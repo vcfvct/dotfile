@@ -13,19 +13,49 @@ const exec = util.promisify(require('child_process').exec);
     '.tmux.conf.local',
     '.gitconfig',
     '.gitignore',
-    '.vim/autoload/lightline/colorscheme/onedark.vim'
+    '.oh-my-zsh/custom/vcfvct.zsh',
   ];
 
-  await Promise.all(fileList.map(f => createSymbolLink(f)));
+  const dotConfigDirList = [
+    'nvim',
+    'alacritty',
+    'ripgrep',
+  ]
 
-  async function createSymbolLink(filePath) {
-    const src = `${process.cwd()}/${filePath}`;
-    const dest = `${process.env.HOME}/${filePath}`;
+  await Promise.all(fileList.map(f => createFileSymbolLink(f)));
+  await createFileSymbolLink('.gitignore', '.ignore');
+  await Promise.all(dotConfigDirList.map(d => createDirSymbolLink('.config', d)));
+  await createDirSymbolLink('.vim/autoload', 'lightline');
+
+  /**
+   * @param {string} sourceName 
+   * @param {string} target //optional 
+   **/
+  async function createFileSymbolLink(sourceName, target) {
+    const targetName = target || sourceName;
+    const src = `${process.cwd()}/${sourceName}`;
+    const dest = `${process.env.HOME}/${targetName}`;
     let cmd = `rm ${dest}`;
     console.log(`executing: ${cmd}`);
-    // await exec(cmd);
+    await exec(cmd);
     cmd = `ln -s ${src} ${dest}`;
     console.log(`executing: ${cmd}`);
-    // await exec(cmd);
+    await exec(cmd);
+  }
+
+  /**
+   * @param {string} dirPath 
+   * @param {string} dirName
+   **/
+  async function createDirSymbolLink(dirPath, dirName) {
+    const src = `${process.cwd()}/${dirPath}/${dirName}`;
+    const dest = `${process.env.HOME}/${dirPath}`;
+    let cmd = `rm -rf ${dest}/${dirName}`;
+    console.log(`executing: ${cmd}`);
+    await exec(cmd);
+    cmd = `ln -s ${src} ${dest}`;
+    console.log(`executing: ${cmd}`);
+    await exec(cmd);
+
   }
 })();
