@@ -23,3 +23,9 @@ function fzf_find_edit() {
     fi
 }
 
+# weather query, example: wttr germantown-md ja
+function wttr(){
+  local location=${1:-"mclean-va"}
+  local language=${2:-"en"}
+  curl -H "Accept-Language: $language" "wttr.in/$location?F"
+}

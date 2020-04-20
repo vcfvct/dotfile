@@ -36,8 +36,12 @@ const exec = util.promisify(require('child_process').exec);
     const src = `${process.cwd()}/${sourceName}`;
     const dest = `${process.env.HOME}/${targetName}`;
     let cmd = `rm ${dest}`;
-    console.log(`executing: ${cmd}`);
-    await exec(cmd);
+    try {
+      console.log(`executing: ${cmd}`);
+      await exec(cmd);
+    } catch (e) {
+      console.error(e);
+    }
     cmd = `ln -s ${src} ${dest}`;
     console.log(`executing: ${cmd}`);
     await exec(cmd);
@@ -52,7 +56,11 @@ const exec = util.promisify(require('child_process').exec);
     const dest = `${process.env.HOME}/${dirPath}`;
     let cmd = `rm -rf ${dest}/${dirName}`;
     console.log(`executing: ${cmd}`);
-    await exec(cmd);
+    try {
+      await exec(cmd);
+    } catch (e) {
+      console.error(e);
+    }
     cmd = `ln -s ${src} ${dest}`;
     console.log(`executing: ${cmd}`);
     await exec(cmd);
