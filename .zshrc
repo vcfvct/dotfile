@@ -6,6 +6,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
+export JAVA_HOME=$(/usr/libexec/java_home)
+export M2_HOME=/usr/local/maven3
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$HOME/develop/flutter/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:$PATH
 
@@ -56,5 +58,3 @@ bindkey -v "^b" backward-word
 bindkey -v "^f" end-of-line 
 bindkey -v "^k" history-beginning-search-backward
 bindkey -v "^j" history-beginning-search-forward
-# bindkey -s '^p' 'vi $(fzf)^M'
-bindkey -s '^p' 'fzf_find_edit^M'

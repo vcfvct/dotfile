@@ -6,5 +6,26 @@
   "git.addGBlameToBufferVar": true,
   // "git.addGBlameToVirtualText": true,
   "java.jdt.ls.home": "/opt/jdt-ls-0.48.0",
-  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "cSpell.userWords": [
+    "Peid",
+    "Retryable",
+    "Saml",
+    "Yubikey",
+    "alacritty",
+    "autoload",
+    "httpd",
+    "lightline",
+    "nvim",
+    "promisify",
+    "ripgrep",
+    "tmux",
+    "vcfvct",
+    "vimrc"
+  ]
 }

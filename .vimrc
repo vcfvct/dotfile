@@ -27,10 +27,9 @@ set laststatus=2
 
 " spell check only for txt and md file. use `set spell` to enable on the fly
 " autocmd BufRead *.txt,*.md, setlocal spell
-set spelllang=en
-set spellfile=~/Documents/backups/vi-spell-file.add
-set spellcapcheck=
-set nospell
+" set spelllang=en
+" set spellfile=~/Documents/backups/vi-spell-file.add
+" set spellcapcheck=
 
 " map jj to esa for insert mode and keep cursor position
 inoremap jj <ESC>`^
@@ -175,18 +174,10 @@ Plug 'Yggdroot/indentLine'
 Plug 'easymotion/vim-easymotion'
 Plug 'Valloric/MatchTagAlways'
 Plug 'morhetz/gruvbox'
-Plug 'kamykn/spelunker.vim'
-Plug 'kamykn/popup-menu.nvim'
 call plug#end()
 
 colorscheme gruvbox
 " color cobalt2 
-
-" this need to be added after colorscheme which resets highlight.
-let g:spelunker_disable_backquoted_checking = 1
-let g:spelunker_check_type = 2
-highlight SpelunkerSpellBad cterm=underline ctermfg=247 gui=underline guifg=#9e9e9e
-highlight SpelunkerComplexOrCompoundWord cterm=underline ctermfg=NONE gui=underline guifg=NONE
 
 " does not work with ts optional chaining
 " let g:polyglot_disabled = ['typescript', 'ts']
