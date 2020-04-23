@@ -17,7 +17,7 @@ export ZSH_DISABLE_COMPFIX=true
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/rc 
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 # From https://bluz71.github.io/2018/11/26/fuzzy-finding-in-bash-with-fzf.html
-export FZF_DEFAULT_OPTS='--height 75% --multi --reverse --bind ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-f:page-down,ctrl-b:page-up,ctrl-e:preview-page-up,ctrl-y:preview-page-down'
+export FZF_DEFAULT_OPTS='--height 75% --multi --reverse --bind ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-b:preview-page-up,ctrl-f:preview-page-down'
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="agnoster"
