@@ -13,6 +13,8 @@ export PATH=$HOME/develop/flutter/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/plat
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+# speed startup time
+export NVM_LAZY_LOAD=true
 export VISUAL=nvim
 export EDITOR=$VISUAL
 export ZSH_DISABLE_COMPFIX=true
@@ -25,12 +27,10 @@ export FZF_DEFAULT_OPTS='--height 75% --multi --reverse --bind ctrl-d:half-page-
 # ZSH_THEME="agnoster"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting encode64 vi-mode z fzf zsh-nvm)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting vi-mode z fzf zsh-nvm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -45,8 +45,9 @@ alias ez="vi ~/.zshrc"
 alias ev="vi ~/.vimrc"
 alias cat="bat"
 alias vi=nvim
-alias gpl="git pull"
-alias gps="git push"
+alias g=git
+alias gl="git pull"
+alias gp="git push"
 alias gll="fzf_git_log"
 alias powerstat="system_profiler sppowerdatatype | rg 'cycle|condition|wattage'"
 
