@@ -19,7 +19,7 @@ export VISUAL=nvim
 export EDITOR=$VISUAL
 export ZSH_DISABLE_COMPFIX=true
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/rc 
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
 # From https://bluz71.github.io/2018/11/26/fuzzy-finding-in-bash-with-fzf.html
 export FZF_DEFAULT_OPTS='--height 75% --multi --reverse --bind ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-b:preview-page-up,ctrl-f:preview-page-down'
 
@@ -48,6 +48,8 @@ alias vi=nvim
 alias g=git
 alias gl="git pull"
 alias gp="git push"
+alias gs="git status"
+alias gd="git diff"
 alias gll="fzf_git_log"
 alias powerstat="system_profiler sppowerdatatype | rg 'cycle|condition|wattage'"
 
