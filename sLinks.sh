@@ -28,6 +28,9 @@ ln -s ${repoPath}/.oh-my-zsh/custom/vcfvct.zsh ~/.oh-my-zsh/custom/vcfvct.zsh
 rm -rf ~/.vim/autoload/lightline
 ln -s ${repoPath}/.vim/autoload/lightline ~/.vim/autoload
 
+rm -rf ~/.config/fish/config.fish
+ln -s ${repoPath}/.config/fish/config.fish ~/.config/fish
+
 rm -rf ~/.config/alacritty
 ln -s ${repoPath}/.config/alacritty ~/.config
 

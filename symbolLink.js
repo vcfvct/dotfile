@@ -11,9 +11,14 @@ const exec = util.promisify(require('child_process').exec);
     '.coc.vim',
     '.tmux.conf',
     '.tmux.conf.local',
-    '.gitconfig',
+    // '.gitconfig',
     '.gitignore',
     '.oh-my-zsh/custom/vcfvct.zsh',
+    '.config/fish/config.fish',
+    '.config/fish/functions/gll.fish',
+    '.config/fish/functions/wttr.fish',
+    '.config/fish/functions/fish_user_key_bindings.fish',
+    '.config/fish/functions/fzf_find_edit.fish',
   ];
 
   const dotConfigDirList = [

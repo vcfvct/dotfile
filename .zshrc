@@ -34,8 +34,8 @@ plugins=(zsh-autosuggestions zsh-syntax-highlighting vi-mode z fzf zsh-nvm)
 
 source $ZSH/oh-my-zsh.sh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-prompt_context() {}
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# prompt_context() {}
 
 # zsh-bd
 # . $home/.zsh/plugins/bd/bd.zsh
