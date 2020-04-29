@@ -30,12 +30,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions zsh-syntax-highlighting vi-mode z fzf zsh-nvm)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting vi-mode z zsh-nvm)
 
 source $ZSH/oh-my-zsh.sh
-
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# prompt_context() {}
 
 # zsh-bd
 # . $home/.zsh/plugins/bd/bd.zsh
@@ -61,3 +58,5 @@ bindkey -v "^b" backward-word
 bindkey -v "^f" end-of-line 
 bindkey -v "^k" history-beginning-search-backward
 bindkey -v "^j" history-beginning-search-forward
+# no duplicated commands in history search
+setopt HIST_IGNORE_ALL_DUPS
