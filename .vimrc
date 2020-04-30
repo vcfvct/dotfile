@@ -13,6 +13,7 @@ set shiftwidth=2
 set softtabstop=2
 set backspace=indent,eol,start
 set incsearch
+set cursorline
 
 " show line number
 "set number
@@ -204,6 +205,13 @@ nnoremap <leader>qa :qall!<cr>
 
 nnoremap <space> :
 :map <F4> @:
+
+" resize pane 
+nmap <UP> :res +2<CR>
+nmap <Down> :res -2<CR>
+nmap <Left> :vertical res +2<CR>
+nmap <Right> :vertical res -2<CR>
+
 
 let g:fzf_layout = { 'window': {
       \ 'width': 0.9,

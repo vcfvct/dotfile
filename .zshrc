@@ -9,7 +9,8 @@ fi
 export JAVA_HOME=$(/usr/libexec/java_home)
 export M2_HOME=/usr/local/maven3
 export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$HOME/develop/flutter/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:$PATH
+export PYTHON3_HOME=~/Library/Python/3.7
+export PATH=${M2_HOME}/bin:${PYTHON3_HOME}/bin:$HOME/develop/flutter/bin:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
