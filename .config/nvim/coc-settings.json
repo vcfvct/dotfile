@@ -13,8 +13,10 @@
     "typescriptreact"
   ],
   "cSpell.userWords": [
+    "Akamai",
     "Atms",
     "Cognito",
+    "Failover",
     "Peid",
     "Retryable",
     "Saml",
@@ -23,17 +25,26 @@
     "alacritty",
     "alusky",
     "autoload",
+    "cmdb",
     "dynamodb",
+    "elasticache",
     "ensighten",
+    "gtag",
     "httpd",
     "lightline",
+    "mget",
+    "mset",
     "nums",
     "nvim",
     "pluralsight",
     "promisify",
     "ripgrep",
+    "sadd",
+    "smembers",
+    "srem",
     "tmux",
     "vcfvct",
-    "vimrc"
+    "vimrc",
+    "zrem"
   ]
 }
