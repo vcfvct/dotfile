@@ -32,8 +32,10 @@ set laststatus=2
 " set spellfile=~/Documents/backups/vi-spell-file.add
 " set spellcapcheck=
 
-" map jj to esa for insert mode and keep cursor position
+" map jj to esc for insert mode and keep cursor position
 inoremap jj <ESC>`^
+" overwrite the default ctrl-p(last command) in insert mode.
+inoremap <C-p> <ESC>`^
 
 " in visual mode, use Ctrl+c to copy selected text to system clipboard 
 " On Windows & MacOS there is no difference between `+`(clipboard) and `*`(Primary), since these systems only have a single clipboard, and both registers refer to the same thing (it doesn't matter which one you use).
