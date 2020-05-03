@@ -48,6 +48,7 @@ alias gl="git pull"
 alias gp="git push"
 alias gs="git status"
 alias gd="git diff"
+alias ga="git add"
 alias gll="fzf_git_log"
 alias powerstat="system_profiler sppowerdatatype | rg 'cycle|condition|wattage'"
 
