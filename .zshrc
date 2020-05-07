@@ -31,7 +31,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions zsh-syntax-highlighting vi-mode z zsh-nvm)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting vi-mode z zsh-nvm colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
 

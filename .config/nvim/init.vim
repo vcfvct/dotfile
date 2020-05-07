@@ -35,3 +35,10 @@ noremap  <leader>sp :sp<CR><C-w><C-w>:term<CR>i
  
 " live preview substitution.
 set inccommand=nosplit
+
+if has('wsl')
+  augroup Yank
+    autocmd!
+    autocmd TextYankPost * :call system('clip.exe ',@")
+  augroup END
+endif
