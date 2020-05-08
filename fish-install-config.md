@@ -51,9 +51,10 @@ Both fihserman and oh-my-fish are good.
 * `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
 * `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
 * `git clone https://github.com/lukechilds/zsh-nvm ~/.oh-my-zsh/custom/plugins/zsh-nvm`
+* `git clone https://github.com/lukechilds/zsh-better-npm-completion ~/.oh-my-zsh/custom/plugins/zsh-better-npm-completion`
 
 ## comparison with `zsh`
 The advantage of `zsh` is its `POSIX` compatibility. However for a user shell in personal computer, I still think that is not that important as long as we are not writing scripts for other user/application. `Fish's` out of box configure is super. Other than the [**Long** configuration](.zshrc) of `zsh`, there are still some feature gap there. 
   * The `zsh-autosuggestion` is not context-aware meaning that it cannot give relevant information based on what directory you are, which is quite handy. It is tracked by [this zsh github issue](https://github.com/zsh-users/zsh-autosuggestions/issues/42)
   * both shells are able to parse the `man` pages and give suggestions, however the `TAB` completion in fish on this is much more user friendly than the `zsh` one. Also fish will parse the `man` page exhaustively that all long or shorthand options are included. For example `tmux a` then tab, fish will give many options like `a/at/attach/attach-session`, while `zsh` only complete directly with `attach`.
-  * It is not easy to get the `vi mode` indicator showing up at the beginning of the `prompt` in `zsh` comparing to what's in fish. 
+  * ~~It is not easy to get the `vi mode` indicator showing up at the beginning of the `prompt` in `zsh` comparing to what's in fish.~~ (powerlevel10k/pure have this)
