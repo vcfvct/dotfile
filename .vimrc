@@ -214,9 +214,25 @@ nmap <Down> :res -2<CR>
 nmap <Left> :vertical res +2<CR>
 nmap <Right> :vertical res -2<CR>
 
+""" window/pane management
+tnoremap <C-q> <C-\><C-n> 
+"" navigation
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <leader>jj <C-\><C-n><C-w>j
+tnoremap <leader>kk <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
+noremap <C-h> <C-w>h
+noremap <leader>jj <C-w>j
+noremap <leader>kk <C-w>k
+noremap <C-l> <C-w>l
+inoremap <C-h> <Esc><C-w>h
+" inoremap <leader>jj <Esc><C-w>j
+" inoremap <leader>kk <Esc><C-w>k
+inoremap <C-l> <Esc><C-w>l
 
 let g:fzf_layout = { 'window': {
       \ 'width': 0.9,
       \ 'height': 0.7,
       \ 'highlight': 'Comment',
       \ 'rounded': v:false } }
+
