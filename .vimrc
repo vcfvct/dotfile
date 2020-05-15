@@ -49,15 +49,17 @@ nnoremap x "_x
 " Bind p in visual/select mode to paste without overriding the current register
 xnoremap p pgvy
 
-map <C-n> :NERDTreeToggle
+" map <C-n> :NERDTreeToggle
+map <C-n> :CocCommand explorer<CR>
+
 " hide directory banner in file explore 
 let g:netrw_banner=0
 " The tree list view
 let g:netrw_liststyle = 3
 
-if empty(argv())
-    au VimEnter * NERDTree
-endif
+" if empty(argv())
+    " au VimEnter * NERDTree
+" endif
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.DS_Store$', '\~$', '\.git']
 let g:NERDTreeChDirMode = 2

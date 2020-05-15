@@ -1,6 +1,6 @@
 {
   "typescript.preferences.importModuleSpecifier": "relative",
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces":true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.suggest.completeFunctionCalls": false,
   "javascript.suggest.completeFunctionCalls": false,
   "git.addGBlameToBufferVar": true,
@@ -51,7 +51,102 @@
     "vcfvct",
     "vimrc",
     "yext",
-    "zrem"
+    "zrem",
+    "presigned"
   ],
-  "cSpell.ignoreRegExpList": ["`.+`"]
+  "cSpell.ignoreRegExpList": [
+    "`.+`"
+  ],
+  "explorer.keyMappings": {
+    "i": false, // cancel default mapkey
+    "k": "nodePrev",
+    "j": "nodeNext",
+    "gk": "expandablePrev",
+    "gj": "expandableNext",
+    "*": "toggleSelection",
+    "<tab>": "actionMenu",
+    "h": "collapse",
+    "l": [
+      "expandable?",
+      "expand",
+      "open"
+    ],
+    "J": [
+      "toggleSelection",
+      "nodeNext"
+    ],
+    "K": [
+      "toggleSelection",
+      "nodePrev"
+    ],
+    "gl": "expandRecursive",
+    "gh": "collapseRecursive",
+    "<2-LeftMouse>": [
+      "expandable?",
+      [
+        "expanded?",
+        "collapse",
+        "expand"
+      ],
+      "open"
+    ],
+    "o": [
+      "expanded?",
+      "collapse",
+      "expand"
+    ],
+    "<cr>": [
+      "expandable?",
+      "cd",
+      "open"
+    ],
+    "e": "open",
+    "s": "open:split",
+    "S": "open:split:plain",
+    "v": "open:vsplit",
+    "t": "open:tab",
+    "<bs>": "gotoParent",
+    "gp": "preview:labeling",
+    "y": "copyFilepath",
+    "Y": "copyFilename",
+    "c": "copyFile",
+    "x": "cutFile",
+    "p": "pasteFile",
+    "d": "delete",
+    "D": "deleteForever",
+    "a": "addFile",
+    "A": "addDirectory",
+    "r": "rename",
+    ".": "toggleHidden",
+    "R": "refresh",
+    "?": "help",
+    "q": "quit",
+    "<esc>": "esc",
+    "X": "systemExecute",
+    "gd": "listDrive",
+    "f": "search",
+    "F": "searchRecursive",
+    "gf": "gotoSource:file",
+    "gb": "gotoSource:buffer",
+    "[[": "sourcePrev",
+    "]]": "sourceNext",
+    "[d": "diagnosticPrev",
+    "]d": "diagnosticNext",
+    "[c": "gitPrev",
+    "]c": "gitNext",
+    "<<": "gitStage",
+    ">>": "gitUnstage"
+  },
+  "explorer.icon.enableNerdfont": true,
+  "explorer.icon.enableVimDevicons": true,
+  "explorer.sources": [
+    {
+      "name": "buffer",
+      "expand": true
+    },
+    {
+      "name": "file",
+      "expand": true
+    }
+  ],
 }

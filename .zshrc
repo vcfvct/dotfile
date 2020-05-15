@@ -15,7 +15,7 @@ export PATH=${M2_HOME}/bin:${PYTHON3_HOME}/bin:$HOME/develop/flutter/bin:${ANDRO
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 # speed startup time
-export NVM_LAZY_LOAD=true
+# export NVM_LAZY_LOAD=true
 export VISUAL=nvim
 export EDITOR=$VISUAL
 export ZSH_DISABLE_COMPFIX=true
