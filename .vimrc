@@ -65,9 +65,6 @@ let NERDTreeIgnore=['\.DS_Store$', '\~$', '\.git']
 let g:NERDTreeChDirMode = 2
 nmap <leader>ff :NERDTreeFind<cr>
 
-" make large tree render faster with color
-" let g:NERDTreeHighlightCursorline = 0
-
 " map ctrl + m to toggle comment in normal/visual mode
 nmap <C-m> <leader>c<Space>
 vmap <C-m> <leader>c<Space>
@@ -163,10 +160,10 @@ nnoremap L gt
 
 call plug#begin()
 " On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdcommenter'
@@ -176,7 +173,6 @@ Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'kkoomen/vim-doge'
 Plug 'Yggdroot/indentLine'
-Plug 'easymotion/vim-easymotion'
 Plug 'Valloric/MatchTagAlways'
 Plug 'morhetz/gruvbox'
 call plug#end()

@@ -42,6 +42,7 @@ alias bd="cd .."
 alias ez="vi ~/.zshrc"
 alias ev="vi ~/.vimrc"
 alias cat="bat"
+alias v=nvim
 alias vi=nvim
 alias g=git
 alias gl="git pull"
