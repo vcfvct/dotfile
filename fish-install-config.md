@@ -12,9 +12,7 @@ Both fihserman and oh-my-fish are good.
 ### add packages 
 * `z`, which is for smart jump: `fisher add jethrokuan/z`
 * `nvm`, node version manager: `fisher add jorgebucaran/fish-nvm`. 
-* `fzf`, for fuzzy finding: `fisher add jethrokuan/fzf`, https://github.com/jethrokuan/fzf.
-  * FZF_OPEN_COMMAND=ag -l --hidden --ignore .git . $dir 2> /dev/null
-  * FZF_DEFAULT_COMMAND=rg --files --hidden --follow -g "!{.git}"
+* `bd`, smart dir back `fisher add 0rax/fish-bd`
 * Theme that shows git information/context 
   * This requires [powerline font](https://github.com/powerline/fonts). check out the repo and run `install.sh`
     * another option is use the nerd font to get more fancy.  

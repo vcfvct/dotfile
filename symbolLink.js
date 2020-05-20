@@ -15,10 +15,12 @@ const exec = util.promisify(require('child_process').exec);
     '.gitignore',
     '.oh-my-zsh/custom/vcfvct.zsh',
     '.config/fish/config.fish',
+    '.config/fish/fishfile',
     '.config/fish/functions/gll.fish',
     '.config/fish/functions/wttr.fish',
     '.config/fish/functions/fish_user_key_bindings.fish',
     '.config/fish/functions/fzf_find_edit.fish',
+    '.config/fish/functions/fzf_reverse_isearch.fish',
   ];
 
   const dotConfigDirList = [
