@@ -12,6 +12,7 @@ set -g theme_display_git_master_branch yes
 
 abbr ll "ls -lrth"
 abbr top "htop"
+abbr v "nvim"
 abbr vi "nvim"
 abbr cat "bat"
 abbr g "git"

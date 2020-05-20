@@ -20,7 +20,10 @@
     "Cognito",
     "Failover",
     "Gaithersburg",
+    "Jira",
+    "Jivox",
     "Mclean",
+    "Neustar",
     "Peid",
     "Retryable",
     "Saml",
@@ -43,6 +46,7 @@
     "nums",
     "nvim",
     "pluralsight",
+    "presigned",
     "promisify",
     "ripgrep",
     "sadd",
@@ -53,8 +57,7 @@
     "vcfvct",
     "vimrc",
     "yext",
-    "zrem",
-    "presigned"
+    "zrem"
   ],
   "cSpell.ignoreRegExpList": [
     "`.+`"
