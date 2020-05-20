@@ -1,6 +1,8 @@
 {
   "typescript.preferences.importModuleSpecifier": "relative",
+  "javascript.preferences.importModuleSpecifier": "relative",
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "typescript.suggest.completeFunctionCalls": false,
   "javascript.suggest.completeFunctionCalls": false,
   "git.addGBlameToBufferVar": true,
