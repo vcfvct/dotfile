@@ -6,11 +6,11 @@
 #set -Ux FZF_DEFAULT_COMMAND 'rg --files  --hidden'
 #set -Ux FZF_OPEN_COMMAND 'rg --files  --hidden'
 #set -Ux theme_nerd_fonts yes
+# set -xU theme_display_git_master_branch yes
 #set -xU LSCOLORS Gxfxcxdxbxegedabagacad
 #set -xU EDITOR nvim
 
 set PATH $PYTHON3_HOME/bin $M2_HOME/bin $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $PATH 
-set -g theme_display_git_master_branch yes
 
 abbr ll "ls -lrth"
 abbr top "htop"
