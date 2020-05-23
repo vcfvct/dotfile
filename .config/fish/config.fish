@@ -12,8 +12,8 @@
 set PATH $PYTHON3_HOME/bin $M2_HOME/bin $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $PATH 
 set -g theme_display_git_master_branch yes
 
-abbr ll "ls -lrth"
-abbr top "htop"
+alias ll "ls -lrth"
+abbr top "btm -b"
 abbr v "nvim"
 abbr vi "nvim"
 abbr cat "bat"

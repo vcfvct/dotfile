@@ -7,9 +7,10 @@ After installation, type `fish` in terminal to enter the shell.
 Both fihserman and oh-my-fish are good.
 * fisherman: https://github.com/jorgebucaran/fisher
   * `curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish`
+  * the package list file is in `~/.config/fish/fishfile`, run `fisher` to install all packages listed.
 * omf: https://github.com/oh-my-fish/oh-my-fish
 
-### add packages 
+### add packages(OR from the `fishfile`)
 * `z`, which is for smart jump: `fisher add jethrokuan/z`
 * `nvm`, node version manager: `fisher add jorgebucaran/fish-nvm`. 
 * `bd`, smart dir back `fisher add 0rax/fish-bd`
@@ -55,4 +56,8 @@ Both fihserman and oh-my-fish are good.
 The advantage of `zsh` is its `POSIX` compatibility. However for a user shell in personal computer, I still think that is not that important as long as we are not writing scripts for other user/application. `Fish's` out of box configure is super. Other than the [**Long** configuration](.zshrc) of `zsh`, there are still some feature gap there. 
   * The `zsh-autosuggestion` is not context-aware meaning that it cannot give relevant information based on what directory you are, which is quite handy. It is tracked by [this zsh github issue](https://github.com/zsh-users/zsh-autosuggestions/issues/42)
   * both shells are able to parse the `man` pages and give suggestions, however the `TAB` completion in fish on this is much more user friendly than the `zsh` one. Also fish will parse the `man` page exhaustively that all long or shorthand options are included. For example `tmux a` then tab, fish will give many options like `a/at/attach/attach-session`, while `zsh` only complete directly with `attach`.
-  * ~~It is not easy to get the `vi mode` indicator showing up at the beginning of the `prompt` in `zsh` comparing to what's in fish.~~ (powerlevel10k/pure have this)
+  * ~~It is not easy to get the `vi mode` indicator showing up at the beginning of the `prompt` in `zsh` comparing to what's in fish.~~ (themes like `powerlevel10k`/pure have this)
+  * the async loading is tricky causing loading heavy plugins like `nvm` is really slow(>1s).
+  * the alias expansion is all or nothing which is not super convenient. things like git/nvim are good but aliases like the `z` will be expanded to an odd full command.
+  * the `bindkey` is tricky that it has to work with `zle` and not easy to bind to things like vi normal mode.
+The part I miss in zsh for now is the transient prompt in `powerlevel10k` which makes the terminal screen looks cleaner.
