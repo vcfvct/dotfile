@@ -13,6 +13,7 @@ const exec = util.promisify(require('child_process').exec);
     '.tmux.conf.local',
     // '.gitconfig',
     '.gitignore',
+    '.eslintrc.js',
     '.oh-my-zsh/custom/vcfvct.zsh',
     '.config/fish/config.fish',
     '.config/fish/fishfile',
