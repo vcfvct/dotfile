@@ -1,10 +1,12 @@
 module.exports = {
   'extends': 'eslint:recommended',
   'parserOptions': {
-    'ecmaVersion': 6,
+    'ecmaVersion': 8,
   },
   env: {
-    browser: true 
+    browser: true,
+    node: true,
+    es2017: true
   },
   'rules': {
     // https://eslint.org/docs/rules/array-bracket-spacing
@@ -18,7 +20,7 @@ module.exports = {
 
     // Shouldn't use console.* -- use a proper logger instead, e.g.
     // https://www.npmjs.com/package/winston
-    'no-console': ['warn'],
+    // 'no-console': ['warn'],
     'no-debugger': ['warn'],
 
     // Indent at 4 spaces
