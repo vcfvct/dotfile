@@ -145,6 +145,7 @@
     "<<": "gitStage",
     ">>": "gitUnstage"
   },
+  "python.jediEnabled": false,
   "explorer.icon.enableNerdfont": true,
   "explorer.icon.enableVimDevicons": true,
   "explorer.sources": [
