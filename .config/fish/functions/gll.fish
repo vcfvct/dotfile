@@ -6,8 +6,8 @@ function gll
                        xargs -I@ sh -c 'git show --color=always @'"
       )
     if test -n $selections 
-        set -l commits (echo "$selections" | cut -d' ' -f2 | tr '\n' ' ')
-        git show $commits
+        set -l commit (echo "$selections" | cut -d' ' -f2)
+        git show $commit
     end 
 end
 
