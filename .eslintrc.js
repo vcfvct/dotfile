@@ -24,7 +24,7 @@ module.exports = {
     'no-debugger': ['warn'],
 
     // Indent at 4 spaces
-    // 'indent': ['error', 4],
+    'indent': ['error', 2],
 
     // No trailing spaces in code
     'no-trailing-spaces': ['error'],
@@ -32,5 +32,5 @@ module.exports = {
     // Don't use semicolons at the end of your statements
     'semi': ['error', 'always'],
   },
-}
+};
 
