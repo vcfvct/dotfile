@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
+// const fs = require('fs');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
@@ -28,7 +28,7 @@ const exec = util.promisify(require('child_process').exec);
     'nvim',
     'alacritty',
     'ripgrep',
-  ]
+  ];
 
   await Promise.all(fileList.map(f => createFileSymbolLink(f)));
   await createFileSymbolLink('.gitignore', '.ignore');
@@ -36,8 +36,8 @@ const exec = util.promisify(require('child_process').exec);
   await createDirSymbolLink('.vim/autoload', 'lightline');
 
   /**
-   * @param {string} sourceName 
-   * @param {string} target //optional 
+   * @param {string} sourceName
+   * @param {string} target //optional
    **/
   async function createFileSymbolLink(sourceName, target) {
     const targetName = target || sourceName;
@@ -56,7 +56,7 @@ const exec = util.promisify(require('child_process').exec);
   }
 
   /**
-   * @param {string} dirPath 
+   * @param {string} dirPath
    * @param {string} dirName
    **/
   async function createDirSymbolLink(dirPath, dirName) {
@@ -72,6 +72,5 @@ const exec = util.promisify(require('child_process').exec);
     cmd = `ln -s ${src} ${dest}`;
     console.log(`executing: ${cmd}`);
     await exec(cmd);
-
   }
 })();
