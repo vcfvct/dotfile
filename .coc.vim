@@ -134,3 +134,5 @@ nnoremap <leader>z :CocCommand git.chunkUndo<cr>
 command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
 " Run jest for current file
 command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
+" close coc explorer if it is the last
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif

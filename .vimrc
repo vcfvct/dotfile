@@ -6,14 +6,15 @@ set hlsearch
 hi Search ctermbg=LightYellow
 hi Search ctermfg=Red
 
-set autoindent
-set smartindent
-set expandtab
-set shiftwidth=2
-set softtabstop=2
+set autoindent                          " Good auto indent
+set smartindent                         " Makes indenting smart
+set expandtab                           " Converts tabs to spaces
+set shiftwidth=2                        " Change the number of space characters inserted for indentation
+set softtabstop=2                       " Insert 2 spaces for a tab
 set backspace=indent,eol,start
 set incsearch
-set cursorline
+set cursorline                          " Enable highlighting of the current line
+set splitright                          " Vertical splits will automatically be to the right
 
 " show line number
 "set number
