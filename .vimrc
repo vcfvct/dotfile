@@ -43,10 +43,11 @@ inoremap <C-p> <ESC>`^
 vmap <C-c> "+y
 " this changes the default vim register to the `+` register, which linked to the system clipboard
 set clipboard=unnamedplus
-" use black hole register `_` so we the delete does not interfere the clipboard.
+" use black hole register `_` so we the delete/change does not interfere the clipboard.
 vnoremap d "_d
 nnoremap d "_d
 nnoremap x "_x
+nnoremap c "_c
 " Bind p in visual/select mode to paste without overriding the current register
 xnoremap p pgvy
 
