@@ -14,7 +14,6 @@ set softtabstop=2                       " Insert 2 spaces for a tab
 set backspace=indent,eol,start
 set incsearch
 set cursorline                          " Enable highlighting of the current line
-set splitright                          " Vertical splits will automatically be to the right
 
 " show line number
 "set number
