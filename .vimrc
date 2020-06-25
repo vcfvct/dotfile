@@ -17,6 +17,7 @@ set cursorline                          " Enable highlighting of the current lin
 set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
 set noswapfile
+set noshowmode                          " mode is shown in status line(lightline)
 
 " show line number
 "set number
@@ -151,7 +152,7 @@ function! LightLineFilename()
     elseif i == 1
       let name = s
     else
-      let name = parent . '/' . strpart(s, 0, 12)
+      let name = parent . '/' . strpart(s, 0, 8)
     endif
     let i += 1
   endfor
