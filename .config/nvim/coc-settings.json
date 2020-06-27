@@ -163,4 +163,5 @@
       "expand": true
     }
   ],
+  "coc.preferences.formatOnType": true,
 }

@@ -54,21 +54,14 @@ nnoremap c "_c
 " Bind p in visual/select mode to paste without overriding the current register
 xnoremap p pgvy
 
-" map <C-n> :NERDTreeToggle
+" file explorer
 map <C-n> :CocCommand explorer<CR>
+nmap <leader>e :CocCommand explorer<CR>
 
 " hide directory banner in file explore 
 let g:netrw_banner=0
 " The tree list view
 let g:netrw_liststyle = 3
-
-" if empty(argv())
-    " au VimEnter * NERDTree
-" endif
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.DS_Store$', '\~$', '\.git']
-let g:NERDTreeChDirMode = 2
-nmap <leader>ff :NERDTreeFind<cr>
 
 " map ctrl + m to toggle comment in normal/visual mode
 nmap <C-m> <leader>c<Space>
@@ -165,10 +158,7 @@ nnoremap L gt
 
 call plug#begin()
 " On-demand loading
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdcommenter'
@@ -187,7 +177,7 @@ colorscheme gruvbox
 
 " does not work with ts optional chaining
 " let g:polyglot_disabled = ['typescript', 'ts']
-let g:indentLine_fileTypeExclude = ['nerdtree', 'markdown']
+let g:indentLine_fileTypeExclude = ['markdown']
 " use s to search 2 char in esaymotion
 nmap s <Plug>(easymotion-s2)
 

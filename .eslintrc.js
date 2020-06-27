@@ -1,12 +1,12 @@
 module.exports = {
   'extends': 'eslint:recommended',
   'parserOptions': {
-    'ecmaVersion': 8,
+    'ecmaVersion': 11,
   },
   env: {
     browser: true,
     node: true,
-    es2017: true
+    es2020: true
   },
   'rules': {
     // https://eslint.org/docs/rules/array-bracket-spacing
