@@ -158,7 +158,6 @@ nnoremap L gt
 
 call plug#begin()
 " On-demand loading
-Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdcommenter'

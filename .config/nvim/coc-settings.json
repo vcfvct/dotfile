@@ -151,7 +151,6 @@
   },
   "python.jediEnabled": false,
   "explorer.icon.enableNerdfont": true,
-  "explorer.icon.enableVimDevicons": true,
   "explorer.previewAction.onHover": false,
   "explorer.sources": [
     {
