@@ -201,8 +201,8 @@ nnoremap <space> :
 :map <F4> @:
 
 " resize pane 
-nmap <UP> :res +2<CR>
-nmap <Down> :res -2<CR>
+nmap <A-UP> :res +2<CR>
+nmap <A-Down> :res -2<CR>
 nmap <Left> :vertical res +2<CR>
 nmap <Right> :vertical res -2<CR>
 
@@ -210,8 +210,8 @@ nmap <Right> :vertical res -2<CR>
 tnoremap <C-q> <C-\><C-n> 
 "" navigation
 tnoremap <C-h> <C-\><C-n><C-w>h
-tnoremap <leader>jj <C-\><C-n><C-w>j
-tnoremap <leader>kk <C-\><C-n><C-w>k
+" tnoremap <leader>jj <C-\><C-n><C-w>j
+" tnoremap <leader>kk <C-\><C-n><C-w>k
 tnoremap <C-l> <C-\><C-n><C-w>l
 noremap <C-h> <C-w>h
 noremap <leader>jj <C-w>j
