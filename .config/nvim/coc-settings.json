@@ -150,7 +150,8 @@
     ">>": "gitUnstage"
   },
   "python.jediEnabled": false,
-  "python.formatting.provider": "yapf",
+  "python.formatting.provider": "autopep8",
+  "python.formatting.autopep8Args": [],
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
   "explorer.sources": [
