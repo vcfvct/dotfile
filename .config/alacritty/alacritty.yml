@@ -96,7 +96,8 @@ font:
     #   - (macOS) Menlo
     #   - (Linux) monospace
     #   - (Windows) Consolas
-    family: MesloLGL Nerd Font
+    # family: MesloLGL Nerd Font
+    family: JetBrainsMono NF
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -304,7 +305,7 @@ colors: *cobalt2
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
   color: '0xffffff'
@@ -374,7 +375,7 @@ selection:
   save_to_clipboard: false
 
 # Allow terminal applications to change Alacritty's window title.
-dynamic_title: true
+window.dynamic_title: true
 
 cursor:
   # Cursor style
