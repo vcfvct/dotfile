@@ -18,5 +18,7 @@
     po = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
     ll = log --graph --format=\"%C(yellow)%h%C(red)%d%C(reset) - %C(bold green)(%ar)%C(reset) %s %C(blue)<%an>%C(reset)\"
 [user]
-	email = vcfvct@gmail.com
-	name = Han Li
+    email = vcfvct@gmail.com
+    name = Han Li
+[commit]
+    template = ~/GIT/dotfile/git/commit.tpl
