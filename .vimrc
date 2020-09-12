@@ -167,7 +167,6 @@ Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'kkoomen/vim-doge'
 Plug 'Yggdroot/indentLine'
-Plug 'Valloric/MatchTagAlways'
 Plug 'morhetz/gruvbox'
 call plug#end()
 

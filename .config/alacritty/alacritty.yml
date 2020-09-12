@@ -584,6 +584,7 @@ key_bindings:
   - { key: Key6,     mods: Command,   chars: "\x01\x36" } 
   - { key: T,        mods: Command,   chars: "\x01\x63" } # cmd+t to create new window 
   - { key: P,        mods: Command,   chars: "\x10" } # cmd+p to ^p 
+  - { key: Tab,      mods: Control,   chars: "\x01\x09" } #  control+tab for LRU
 
   - { key: Paste,                   action: Paste                            }
   - { key: Copy,                    action: Copy                             }
