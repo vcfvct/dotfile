@@ -3,6 +3,7 @@
   * for fzf.vim, `ctrl+g` is mapped to `:GFiles` to search with .gitignore applied.
      * The [executable path](https://github.com/junegunn/fzf#as-vim-plugin) should be mapped correctly in Plug or with `set rtp+=xxxx` to append to the `runtimepath`.
   * for `vim surround`, select the text in visual mode, and then press `S`(uppercase), then input the quote or parenthesis or `<anyHtmlTag>` etc.
+  * in command line mode, `ctrl-b` and `ctro-e` to navigate to beginning/end.
 
 * GIT
   * for `git config --global user.email xxx`, can *NOT* surround email address with `""` like how user name is set.
