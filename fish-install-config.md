@@ -40,6 +40,9 @@ Both fihserman and oh-my-fish are good.
 ## config fish
 * Fish config file is under `~/.config/fish/config.fish`, [Example](.config/fish/config.fish)
 * custom function can be created under `~/.config/fish/functions/`. [Example](.config/fish/functions), where functions like setpw/setproxy/unsetproxy can be used when password change or activate/deactivate proxy.
+* FZF Env vars
+  * `set -Ux FZF_DEFAULT_COMMAND 'rg --files  --hidden'`
+  * `set -Ux FZF_DEFAULT_OPTS '--height 75% --multi --reverse --bind ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,ctrl-y:preview-up,ctrl-e:preview-down'`
 
 ## set fish as default shell
 * add fish path(for example `/usr/local/bin/fish`) to the `/etc/shells` file.
