@@ -168,6 +168,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'kkoomen/vim-doge'
 Plug 'Yggdroot/indentLine'
 Plug 'morhetz/gruvbox'
+Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 colorscheme gruvbox
@@ -221,9 +222,23 @@ inoremap <C-h> <Esc><C-w>h
 " inoremap <leader>kk <Esc><C-w>k
 inoremap <C-l> <Esc><C-w>l
 
+""" float term bindings
+nnoremap   <silent>   <F7>    :FloatermNew<CR>
+tnoremap   <silent>   <F7>    <C-\><C-n>:FloatermNew<CR>
+nnoremap   <silent>   <F8>    :FloatermPrev<CR>
+tnoremap   <silent>   <F8>    <C-\><C-n>:FloatermPrev<CR>
+nnoremap   <silent>   <F9>    :FloatermNext<CR>
+tnoremap   <silent>   <F9>    <C-\><C-n>:FloatermNext<CR>
+nnoremap   <silent>   <F12>   :FloatermToggle<CR>
+tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
+
+let g:floaterm_width  = 0.8
+let g:floaterm_height = 0.8
+
+""" fzf open in float
 let g:fzf_layout = { 'window': {
-      \ 'width': 0.9,
-      \ 'height': 0.7,
-      \ 'highlight': 'Comment',
-      \ 'rounded': v:false } }
+    \ 'width': 0.9,
+    \ 'height': 0.7,
+    \ 'highlight': 'Comment',
+    \ 'rounded': v:false } }
 
