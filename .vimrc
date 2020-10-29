@@ -165,8 +165,11 @@ Plug 'junegunn/fzf', { 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
-Plug 'kkoomen/vim-doge'
 Plug 'Yggdroot/indentLine'
+Plug 'heavenshell/vim-jsdoc', { 
+  \ 'for': ['javascript', 'javascript.jsx','typescript'], 
+  \ 'do': 'make install'
+\}
 Plug 'morhetz/gruvbox'
 Plug 'voldikss/vim-floaterm'
 call plug#end()
