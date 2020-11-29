@@ -28,6 +28,7 @@ const exec = util.promisify(require('child_process').exec);
     'nvim',
     'alacritty',
     'ripgrep',
+    'zathura',
   ];
 
   await Promise.all(fileList.map(f => createFileSymbolLink(f)));

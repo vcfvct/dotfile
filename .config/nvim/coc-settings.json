@@ -52,6 +52,7 @@
     "httpd",
     "itin",
     "ldap",
+    "lemmatization",
     "lightline",
     "mget",
     "mset",

@@ -19,6 +19,8 @@ set nowritebackup                       " This is recommended by coc
 set noswapfile
 set noshowmode                          " mode is shown in status line(lightline)
 
+" https://github.com/neovim/neovim/issues/11699
+set t_BE=
 " show line number
 "set number
 
@@ -37,9 +39,9 @@ set laststatus=2
 " set spellcapcheck=
 
 " map jj to esc for insert mode and keep cursor position
-inoremap jj <ESC>`^
+" inoremap jj <ESC>`^
 " overwrite the default ctrl-p(last command) in insert mode.
-inoremap <C-p> <ESC>`^
+inoremap <C-p> <C-r>*
 
 " in visual mode, use Ctrl+c to copy selected text to system clipboard 
 " On Windows & MacOS there is no difference between `+`(clipboard) and `*`(Primary), since these systems only have a single clipboard, and both registers refer to the same thing (it doesn't matter which one you use).
