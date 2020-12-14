@@ -179,4 +179,5 @@
     }
   ],
   "coc.preferences.formatOnType": true,
+  "smartf.timeout": 2000,
 }
