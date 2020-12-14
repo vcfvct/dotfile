@@ -12,3 +12,4 @@
 * As `7890` are mapped to the pane resize, 
   * for go to line, cannot use `nG` will go to line `n`, fall back to use `:n` for that. 
   * for go to beginning of the line, `0` will not work so use `^` instead
+* use `:help index` to check what key is mapped to

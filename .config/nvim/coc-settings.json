@@ -8,7 +8,7 @@
   "javascript.suggestionActions.enabled": false, // this removes the commonjs conversion warning
   "git.addGBlameToBufferVar": true,
   // "git.addGBlameToVirtualText": true,
-  "java.jdt.ls.home": "/opt/jdt-ls-0.48.0",
+  "java.jdt.ls.home": "/opt/jdt-ls",
   "eslint.filetypes": [
     "javascript",
     "javascriptreact",
