@@ -10,10 +10,10 @@
 #set -xU LSCOLORS Gxfxcxdxbxegedabagacad
 #set -xU EDITOR nvim
 
-set PATH $PYTHON3_HOME/bin $M2_HOME/bin $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $HOME/develop/flutter/bin $PATH 
+set PATH $PYTHON3_HOME/bin $M2_HOME/bin $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $HOME/develop/flutter/bin $VOLTA_HOME/bin $PATH 
 
 alias ll "ls -lrth"
-abbr top "btm -b"
+abbr top "sudo btm -b"
 abbr v "nvim"
 abbr vi "nvim"
 abbr cat "bat"

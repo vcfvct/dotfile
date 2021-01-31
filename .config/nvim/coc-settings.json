@@ -9,7 +9,7 @@
   "git.addGBlameToBufferVar": true,
   // "git.addGBlameToVirtualText": true,
   "java.jdt.ls.home": "/opt/jdt-ls",
-  "eslint.filetypes": [
+  "eslint.probe": [
     "javascript",
     "javascriptreact",
     "typescript",
@@ -83,8 +83,8 @@
   "cSpell.ignoreRegExpList": [
     "`.+`"
   ],
-  "explorer.keyMappings": {
-    "i": false, // cancel default mapkey
+  "explorer.keyMappings.global": {
+    "i": false, // cancel default map key
     "k": "nodePrev",
     "j": "nodeNext",
     "gk": "expandablePrev",

@@ -22,3 +22,5 @@
     name = Han Li
 [commit]
     template = ~/GIT/dotfile/git/commit.tpl
+[pull]
+	ff = only
