@@ -172,8 +172,10 @@ Plug 'heavenshell/vim-jsdoc', {
   \ 'for': ['javascript', 'javascript.jsx','typescript'], 
   \ 'do': 'make install'
 \}
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
 Plug 'voldikss/vim-floaterm'
+Plug 'christianchiarulli/nvcode-color-schemes.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 colorscheme gruvbox
