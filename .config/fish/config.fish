@@ -10,7 +10,6 @@
 #set -xU LSCOLORS Gxfxcxdxbxegedabagacad
 #set -xU EDITOR nvim
 
-set PATH $PYTHON3_HOME/bin $M2_HOME/bin $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $HOME/develop/flutter/bin $VOLTA_HOME/bin $PATH 
 
 alias ll "ls -lrth"
 abbr top "sudo btm -b"
@@ -44,3 +43,5 @@ if uname -r | grep 'microsoft' > /dev/null
   set -l LOCAL_IP (cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
   set -xg DISPLAY $LOCAL_IP:0
 end
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH
