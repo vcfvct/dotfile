@@ -1,4 +1,4 @@
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-eslint', 'coc-pairs', 'coc-git', 'coc-css', 'coc-html', 'coc-jest', 'coc-java', 'coc-spell-checker', 'coc-tabnine', 'coc-explorer', 'coc-yank', 'coc-smartf']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-eslint', 'coc-pairs', 'coc-git', 'coc-css', 'coc-html', 'coc-jest', 'coc-java', 'coc-spell-checker', 'coc-tabnine', 'coc-explorer', 'coc-yank', 'coc-smartf', 'coc-docthis']
 
 " if hidden is not set, TextEdit might fail.
 set hidden
@@ -153,3 +153,5 @@ augroup Smartf
   autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#6638F0
   autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#504945
 augroup end
+
+nmap <leader>jd :CocCommand docthis.documentThis<cr>
