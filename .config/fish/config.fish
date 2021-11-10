@@ -10,6 +10,11 @@
 #set -xU LSCOLORS Gxfxcxdxbxegedabagacad
 #set -xU EDITOR nvim
 
+if type -q
+  alias ll "exa -l --group --icon --sort=modified"
+else
+  alias ll "ls -lrth"
+end
 
 alias ll "ls -lrth"
 abbr top "sudo btm -b"
@@ -43,5 +48,13 @@ if uname -r | grep 'microsoft' > /dev/null
   set -l LOCAL_IP (cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
   set -xg DISPLAY $LOCAL_IP:0
 end
-set -gx VOLTA_HOME "$HOME/.volta"
-set -gx PATH "$VOLTA_HOME/bin" $PATH
+
+# NVM https://github.com/fish-shell/fish-shell/issues/583#issuecomment-13758325
+function __check_rvm --on-variable PWD --description 'Do nvm stuff'
+  status --is-command-substitution; and return
+  if test -f .nvmrc; and test -r .nvmrc;
+    nvm use
+  else
+  end
+end
+

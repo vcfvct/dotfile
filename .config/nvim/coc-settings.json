@@ -188,6 +188,7 @@
       "expand": true
     }
   ],
+  "explorer.file.reveal.auto": true,
   "coc.preferences.formatOnType": true,
   "smartf.timeout": 2000,
 }
