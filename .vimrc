@@ -172,6 +172,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'voldikss/vim-floaterm'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'github/copilot.vim'
 call plug#end()
 
 colorscheme gruvbox

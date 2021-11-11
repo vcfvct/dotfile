@@ -4,7 +4,7 @@
 #set -xU PYTHON3_HOME ~/Library/Python/3.7
 #set -xU GIT_USER $USER
 #set -Ux FZF_DEFAULT_OPTS '--height 75% --multi --reverse --bind ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up'
-#set -Ux FZF_DEFAULT_COMMAND 'rg --files  --hidden'
+#set -Ux FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 #set -Ux FZF_OPEN_COMMAND 'rg --files  --hidden'
 #set -Ux theme_nerd_fonts yes
 #set -xU theme_display_git_master_branch yes
@@ -13,6 +13,7 @@
 
 if type -q exa
   alias ll "exa -l --group --icons --sort=modified"
+  alias ls 'exa'
 else
   alias ll "ls -lrth"
 end
@@ -60,4 +61,3 @@ function __check_rvm --on-variable PWD --description 'Do nvm stuff'
   else
   end
 end
-
