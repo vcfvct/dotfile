@@ -31,9 +31,9 @@ const exec = util.promisify(require('child_process').exec);
     'zathura',
   ];
 
-  await Promise.all(fileList.map(f => createFileSymbolLink(f)));
+  await Promise.allSettled(fileList.map(f => createFileSymbolLink(f)));
   await createFileSymbolLink('.gitignore', '.ignore');
-  await Promise.all(dotConfigDirList.map(d => createDirSymbolLink('.config', d)));
+  await Promise.allSettled(dotConfigDirList.map(d => createDirSymbolLink('.config', d)));
   await createDirSymbolLink('.vim/autoload', 'lightline');
 
   /**
@@ -48,12 +48,12 @@ const exec = util.promisify(require('child_process').exec);
     try {
       console.log(`executing: ${cmd}`);
       await exec(cmd);
+      cmd = `ln -s ${src} ${dest}`;
+      console.log(`executing: ${cmd}`);
+      await exec(cmd);
     } catch (e) {
       console.error(e);
     }
-    cmd = `ln -s ${src} ${dest}`;
-    console.log(`executing: ${cmd}`);
-    await exec(cmd);
   }
 
   /**
@@ -64,14 +64,14 @@ const exec = util.promisify(require('child_process').exec);
     const src = `${process.cwd()}/${dirPath}/${dirName}`;
     const dest = `${process.env.HOME}/${dirPath}`;
     let cmd = `rm -rf ${dest}/${dirName}`;
-    console.log(`executing: ${cmd}`);
     try {
+      console.log(`executing: ${cmd}`);
+      await exec(cmd);
+      cmd = `ln -s ${src} ${dest}`;
+      console.log(`executing: ${cmd}`);
       await exec(cmd);
     } catch (e) {
       console.error(e);
     }
-    cmd = `ln -s ${src} ${dest}`;
-    console.log(`executing: ${cmd}`);
-    await exec(cmd);
   }
 })();

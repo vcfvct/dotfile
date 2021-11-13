@@ -27,10 +27,3 @@ if has('wsl')
     autocmd TextYankPost * :call system('clip.exe ',@")
   augroup END
 endif
-
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "json", "javascript", "java", "lua", "typescript", "bash", "html", "css", "yaml" },
-  highlight = { enable = true, },
-}
-EOF
