@@ -25,8 +25,10 @@ const exec = util.promisify(require('child_process').exec);
   ];
 
   const dotConfigDirList = [
-    'nvim',
     'alacritty',
+    'hyper',
+    'kitty',
+    'nvim',
     'ripgrep',
     'zathura',
   ];
