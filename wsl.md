@@ -35,6 +35,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 * Install [vc++ redistribution](https://docs.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170)
 * grab the [executable](https://github.com/alacritty/alacritty/releases).
 * The config file is under `%AppData%\alacritty\alacritty.yml`, where AppData is usually `C:\Users\<your_user_name>\AppData\Roaming`.
+    * in the `shell` section, put `program: wsl` so wsl is the default shell. And `"~"` as `args` so the starting directory is linux home.
 
 ## bat
 ```bash 
