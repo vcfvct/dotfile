@@ -554,6 +554,14 @@ key_bindings:
   #- { key: Subtract, mods: Control,       action: DecreaseFontSize }
   #- { key: Minus,    mods: Control,       action: DecreaseFontSize }
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
+  - { key: RBracket, mods: Alt,   chars: "\x01\x6e" } # ^A+n next window (TMUX)
+  - { key: LBracket, mods: Alt,   chars: "\x01\x70" } # ^A+p previous window
+  - { key: Key1,     mods: Alt,   chars: "\x01\x31" } # alt+num to corresponding window
+  - { key: Key2,     mods: Alt,   chars: "\x01\x32" }
+  - { key: Key3,     mods: Alt,   chars: "\x01\x33" }
+  - { key: Key4,     mods: Alt,   chars: "\x01\x34" }
+  - { key: Key5,     mods: Alt,   chars: "\x01\x35" }
+  - { key: Key6,     mods: Alt,   chars: "\x01\x36" }
 
   # (macOS only)
   - { key: Key0,   mods: Command,         action: ResetFontSize    }
