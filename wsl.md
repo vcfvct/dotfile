@@ -2,7 +2,7 @@
 with `curl -L` which is --location so it would follow redirect(many github distro links has redirect).
 
 ## exa
-* download latest dist from github 
+* download latest dist from github
 * follow [stpes](https://the.exa.website/install/linux) to put man/executable/completion to corresponding locations
 
 ## rg
@@ -38,8 +38,19 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     * in the `shell` section, put `program: wsl` so wsl is the default shell. And `"~"` as `args` so the starting directory is linux home.
 
 ## bat
-```bash 
+* installation:
+```bash
 curl -L https://github.com/sharkdp/bat/releases/download/v0.19.0/bat_0.19.0_amd64.deb --output bat.deb
 sudo dpkg -i bat.deb
 
+```
+* to pipe with specific language syntax with `-l` flag: `az functionapp list | bat -l json`
+
+
+## vscode
+* ctrl-w is conflict with vim, have to disable base on [this github comment](https://github.com/VSCodeVim/Vim/issues/2056#issuecomment-334899171)
+```json
+"vim.handleKeys": {
+    "<C-w>": false
+}
 ```
