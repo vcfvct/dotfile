@@ -176,8 +176,7 @@ Plug 'rebelot/kanagawa.nvim'
 Plug 'github/copilot.vim'
 call plug#end()
 
-" colorscheme gruvbox
-color kanagawa
+colorscheme gruvbox
 
 " does not work with ts optional chaining
 " let g:polyglot_disabled = ['typescript', 'ts']
