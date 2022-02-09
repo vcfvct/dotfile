@@ -97,7 +97,7 @@ font:
     #   - (Linux) monospace
     #   - (Windows) Consolas
     # family: MesloLGL Nerd Font
-    family: JetBrainsMono NF
+    family: JetBrainsMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -108,7 +108,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: MesloLGL Nerd Font
+    family: JetBrainsMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     # style: Bold
@@ -119,7 +119,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: MesloLGL Nerd Font
+    family: JetBrainsMono Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     # style: Italic
@@ -281,8 +281,42 @@ schemes:
       magenta: '0xd3869b'
       cyan:    '0x8ec07c'
       white:   '0xebdbb2'
+  # Kanagawa Alacritty Colors
+  kanagawa: &kanagawa
+    primary:
+      background: '0x1f1f28'
+      foreground: '0xdcd7ba'
+
+    normal:
+      black:   '0x090618'
+      red:     '0xc34043'
+      green:   '0x76946a'
+      yellow:  '0xc0a36e'
+      blue:    '0x7e9cd8'
+      magenta: '0x957fb8'
+      cyan:    '0x6a9589'
+      white:   '0xc8c093'
+
+    bright:
+      black:   '0x727169'
+      red:     '0xe82424'
+      green:   '0x98bb6c'
+      yellow:  '0xe6c384'
+      blue:    '0x7fb4ca'
+      magenta: '0x938aa9'
+      cyan:    '0x7aa89f'
+      white:   '0xdcd7ba'
+
+    selection:
+      background: '0x2d4f67'
+      foreground: '0xc8c093'
+
+    indexed_colors:
+      - { index: 16, color: '0xffa066' }
+      - { index: 17, color: '0xff5d62' }
+
 # Colors (Tomorrow Night Bright)
-colors: *cobalt2
+colors: *kanagawa
 
 # Visual Bell
 #

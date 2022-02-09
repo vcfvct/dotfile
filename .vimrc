@@ -173,11 +173,11 @@ Plug 'voldikss/vim-floaterm'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
 Plug 'rebelot/kanagawa.nvim'
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 call plug#end()
 
 " colorscheme gruvbox
-color kanagawa
+colorscheme kanagawa
 
 " does not work with ts optional chaining
 " let g:polyglot_disabled = ['typescript', 'ts']
@@ -247,3 +247,7 @@ let g:fzf_layout = { 'window': {
     \ 'highlight': 'Comment',
     \ 'rounded': v:false } }
 
+" ctrl-b in visual model to do base64 decode, remove '-d' to do encode
+vnoremap <leader>bd :!base64 -d
+" format xml with python3
+com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
