@@ -79,7 +79,6 @@ let NERDSpaceDelims=1
 " map ctrl + p to find file
 map <C-p> :Files<cr>
 map <C-g> :Rg
-com! FormatJSON %!python3 -m json.tool
 
 map <C-t> :FZF<cr>
 " preview content on the right side when search
@@ -176,7 +175,8 @@ Plug 'rebelot/kanagawa.nvim'
 Plug 'github/copilot.vim'
 call plug#end()
 
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme kanagawa
 
 " does not work with ts optional chaining
 " let g:polyglot_disabled = ['typescript', 'ts']
@@ -246,3 +246,8 @@ let g:fzf_layout = { 'window': {
     \ 'highlight': 'Comment',
     \ 'rounded': v:false } }
 
+" ctrl-b in visual model to do base64 decode, remove '-d' to do encode
+vnoremap <leader>bd :!base64 -d
+" format xml with python3
+com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
+com! FormatJSON %!python3 -m json.tool

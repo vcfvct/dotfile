@@ -9,7 +9,7 @@
   "git.addGBlameToBufferVar": true,
   // "git.addGBlameToVirtualText": true,
   "java.jdt.ls.home": "/opt/jdt-ls",
-  "java.home": "/Library/Java/JavaVirtualMachines/jdk-15.0.1.jdk/Contents/Home",
+  // "java.home": "/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home",
   "eslint.probe": [
     "javascript",
     "javascriptreact",
@@ -173,7 +173,6 @@
     "<<": "gitStage",
     ">>": "gitUnstage"
   },
-  "python.jediEnabled": false,
   "python.formatting.provider": "autopep8",
   "python.formatting.autopep8Args": [],
   "explorer.icon.enableNerdfont": true,
@@ -189,6 +188,12 @@
     }
   ],
   "explorer.file.reveal.auto": true,
+  "explorer.file.reveal.filter": {
+    "literals": [
+      "node_modules"
+    ]
+  },
   "coc.preferences.formatOnType": true,
-  "smartf.timeout": 2000,
+  // "smartf.timeout": 2000,
+  "yaml.format.enable": true,
 }
