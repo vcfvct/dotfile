@@ -11,7 +11,7 @@ const exec = util.promisify(require('child_process').exec);
     '.coc.vim',
     '.tmux.conf',
     '.tmux.conf.local',
-    // '.gitconfig',
+    '.gitconfig',
     '.gitignore',
     '.eslintrc.js',
     '.oh-my-zsh/custom/vcfvct.zsh',
@@ -46,11 +46,12 @@ const exec = util.promisify(require('child_process').exec);
     const targetName = target || sourceName;
     const src = `${process.cwd()}/${sourceName}`;
     const dest = `${process.env.HOME}/${targetName}`;
-    let cmd = `rm ${dest}`;
+    await executeCmd(`rm ${dest}`);
+    await executeCmd(`ln -s ${src} ${dest}`);
+  }
+
+  async function executeCmd(cmd) {
     try {
-      console.log(`executing: ${cmd}`);
-      await exec(cmd);
-      cmd = `ln -s ${src} ${dest}`;
       console.log(`executing: ${cmd}`);
       await exec(cmd);
     } catch (e) {
@@ -65,15 +66,7 @@ const exec = util.promisify(require('child_process').exec);
   async function createDirSymbolLink(dirPath, dirName) {
     const src = `${process.cwd()}/${dirPath}/${dirName}`;
     const dest = `${process.env.HOME}/${dirPath}`;
-    let cmd = `rm -rf ${dest}/${dirName}`;
-    try {
-      console.log(`executing: ${cmd}`);
-      await exec(cmd);
-      cmd = `ln -s ${src} ${dest}`;
-      console.log(`executing: ${cmd}`);
-      await exec(cmd);
-    } catch (e) {
-      console.error(e);
-    }
+    await executeCmd(`rm -rf ${dest}/${dirName}`);
+    await executeCmd(`ln -s ${src} ${dest}`);
   }
 })();

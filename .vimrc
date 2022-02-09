@@ -43,7 +43,7 @@ set laststatus=2
 " overwrite the default ctrl-p(last command) in insert mode.
 inoremap <C-p> <C-r>*
 
-" in visual mode, use Ctrl+c to copy selected text to system clipboard 
+" in visual mode, use Ctrl+c to copy selected text to system clipboard
 " On Windows & MacOS there is no difference between `+`(clipboard) and `*`(Primary), since these systems only have a single clipboard, and both registers refer to the same thing (it doesn't matter which one you use).
 vmap <C-c> "+y
 " this changes the default vim register to the `+` register, which linked to the system clipboard
@@ -60,7 +60,7 @@ xnoremap p pgvy
 map <C-n> :CocCommand explorer<CR>
 nmap <leader>e :CocCommand explorer<CR>
 
-" hide directory banner in file explore 
+" hide directory banner in file explore
 let g:netrw_banner=0
 " The tree list view
 let g:netrw_liststyle = 3
@@ -78,8 +78,7 @@ let NERDSpaceDelims=1
 
 " map ctrl + p to find file
 map <C-p> :Files<cr>
-map <C-g> :Rg 
-com! FormatJSON %!python3 -m json.tool
+map <C-g> :Rg
 
 map <C-t> :FZF<cr>
 " preview content on the right side when search
@@ -138,7 +137,7 @@ endfunction
 " display full path in status bar, path name length limited.
 function! LightLineFilename()
   let name = ""
-  let subs = split(expand('%:p'), "/") 
+  let subs = split(expand('%:p'), "/")
   let i = 1
   for s in subs
     let parent = name
@@ -173,7 +172,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
 Plug 'rebelot/kanagawa.nvim'
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'github/copilot.vim'
+Plug 'github/copilot.vim'
 call plug#end()
 
 " colorscheme gruvbox
@@ -188,13 +187,13 @@ nmap s <Plug>(easymotion-s2)
 source ~/.coc.vim
 
 " Custom syntax highlighting
-au BufNewFile,BufRead Jenkinsfile setf groovy 
+au BufNewFile,BufRead Jenkinsfile setf groovy
 au BufNewFile,BufRead *.ejs setf html
 au BufNewFile,BufRead Gearsfile,Bogiefile setf yaml
 " jsonc: https://code.visualstudio.com/docs/languages/json#_json-with-comments
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
-" map recording to 'Q' so it is less annoying 
+" map recording to 'Q' so it is less annoying
 nnoremap Q q
 nnoremap q <Nop>
 " use 'space q' to quite/save/all
@@ -205,14 +204,14 @@ nnoremap <leader>qa :qall!<cr>
 nnoremap <space> :
 :map <F4> @:
 
-" resize pane 
+" resize pane
 nmap <A-UP> :res +2<CR>
 nmap <A-Down> :res -2<CR>
 nmap <Left> :vertical res +2<CR>
 nmap <Right> :vertical res -2<CR>
 
 """ window/pane management
-tnoremap <C-q> <C-\><C-n> 
+tnoremap <C-q> <C-\><C-n>
 "" navigation
 tnoremap <C-h> <C-\><C-n><C-w>h
 " tnoremap <leader>jj <C-\><C-n><C-w>j
@@ -251,3 +250,4 @@ let g:fzf_layout = { 'window': {
 vnoremap <leader>bd :!base64 -d
 " format xml with python3
 com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"
+com! FormatJSON %!python3 -m json.tool
