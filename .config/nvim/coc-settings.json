@@ -9,7 +9,7 @@
   "git.addGBlameToBufferVar": true,
   // "git.addGBlameToVirtualText": true,
   "java.jdt.ls.home": "/opt/jdt-ls",
-  "java.home": "/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home",
+  // "java.home": "/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home",
   "eslint.probe": [
     "javascript",
     "javascriptreact",
