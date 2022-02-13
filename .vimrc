@@ -78,7 +78,7 @@ let NERDSpaceDelims=1
 
 " map ctrl + p to find file
 map <C-p> :Files<cr>
-map <C-g> :Rg
+map <C-g> :Rg 
 
 map <C-t> :FZF<cr>
 " preview content on the right side when search
