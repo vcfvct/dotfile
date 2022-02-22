@@ -173,6 +173,7 @@ Plug 'christianchiarulli/nvcode-color-schemes.vim'
 Plug 'rebelot/kanagawa.nvim'
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'github/copilot.vim'
+Plug 'OmniSharp/omnisharp-vim'
 call plug#end()
 
 " colorscheme gruvbox
@@ -192,6 +193,7 @@ au BufNewFile,BufRead *.ejs setf html
 au BufNewFile,BufRead Gearsfile,Bogiefile setf yaml
 " jsonc: https://code.visualstudio.com/docs/languages/json#_json-with-comments
 autocmd FileType json syntax match Comment +\/\/.\+$+
+autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
 
 " map recording to 'Q' so it is less annoying
 nnoremap Q q
