@@ -1,7 +1,14 @@
 ## install fish shell
 Either do `brew install fish` or download the installer from `https://fishshell.com/`.
 
+```bash
+sudo apt-add-repository ppa:fish-shell/release-3
+sudo apt update
+sudo apt install fish
+```
+
 After installation, type `fish` in terminal to enter the shell. 
+
 
 ## install package manager 
 Both fihserman and oh-my-fish are good.

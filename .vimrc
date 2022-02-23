@@ -176,8 +176,8 @@ Plug 'github/copilot.vim'
 Plug 'OmniSharp/omnisharp-vim'
 call plug#end()
 
-" colorscheme gruvbox
-colorscheme kanagawa
+colors gruvbox
+" colorscheme kanagawa
 
 " does not work with ts optional chaining
 " let g:polyglot_disabled = ['typescript', 'ts']
