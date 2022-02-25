@@ -2,9 +2,10 @@
 #set -xU JAVA_HOME (/usr/libexec/java_home)
 #set -xU M2_HOME /usr/local/maven3
 #set -xU PYTHON3_HOME ~/Library/Python/3.7
+#set -U nvm_default_version v1xxxx
 #set -xU GIT_USER $USER
 #set -Ux FZF_DEFAULT_OPTS '--height 75% --multi --reverse --bind ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up'
-#set -Ux FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+#set -Ux FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.git/*" --glob "!node_modules/*"'
 #set -Ux FZF_OPEN_COMMAND 'rg --files  --hidden'
 #set -Ux theme_nerd_fonts yes
 #set -xU theme_display_git_master_branch yes

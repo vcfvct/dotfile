@@ -55,6 +55,9 @@ sudo dpkg -i bat.deb
 ## tmux
 * direct `sudo apt install tmux` should get quite up to date version(3.x).
 
+## yarn
+* `curl -o- -L https://yarnpkg.com/install.sh | bash`
+
 ## VcXsrv
 * This should be install first otherwise the neovim start up will hang with the `set clipboard=unnamedplus`.
 ### WSL vim clipboard sharing
