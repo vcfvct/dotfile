@@ -1,6 +1,6 @@
 "use single quote as leader key, comma is useful for previous char search in line
 let mapleader = "'"
-autocmd BufRead,BufNewFile *.ts,*.json,*.js,*.html,*.dart,Jenkinsfile,Gearsfile,Bogiefile setlocal number
+autocmd BufRead,BufNewFile *.ts,*.json,*.js,*.html,*.dart,Jenkinsfile,*.jsx,*.tsx setlocal number
 syntax on
 set hlsearch
 hi Search ctermbg=LightYellow

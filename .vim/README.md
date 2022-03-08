@@ -13,3 +13,9 @@
   * for go to line, cannot use `nG` will go to line `n`, fall back to use `:n` for that. 
   * for go to beginning of the line, `0` will not work so use `^` instead
 * use `:help index` to check what key is mapped to
+
+## Fold
+[This can be useful](https://www.linux.com/training-tutorials/vim-tips-folding-fun/) when dealing with long json files
+* `zc/zo` to close/open the fold.
+* `zM/zO` to close/open all the fold.
+* `zj/zk` navigating to prev/next fold, `]z/[z` to move between start/end of a fold.
