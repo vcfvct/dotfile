@@ -58,6 +58,11 @@ sudo dpkg -i bat.deb
 ## yarn
 * `curl -o- -L https://yarnpkg.com/install.sh | bash`
 
+## jwt
+* this [jwt tool](https://github.com/mike-engel/jwt-cli) is useful for decoding jwt tokens.
+  * command line: `jwt decode $JWT`
+  * inside vim, visual mode select the line and enter *command* mode do `!jwt decode -`
+
 ## VcXsrv
 * This should be install first otherwise the neovim start up will hang with the `set clipboard=unnamedplus`.
 ### WSL vim clipboard sharing
