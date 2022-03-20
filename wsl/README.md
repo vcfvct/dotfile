@@ -4,6 +4,14 @@
 do `sudo ./install.sh` with the included shell script for the autoamted setup.
 
 * grep's `-w`(word-regexp)'s `.*` matches any number of any characters.
+* You can also [parameterize the grep argument](https://stackoverflow.com/a/67497561/1486742) so that it'll "dynamically" determine what platform it was run on and substitute in the appropriate string based on that.
+
+``` bash
+ curl -s https://api.github.com/repos/slmingol/gorelease_ex/releases/latest \
+    | grep -wo "https.*$(uname).*gz" | wget -qi -
+```
+
+Here `$(uname)` will return either Darwin, Linux, etc.
 
 # manual download and setup
 
