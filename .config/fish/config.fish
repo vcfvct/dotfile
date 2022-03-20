@@ -53,7 +53,7 @@ if uname -r | grep 'microsoft' > /dev/null
   set -xg DISPLAY $LOCAL_IP:0
 end
 
-set -gx PATH /usr/local/bin $PATH
+set -gx PATH /usr/local/bin ~/.local/bin $PATH
 
 ### NVM https://github.com/fish-shell/fish-shell/issues/583#issuecomment-13758325
 function __check_rvm --on-variable PWD --description 'Do nvm stuff'
