@@ -14,6 +14,7 @@ do `sudo ./install.sh` with the included shell script for the autoamted setup.
 Here `$(uname)` will return either Darwin, Linux, etc.
 
 # manual download and setup
+* another alternative to below manual downloads is to use [homebrew on Linux](https://docs.brew.sh/Homebrew-on-Linux).
 
 ## download
 
@@ -126,6 +127,13 @@ Log in to Ubuntu on WSL2 and set the `DISPLAY` environment variable:
 ```bash
 LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
 export DISPLAY=$LOCAL_IP:0
+```
+
+## limit wsl memory
+* edit the [notepad %UserProfile%/.wslconfig](https://www.koskila.net/how-to-solve-vmmem-consuming-ungodly-amounts-of-ram-when-running-docker-on-wsl/) file with:
+```
+[wsl2]
+memory=2GB
 ```
 
 That's it! Enjoy your Vim life on Windows!
