@@ -6,7 +6,16 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-export JAVA_HOME=$(/usr/libexec/java_home)
+
+case `uname` in
+  Darwin)
+    export JAVA_HOME=$(/usr/libexec/java_home)
+  ;;
+  Linux)
+    export JAVA_HOME=$(dirname $(dirname $(readlink -e /usr/bin/javac)))
+  ;;
+esac
+
 export M2_HOME=/usr/local/maven3
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PYTHON3_HOME=~/Library/Python/3.7
