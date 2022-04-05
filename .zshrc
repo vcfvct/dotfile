@@ -12,7 +12,11 @@ case `uname` in
     export JAVA_HOME=$(/usr/libexec/java_home)
   ;;
   Linux)
-    export JAVA_HOME=$(dirname $(dirname $(readlink -e /usr/bin/javac)))
+    javac_loc=/usr/bin/javac
+    if [ -x "$javac_loc" ]; then
+      export JAVA_HOME=$(readlink -f $(dirname $(readlink -f $javac_loc)))
+    fi
+    # export JAVA_HOME=$(dirname $(dirname $(readlink -e /usr/bin/javac)))
   ;;
 esac
 
