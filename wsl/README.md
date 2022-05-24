@@ -1,6 +1,12 @@
 
 # scripted setup
 
+## enable WSL option
+* run powershell with Administrator: 
+  * `wsl --install`
+  * `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux`
+  * go to MS store to select latest Ubuntu or other distro.
+
 do `sudo ./install.sh` with the included shell script for the autoamted setup.
 
 * grep's `-w`(word-regexp)'s `.*` matches any number of any characters.

@@ -6,3 +6,6 @@
 
 ## PSReadLine
 * [PSReadLine](https://devblogs.microsoft.com/powershell/announcing-psreadline-2-1-with-predictive-intellisense/?WT.mc_id=-blog-scottha) provides auto completion.
+
+## Z
+* [ZLocation](https://github.com/vors/ZLocation) for smart jump.
