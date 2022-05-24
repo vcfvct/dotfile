@@ -13,22 +13,23 @@ After installation, type `fish` in terminal to enter the shell.
 ## install package manager 
 Both fihserman and oh-my-fish are good.
 * fisherman: https://github.com/jorgebucaran/fisher
-  * `curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish`
+  * `curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher`
   * the package list file is in `~/.config/fish/fishfile`, run `fisher` to install all packages listed.
 * omf: https://github.com/oh-my-fish/oh-my-fish
 
 ### add packages(OR from the `fishfile`)
-* `z`, which is for smart jump: `fisher add jethrokuan/z`
-* `nvm`, node version manager: `fisher add jorgebucaran/fish-nvm`. 
-* `bd`, smart dir back `fisher add 0rax/fish-bd`
+* `z`, which is for smart jump: `fisher install jethrokuan/z`
+* `nvm`, node version manager: `fisher install jorgebucaran/fish-nvm`. 
+* `bd`, smart dir back `fisher install 0rax/fish-bd`
 * Theme that shows git information/context 
   * This requires [powerline font](https://github.com/powerline/fonts). check out the repo and run `install.sh`
     * another option is use the nerd font to get more fancy.  
       * `brew tap caskroom/fonts`
       * `brew cask install font-meslo-nerd-font`
       * set -U theme_nerd_fonts yes
-  * [Bob-the-fish theme](https://github.com/oh-my-fish/theme-bobthefish/): `fisher add oh-my-fish/theme-bobthefish`.
-  * [Another Famous 'agnoster' theme](https://github.com/oh-my-fish/theme-agnoster): `fisher add oh-my-fish/theme-agnoster`.
+  * [Bob-the-fish theme](https://github.com/oh-my-fish/theme-bobthefish/): `fisher install oh-my-fish/theme-bobthefish`.
+  * [Another Famous 'agnoster' theme](https://github.com/oh-my-fish/theme-agnoster): `fisher install oh-my-fish/theme-agnoster`.
+  * a *jorgebucaran* theme which does async git, good for large repository: `fisher install jorgebucaran/hydro`.
 * More packages can be found in this [awesome-fish repo](https://github.com/jorgebucaran/awesome-fish)
 
 ## proxy setup
