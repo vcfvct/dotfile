@@ -135,6 +135,19 @@ LOCAL_IP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
 export DISPLAY=$LOCAL_IP:0
 ```
 
+#### 3. Windows to Neovim
+
+The above step will make neovim to windows work, however from windows to vim, still need to use `ctrl+shift+v`, normal `p` inside vim won't work. Need seek help from [win32yank.exe to use windows clipboard inside WSL](https://github.com/neovim/neovim/wiki/FAQ#how-to-use-the-windows-clipboard-from-wsl).
+
+```bash
+curl -sLo/tmp/win32yank.zip https://github.com/equalsraf/win32yank/releases/download/v0.0.4/win32yank-x64.zip
+unzip -p /tmp/win32yank.zip win32yank.exe > /tmp/win32yank.exe
+chmod +x /tmp/win32yank.exe
+sudo mv /tmp/win32yank.exe /usr/local/bin/
+```
+
+The last `/usr/local/bin` can be any directory as long as it is in `$PATH`.
+
 ## limit wsl memory
 * edit the [notepad %UserProfile%/.wslconfig](https://www.koskila.net/how-to-solve-vmmem-consuming-ungodly-amounts-of-ram-when-running-docker-on-wsl/) file with:
 ```
