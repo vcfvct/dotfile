@@ -45,7 +45,7 @@ inoremap <C-p> <C-r>*
 
 " in visual mode, use Ctrl+c to copy selected text to system clipboard
 " On Windows & MacOS there is no difference between `+`(clipboard) and `*`(Primary), since these systems only have a single clipboard, and both registers refer to the same thing (it doesn't matter which one you use).
-vmap <C-c> "+y
+" vmap <C-c> "+y
 " this changes the default vim register to the `+` register, which linked to the system clipboard
 set clipboard=unnamedplus
 " use black hole register `_` so we the delete/change does not interfere the clipboard.
@@ -66,9 +66,9 @@ let g:netrw_banner=0
 let g:netrw_liststyle = 3
 
 " map ctrl + m to toggle comment in normal/visual mode
-nmap <C-m> <leader>c<Space>
-vmap <C-m> <leader>c<Space>
-vmap <C-M> <leader>cs
+nmap <C-c> <leader>c<Space>
+vmap <C-c> <leader>c<Space>
+" vmap <C-C> <leader>cs
 
 nmap <leader>rp :%s/
 " nmap F :%s/
