@@ -51,9 +51,11 @@ bind -M insert \ck history-search-backward
 if uname -r | grep 'microsoft' > /dev/null
   set -l LOCAL_IP (cat /etc/resolv.conf | grep nameserver | awk '{print $2}')
   set -xg DISPLAY $LOCAL_IP:0
+  set -xg BREW_HOME /home/linuxbrew/.linuxbrew
+  fish_add_path $BREW_HOME/bin 
 end
 
-set -gx PATH /usr/local/bin ~/.local/bin /home/linuxbrew/.linuxbrew/bin $PATH
+fish_add_path /usr/local/bin ~/.local/bin
 
 ### NVM https://github.com/fish-shell/fish-shell/issues/583#issuecomment-13758325
 function __check_rvm --on-variable PWD --description 'Do nvm stuff'
