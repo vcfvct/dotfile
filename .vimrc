@@ -172,7 +172,7 @@ Plug 'voldikss/vim-floaterm'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
 Plug 'rebelot/kanagawa.nvim'
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 Plug 'OmniSharp/omnisharp-vim'
 call plug#end()
 
