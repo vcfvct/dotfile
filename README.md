@@ -29,6 +29,7 @@ MacOS Mojave disables subpixel antialiasing, also known as font smoothing, by de
 * use `:CocConfig` or edit `~/.config/nvim/coc-settings.json` directly to add [ts server options](https://github.com/neoclide/coc-tsserver#configuration-options) just like inside vscode. for example:
   * `"typescript.preferences.importModuleSpecifier": "relative",`
   * `"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces":true`
+  * for [project specific settings](https://github.com/neoclide/coc.nvim/wiki/Using-the-configuration-file#configuration-file-resolve), use `./.vim/coc-settings.json` file. one useful setting here we could do is for setting `python.pythonPath` to local `venv`'s python so that the LSP could kick-in.
 * on MacOS, `Terminal->Preferences->Keyboard` set `Use Option as Meta Key`. then map <A-f> to `:Format<cr>`.
   * For iTerm2, need to make it `ESC` in `profiles->keys`, and then add specific mapping to the list
 
