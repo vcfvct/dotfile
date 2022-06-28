@@ -17,6 +17,8 @@ case `uname` in
       export JAVA_HOME=$(readlink -f $(dirname $(readlink -f $javac_loc)))
     fi
     # export JAVA_HOME=$(dirname $(dirname $(readlink -e /usr/bin/javac)))
+    export BREW_HOME=/home/linuxbrew/.linuxbrew
+    export PATH=${BREW_HOME}/bin:$PATH
   ;;
 esac
 
