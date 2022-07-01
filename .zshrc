@@ -52,7 +52,12 @@ source $ZSH/oh-my-zsh.sh
 
 # zsh-bd
 # . $home/.zsh/plugins/bd/bd.zsh
-alias ll="ls -lrth"
+if type "exa" > /dev/null; then
+  alias ll="exa -l --group --icons --sort=modified"
+  alias ls="exa"
+else
+  alias ll="ls -lrth"
+fi
 alias bd="cd .."
 alias ez="vi ~/.zshrc"
 alias ev="vi ~/.vimrc"
