@@ -1,0 +1,5 @@
+nmap <C-O> :vsc View.NavigateBackward<CR>
+nmap <C-I> :vsc View.NavigateForward<CR>
+
+nnoremap gr :vsc Edit.FindAllReferences<cr>
+nnoremap gI :vsc Edit.GoToImplementation<cr>
