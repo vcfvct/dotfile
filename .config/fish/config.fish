@@ -53,6 +53,7 @@ if uname -r | grep 'microsoft' > /dev/null
   set -xg DISPLAY $LOCAL_IP:0
   set -xg BREW_HOME /home/linuxbrew/.linuxbrew
   fish_add_path $BREW_HOME/bin 
+  abbr open "explorer.exe"
 end
 
 fish_add_path /usr/local/bin ~/.local/bin

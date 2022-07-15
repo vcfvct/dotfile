@@ -21,6 +21,7 @@ case `uname` in
     if [ -d "${brew_home}" ]; then
       export PATH=${brew_home}/bin:$PATH
     fi
+    alias open="explorer.exe"
   ;;
 esac
 
