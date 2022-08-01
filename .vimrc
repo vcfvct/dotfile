@@ -40,8 +40,6 @@ set laststatus=2
 
 " map jj to esc for insert mode and keep cursor position
 " inoremap jj <ESC>`^
-" overwrite the default ctrl-p(last command) in insert mode.
-inoremap <C-p> <C-r>*
 
 " in visual mode, use Ctrl+c to copy selected text to system clipboard
 " On Windows & MacOS there is no difference between `+`(clipboard) and `*`(Primary), since these systems only have a single clipboard, and both registers refer to the same thing (it doesn't matter which one you use).
@@ -176,7 +174,7 @@ Plug 'rebelot/kanagawa.nvim'
 Plug 'OmniSharp/omnisharp-vim'
 call plug#end()
 
-colors gruvbox
+colors onedark
 " colorscheme kanagawa
 
 " does not work with ts optional chaining
