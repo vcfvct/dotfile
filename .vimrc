@@ -174,7 +174,7 @@ Plug 'rebelot/kanagawa.nvim'
 Plug 'OmniSharp/omnisharp-vim'
 call plug#end()
 
-colors onedark
+colors snazzy 
 " colorscheme kanagawa
 
 " does not work with ts optional chaining
