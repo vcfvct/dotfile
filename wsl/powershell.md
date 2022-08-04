@@ -23,8 +23,10 @@
 ## neovim
 * install [chocolatey](https://community.chocolatey.org/courses/installation/installing?method=install-from-powershell-v3). (admin)
 * install [neovim](https://community.chocolatey.org/packages/neovim)
-  * the `:echo stdpath(‘config’)` shows config path which is typially `~/AppData/Local/nvim`. if not exist, create this directory. create the `init.vim` config file here.
-  * the `coc.vim` config can also be placed here and referenced in the `init.vim` by: `source ~/AppData/Local/nvim/coc.vim `
+  * the `:echo stdpath(‘config’)` shows config path which is typially `~/AppData/Local/nvim/`. if not exist, create this directory. 
+    * create the `init.vim` config file here if not exist. put vim config stuff in.
+    * the `coc.vim` config can also be placed here and referenced in the `init.vim` by: `source ~/AppData/Local/nvim/coc.vim `
+    * the `coc-settings.json` can also be placed here so that coc would load it by default/convention.
 * install fzf: `choco install fzf`.
 * install [vim-plug](https://dev.to/ritikadas/using-neovim-as-an-effortless-way-to-edit-code-installation-and-setup-guide-for-windows-10-5dhc).
   ```
@@ -38,3 +40,4 @@
       )
     ))
   ```
+* for floatterm to use pwoershell: `let g:floaterm_shell="powershell.exe -NoLogo"`
