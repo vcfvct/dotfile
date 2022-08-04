@@ -3,7 +3,8 @@ local wezterm = require("wezterm")
 
 local config = {
     check_for_updates = false,
-    -- color_scheme = "Builtin Solarized Dark",
+    color_scheme = "Cobalt2",
+    -- color_scheme = "Gruvbox Dark",
     inactive_pane_hsb = {
         hue = 1.0,
         saturation = 1.0,
