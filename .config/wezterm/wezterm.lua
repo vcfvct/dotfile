@@ -10,7 +10,6 @@ local config = {
         saturation = 1.0,
         brightness = 1.0,
     },
-    default_prog = { '/bin/bash', '-l' },
     font_size = 15.0,
     launch_menu = {},
     leader = { key="a", mods="CTRL" },
@@ -57,11 +56,12 @@ local config = {
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
     config.front_end = "Software" -- OpenGL doesn't work quite well with RDP.
     -- config.term = "" -- Set to empty so FZF works on windows
-    config.default_prog = { "cmd.exe" }
-    table.insert(config.launch_menu, { label = "PowerShell", args = {"powershell.exe", "-NoLogo"} })
+    config.default_prog = { "powershell.exe" }
+    table.insert(config.launch_menu, { label = "CMD", args = {"cmd.exe", "-NoLogo"} })
 
     -- Find installed visual studio version(s) and add their compilation
     -- environment command prompts to the menu
+    --[[
     for _, vsvers in ipairs(wezterm.glob("Microsoft Visual Studio/20*", "C:/Program Files (x86)")) do
         local year = vsvers:gsub("Microsoft Visual Studio/", "")
         table.insert(config.launch_menu, {
@@ -69,6 +69,7 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
             args = {"cmd.exe", "/k", "C:/Program Files (x86)/" .. vsvers .. "/BuildTools/VC/Auxiliary/Build/vcvars64.bat"},
         })
     end
+    ]]--
 else
     table.insert(config.launch_menu, { label = "bash", args = {"bash", "-l"} })
     table.insert(config.launch_menu, { label = "fish", args = {"fish", "-l"} })
