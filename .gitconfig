@@ -6,7 +6,7 @@
 [alias]
     d = diff
     s = status
-    c = commiti
+    c = commit
     cam = commit -am
     co = checkout
     cob = checkout -b
