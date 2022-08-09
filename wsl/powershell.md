@@ -23,6 +23,16 @@
   Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
   Function ev { nvim $HOME\AppData\Local\nvim\init.vim }
+
+  # auto completion key bindings
+  Set-PSReadLineOption -HistorySearchCursorMovesToEnd
+  Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
+  Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
+  Set-PSReadLineKeyHandler -chord 'Ctrl+e' -Function ForwardWord
+  Set-PSReadLineKeyHandler -Chord "Ctrl+f" -ScriptBlock {
+    [Microsoft.PowerShell.PSConsoleReadLine]::AcceptSuggestion()
+    [Microsoft.PowerShell.PSConsoleReadLine]::EndOfLine()
+  }
   ```
 
 ## PSReadLine
