@@ -12,6 +12,17 @@
   Set-PSReadLineOption -PredictionSource History
   Set-PSReadlineOption -EditMode vi
   Import-Module ZLocation
+  Import-Module -Name Terminal-Icons
+
+  # FZF
+  Import-Module PSFzf
+  # Override PSReadLine's history search
+  Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' `
+                  -PSReadlineChordReverseHistory 'Ctrl+r'
+  # Override default tab completion
+  Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+
+  Function ev { nvim $HOME\AppData\Local\nvim\init.vim }
   ```
 
 ## PSReadLine
@@ -19,6 +30,14 @@
 
 ## Z
 * [ZLocation](https://github.com/vors/ZLocation) for smart jump.
+
+## Terminal Icon
+* install module: `Install-Module -Name Terminal-Icons -Repository PSGallery`
+* add to $PROFILE: `Import-Module -Name Terminal-Icons`
+
+## Fzf integration using PSfzf
+* installation: 1. `choco install fzf`, 2. `Install-Module PSFzf`.
+* config as above example config. [source](https://www.damirscorner.com/blog/posts/20211119-PowerShellModulesForABetterCommandLine.html)
 
 ## neovim
 * install [chocolatey](https://community.chocolatey.org/courses/installation/installing?method=install-from-powershell-v3). (admin)
