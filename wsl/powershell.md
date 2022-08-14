@@ -67,6 +67,6 @@
       $ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath(
         "~\AppData\Local\nvim\autoload\plug.vim"
       )
-    ))
+    )
   ```
-* for floatterm to use pwoershell: `let g:floaterm_shell="powershell.exe -NoLogo"`
+* for `floatterm` to use latest powershell: `let g:floaterm_shell="pwsh.exe -NoLogo"`
