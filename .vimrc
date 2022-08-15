@@ -80,14 +80,14 @@ map <C-g> :Rg
 
 map <C-t> :FZF<cr>
 " preview content on the right side when search
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-command! -bang -nargs=* Ag
-  \ call fzf#vim#grep(
-  \   'ag --column --numbers --noheading --color --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
+" command! -bang -nargs=* Rg
+  " \ call fzf#vim#grep(
+  " \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  " \   fzf#vim#with_preview(), <bang>0)
+" command! -bang -nargs=* Ag
+  " \ call fzf#vim#grep(
+  " \   'ag --column --numbers --noheading --color --smart-case '.shellescape(<q-args>), 1,
+  " \   fzf#vim#with_preview(), <bang>0)
 
 
 
@@ -238,6 +238,10 @@ tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
 
 let g:floaterm_width  = 0.8
 let g:floaterm_height = 0.8
+
+if has("win32")
+  set shell=pwsh.exe
+endif
 
 """ fzf open in float
 let g:fzf_layout = { 'window': {

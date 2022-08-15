@@ -22,7 +22,14 @@
   # Override default tab completion
   Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 
+  Set-Alias -Name vi -Value nvim
+  Set-Alias -Name open -Value ii 
+  Set-Alias -Name which -Value get-command
   Function ev { nvim $HOME\AppData\Local\nvim\init.vim }
+  Function gs { git status }
+  Function gd { git diff }
+  Function gl { git pull }
+  Function gp { git push }
 
   # auto completion key bindings
   Set-PSReadLineOption -HistorySearchCursorMovesToEnd
@@ -70,3 +77,8 @@
     )
   ```
 * for `floatterm` to use latest powershell: `let g:floaterm_shell="pwsh.exe -NoLogo"`
+
+## commands
+* `ii .` -> `open .` 
+* `gdr` -> `df -h`
+* `get-command` -> `which`
