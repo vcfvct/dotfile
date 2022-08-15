@@ -25,7 +25,7 @@
   Set-Alias -Name vi -Value nvim
   Set-Alias -Name open -Value ii 
   Set-Alias -Name which -Value get-command
-  Function ev { nvim $HOME\AppData\Local\nvim\init.vim }
+  Function ev { nvim $env:LOCALAPPDATA\nvim\init.vim }
   Function gs { git status }
   Function gd { git diff }
   Function gl { git pull }
@@ -82,3 +82,8 @@
 * `ii .` -> `open .` 
 * `gdr` -> `df -h`
 * `get-command` -> `which`
+
+## environment variable
+* env var is typically defined with `$env:`, like `$env:LOCALAPPDATA` points to `$HOME\AppData\Local\`.
+* to define a tmp env var before executing the command, similar to linux, do `$env:FOO='Bar'; python .\myPythonScript`
+* to show all env vars, use Get-ChildItem, `gci env:`, or `ls env:`, or `dir env:`
