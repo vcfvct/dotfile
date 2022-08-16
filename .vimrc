@@ -240,7 +240,9 @@ let g:floaterm_width  = 0.8
 let g:floaterm_height = 0.8
 
 if has("win32")
-  set shell=pwsh.exe
+  let g:floaterm_shell="pwsh.exe -NoLogo"
+  " this would make vim split term work but will break floaterm"
+  " set shell=pwsh.exe
 endif
 
 """ fzf open in float
