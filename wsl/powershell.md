@@ -7,7 +7,8 @@
   * if `$PROFILE` does not exist, use `new-item -type file -path $profile -force` to create.
   * do `. $PROFILE` after change to reload the setting.
   * example config:
-  ```
+
+  ```powershell
   oh-my-posh init pwsh --config ~/.jandedobbeleer.omp.json | Invoke-Expression
   Set-PSReadLineOption -PredictionSource History
   Set-PSReadlineOption -EditMode vi
@@ -21,6 +22,8 @@
                   -PSReadlineChordReverseHistory 'Ctrl+r'
   # Override default tab completion
   Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
+  # open file with neovim
+  Function ov { Get-ChildItem . -Recurse -Attributes !Directory | Invoke-Fzf | % { nvim $_ } }
 
   Set-Alias -Name vi -Value nvim
   Set-Alias -Name open -Value ii 
