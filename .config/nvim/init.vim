@@ -20,7 +20,6 @@ noremap  <leader>sp :sp<CR><C-w><C-w>:term<CR>i
 
 " live preview substitution.
 set inccommand=nosplit
-" color kanagawa
 
 if has('wsl')
   augroup Yank
