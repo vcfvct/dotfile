@@ -12,6 +12,8 @@
   oh-my-posh init pwsh --config ~/.jandedobbeleer.omp.json | Invoke-Expression
   Set-PSReadLineOption -PredictionSource History
   Set-PSReadlineOption -EditMode vi
+  # use `ctrl+[` to exit from Edit mode to Command mode
+  Set-PSReadLineKeyHandler -Chord 'Ctrl+Oem4' -Function ViCommandMode
   Import-Module ZLocation
   Import-Module -Name Terminal-Icons
 
@@ -28,6 +30,14 @@
   Set-Alias -Name vi -Value nvim
   Set-Alias -Name open -Value ii 
   Set-Alias -Name which -Value get-command
+  Set-Alias -Name touch -Value new-item
+  Function ll { 
+    $target = ''
+    if($args[0]){
+      $target = $args[0] -replace "`\\","`/"
+    }
+    wsl exa -l --group --icons --sort=modified $target 
+  }
   Function ev { nvim $env:LOCALAPPDATA\nvim\init.vim }
   Function gs { git status }
   Function gd { git diff }
