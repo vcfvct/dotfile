@@ -195,5 +195,5 @@
   },
   "coc.preferences.formatOnType": true,
   // "smartf.timeout": 2000,
-  "yaml.format.enable": true,
+  "yaml.format.enable": true 
 }
