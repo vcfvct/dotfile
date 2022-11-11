@@ -9,6 +9,8 @@
   * example config:
 
   ```powershell
+  # for Windows server with choco install, manually add path.
+  # $env:Path += ";C:\Tools\neovim\nvim-win64\bin\;C:\ProgramData\chocolatey\bin\;C:\Program Files\GIT\bin;C:\Program Files\nodejs"
   oh-my-posh init pwsh --config ~/.jandedobbeleer.omp.json | Invoke-Expression
   Set-PSReadLineOption -PredictionSource History
   Set-PSReadlineOption -EditMode vi
@@ -57,26 +59,28 @@
 
 ## PSReadLine
 * [PSReadLine](https://devblogs.microsoft.com/powershell/announcing-psreadline-2-1-with-predictive-intellisense/?WT.mc_id=-blog-scottha) provides auto completion.
+  * `Install-Module PSReadLine -RequiredVersion 2.2.6 -Force`
 
 ## Z
 * [ZLocation](https://github.com/vors/ZLocation) for smart jump.
+  * `Install-Module ZLocation -Scope CurrentUser -Force`
 
 ## Terminal Icon
 * install module: `Install-Module -Name Terminal-Icons -Repository PSGallery`
-* add to $PROFILE: `Import-Module -Name Terminal-Icons`
+* add to $PROFILE: `Import-Module -Name Terminal-Icons -Force`
 
 ## Fzf integration using PSfzf
-* installation: 1. `choco install fzf`, 2. `Install-Module PSFzf`.
+* installation: 1. `choco install fzf -y`, 2. `Install-Module PSFzf -Force`.
 * config as above example config. [source](https://www.damirscorner.com/blog/posts/20211119-PowerShellModulesForABetterCommandLine.html)
 
 ## neovim
 * install [chocolatey](https://community.chocolatey.org/courses/installation/installing?method=install-from-powershell-v3). (admin)
 * install [neovim](https://community.chocolatey.org/packages/neovim)
+  * `choco install neovim -y`
   * the `:echo stdpath(‘config’)` shows config path which is typially `~/AppData/Local/nvim/`. if not exist, create this directory. 
     * create the `init.vim` config file here if not exist. put vim config stuff in.
     * the `coc.vim` config can also be placed here and referenced in the `init.vim` by: `source ~/AppData/Local/nvim/coc.vim `
     * the `coc-settings.json` can also be placed here so that coc would load it by default/convention.
-* install fzf: `choco install fzf`.
 * install [vim-plug](https://dev.to/ritikadas/using-neovim-as-an-effortless-way-to-edit-code-installation-and-setup-guide-for-windows-10-5dhc).
   ```
     md ~\AppData\Local\nvim\autoload
@@ -100,3 +104,7 @@
 * env var is typically defined with `$env:`, like `$env:LOCALAPPDATA` points to `$HOME\AppData\Local\`.
 * to define a tmp env var before executing the command, similar to linux, do `$env:FOO='Bar'; python .\myPythonScript`
 * to show all env vars, use Get-ChildItem, `gci env:`, or `ls env:`, or `dir env:`
+* to permanently add path to env, put `$env:Path += ";SomeRandomPath"` at the `$PROFILE` file.
+
+## Windows Server
+* use `start powershell` to get a new instace/window
