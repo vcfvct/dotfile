@@ -63,7 +63,7 @@
 
 ## Z
 * [ZLocation](https://github.com/vors/ZLocation) for smart jump.
-  * `Install-Module ZLocation -Scope CurrentUser -Force`
+  * `Install-Module ZLocation -Force`
 
 ## Terminal Icon
 * install module: `Install-Module -Name Terminal-Icons -Repository PSGallery`

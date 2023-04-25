@@ -169,11 +169,11 @@ Plug 'Yggdroot/indentLine'
 Plug 'voldikss/vim-floaterm'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'github/copilot.vim'
+Plug 'github/copilot.vim'
+
 call plug#end()
 
-colors snazzy 
-" colorscheme kanagawa
+colors aurora
 
 " does not work with ts optional chaining
 " let g:polyglot_disabled = ['typescript', 'ts']

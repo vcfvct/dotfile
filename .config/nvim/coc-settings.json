@@ -66,6 +66,7 @@
     "ldap",
     "lemmatization",
     "lightline",
+    "magisk",
     "mget",
     "mset",
     "networkidle",
