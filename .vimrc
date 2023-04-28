@@ -187,6 +187,7 @@ source ~/.coc.vim
 au BufNewFile,BufRead Jenkinsfile setf groovy
 au BufNewFile,BufRead *.ejs setf html
 au BufNewFile,BufRead Gearsfile,Bogiefile setf yaml
+au BufNewFile,BufRead *.sap,*.omap setf json
 " jsonc: https://code.visualstudio.com/docs/languages/json#_json-with-comments
 autocmd FileType json syntax match Comment +\/\/.\+$+
 autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
