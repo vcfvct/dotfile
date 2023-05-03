@@ -6,14 +6,14 @@
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # install packages
-brew install fish -y
-brew install tmux -y
-brew install unzip -y
-brew install bat -y
-brew install rg -y
-brew install fzf -y
-brew install exa -y
-brew install neovim -y
+brew install fish -f
+brew install tmux -f
+brew install unzip -f
+brew install bat -f
+brew install rg -f
+brew install fzf -f
+brew install exa -f
+brew install neovim -f
 
 ## vimPlug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
