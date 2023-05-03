@@ -2,6 +2,9 @@
 # install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" -y
 
+(echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /home/hanli/.profile
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # install packages
 brew install fish -y
 brew install tmux -y
