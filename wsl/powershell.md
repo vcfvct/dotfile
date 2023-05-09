@@ -26,8 +26,9 @@
                   -PSReadlineChordReverseHistory 'Ctrl+r'
   # Override default tab completion
   Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
-  # open file with neovim
+  # open file with neovim/notepad
   Function ov { Get-ChildItem . -Recurse -Attributes !Directory | Invoke-Fzf | % { nvim $_ } }
+  Function on { Get-ChildItem . -Recurse -Attributes !Directory | Invoke-Fzf | % { notepad $_ } }
 
   Set-Alias -Name vi -Value nvim
   Set-Alias -Name open -Value ii 
