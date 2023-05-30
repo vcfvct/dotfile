@@ -11,7 +11,7 @@
   ```powershell
   # for Windows server with choco install, manually add path.
   # $env:Path += ";C:\Tools\neovim\nvim-win64\bin\;C:\ProgramData\chocolatey\bin\;C:\Program Files\GIT\bin;C:\Program Files\nodejs"
-  oh-my-posh init pwsh --config ~/.jandedobbeleer.omp.json | Invoke-Expression
+  oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\amro.omp.json" | Invoke-Expression
   Set-PSReadLineOption -PredictionSource History
   Set-PSReadlineOption -EditMode vi
   # use `ctrl+[` to exit from Edit mode to Command mode
