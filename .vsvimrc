@@ -1,5 +1,21 @@
+"use single quote as leader key, comma is useful for previous char search in line
+let mapleader = "'"
+
+set ignorecase
+set smartcase
+
 nmap <C-O> :vsc View.NavigateBackward<CR>
 nmap <C-I> :vsc View.NavigateForward<CR>
 
 nnoremap gr :vsc Edit.FindAllReferences<cr>
-nnoremap gI :vsc Edit.GoToImplementation<cr>
+nnoremap gd :vsc Edit.GoToImplementation<cr>
+nnoremap gc :vsc Edit.GoToDefinition<cr>
+
+set clipboard=unnamed
+" use black hole register `_` so we the delete/change does not interfere the clipboard.
+vnoremap d "_d
+nnoremap d "_d
+nnoremap x "_x
+nnoremap c "_c
+" Bind p in visual/select mode to paste without overriding the current register
+xnoremap p pgvy

@@ -18,6 +18,7 @@ set nobackup                            " This is recommended by coc
 set nowritebackup                       " This is recommended by coc
 set noswapfile
 set noshowmode                          " mode is shown in status line(lightline)
+set wrap linebreak                      " soft wrap text 
 
 " https://github.com/neovim/neovim/issues/11699
 set t_BE=
