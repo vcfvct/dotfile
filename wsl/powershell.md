@@ -34,6 +34,8 @@
   Set-Alias -Name open -Value ii 
   Set-Alias -Name which -Value get-command
   Set-Alias -Name touch -Value new-item
+  Set-Alias -Name grep -Value findstr
+
   Function ll { 
     $target = ''
     if($args[0]){
