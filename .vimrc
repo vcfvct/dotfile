@@ -76,10 +76,10 @@ nmap <leader>rp :%s/
 let NERDSpaceDelims=1
 
 " map ctrl + p to find file
-map <C-p> :Files<cr>
-map <C-g> :Rg 
+map <C-p> :Telescope find_files<cr>
+map <C-g> :Telescope live_grep<cr>
 
-map <C-t> :FZF<cr>
+" map <C-t> :FZF<cr>
 " preview content on the right side when search
 " command! -bang -nargs=* Rg
   " \ call fzf#vim#grep(
@@ -161,8 +161,8 @@ call plug#begin()
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdcommenter'
-Plug 'junegunn/fzf', { 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'do': './install --bin' }
+" Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/indentLine'
@@ -171,6 +171,9 @@ Plug 'voldikss/vim-floaterm'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'github/copilot.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
+
 call plug#end()
 
 colors aurora
@@ -245,11 +248,11 @@ if has("win32")
 endif
 
 """ fzf open in float
-let g:fzf_layout = { 'window': {
-    \ 'width': 0.9,
-    \ 'height': 0.7,
-    \ 'highlight': 'Comment',
-    \ 'rounded': v:false } }
+" let g:fzf_layout = { 'window': {
+    " \ 'width': 0.9,
+    " \ 'height': 0.7,
+    " \ 'highlight': 'Comment',
+    " \ 'rounded': v:false } }
 
 " ctrl-b in visual model to do base64 decode, remove '-d' to do encode
 vnoremap <leader>bd :!base64 -d
