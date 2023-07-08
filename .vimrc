@@ -194,6 +194,7 @@ au BufNewFile,BufRead *.sap,*.omap setf json
 " jsonc: https://code.visualstudio.com/docs/languages/json#_json-with-comments
 autocmd FileType json syntax match Comment +\/\/.\+$+
 autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+autocmd FileType markdown setlocal conceallevel=0
 
 " map recording to 'Q' so it is less annoying
 nnoremap Q q
