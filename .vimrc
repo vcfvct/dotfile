@@ -76,7 +76,7 @@ nmap <leader>rp :%s/
 let NERDSpaceDelims=1
 
 " map ctrl + p to find file
-map <C-p> :Telescope find_files<cr>
+map <C-p> :Telescope find_files hidden=true<cr>
 map <C-g> :Telescope live_grep<cr>
 
 " map <C-t> :FZF<cr>

@@ -27,3 +27,15 @@ if has('wsl')
     autocmd TextYankPost * :call system('clip.exe ',@")
   augroup END
 endif
+
+lua << EOF
+require("telescope").setup {
+    pickers = {
+        live_grep = {
+            additional_args = function(opts)
+                return {"--hidden"}
+            end
+        },
+    },
+}
+EOF
