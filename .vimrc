@@ -161,8 +161,8 @@ call plug#begin()
 Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdcommenter'
-" Plug 'junegunn/fzf', { 'do': './install --bin' }
-" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'Yggdroot/indentLine'
@@ -249,11 +249,11 @@ if has("win32")
 endif
 
 """ fzf open in float
-" let g:fzf_layout = { 'window': {
-    " \ 'width': 0.9,
-    " \ 'height': 0.7,
-    " \ 'highlight': 'Comment',
-    " \ 'rounded': v:false } }
+let g:fzf_layout = { 'window': {
+    \ 'width': 0.9,
+    \ 'height': 0.7,
+    \ 'highlight': 'Comment',
+    \ 'rounded': v:false } }
 
 " ctrl-b in visual model to do base64 decode, remove '-d' to do encode
 vnoremap <leader>bd :!base64 -d
