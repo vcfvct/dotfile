@@ -33,3 +33,7 @@ MacOS Mojave disables subpixel antialiasing, also known as font smoothing, by de
 * on MacOS, `Terminal->Preferences->Keyboard` set `Use Option as Meta Key`. then map <A-f> to `:Format<cr>`.
   * For iTerm2, need to make it `ESC` in `profiles->keys`, and then add specific mapping to the list
 
+### lazy.vim
+* have to install `gcc/g++` for tree-sitter to compile.
+* use `ctrl-/` to toggle float terminal.
+* use `MasonInstall xxx-lsp` to install language servers.
