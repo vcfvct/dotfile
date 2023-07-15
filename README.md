@@ -37,3 +37,5 @@ MacOS Mojave disables subpixel antialiasing, also known as font smoothing, by de
 * have to install `gcc/g++` for tree-sitter to compile.
 * use `ctrl-/` to toggle float terminal.
 * use `MasonInstall xxx-lsp` to install language servers.
+* neo-tree toggle hidden files -> `H`.
+* comment code: gc -> options. like current line: `gcc`.
