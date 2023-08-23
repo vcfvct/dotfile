@@ -4,8 +4,6 @@
 -- lower level configuration and more robust one. (which-key will
 -- automatically pick-up stored data by this setting.)
 
-local n = vim.api.nvim_get_keymap("n")
-
 local maps = {
   -- first key is the mode
   n = {
@@ -35,6 +33,7 @@ local maps = {
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    ["<leader>rp"] = { ":%s/", desc = "replace"}
   },
   t = {
     -- setting a mapping to false will disable it
