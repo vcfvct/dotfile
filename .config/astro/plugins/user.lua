@@ -1,3 +1,5 @@
+local default_map_opt = { silent = true, noremap = true };
+
 return {
   -- You can also add new plugins here as well:
   -- Add plugins, the lazy syntax
@@ -9,6 +11,11 @@ return {
   --     require("lsp_signature").setup()
   --   end,
   -- },
+    nomarl_delete = vim.keymap.set('n', 'd', '"_d', default_map_opt),
+    nomarl_cut = vim.keymap.set('n', 'x', '"_x', default_map_opt),
+    nomarl_change = vim.keymap.set('n', 'c', '"_c', default_map_opt),
+    visual_delete = vim.keymap.set('v', 'd', '"_d', default_map_opt),
+    visual_paste = vim.keymap.set('v', 'p', 'pgvy', default_map_opt),
     {
         "kylechui/nvim-surround",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
