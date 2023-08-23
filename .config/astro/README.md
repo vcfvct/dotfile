@@ -17,20 +17,17 @@ mv ~/.local/share/nvim ~/.local/share/nvim.bak
 git clone https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 ```
 
-#### Create a new user repository from this template
 
-Press the "Use this template" button above to create a new repository to store your user configuration.
-
-You can also just clone this repository directly if you do not want to track your user configuration in GitHub.
-
-#### Clone the repository
+#### Make SymbolicLink for user config
 
 ```shell
-git clone https://github.com/<your_user>/<your_repository> ~/.config/nvim/lua/user
+ln -s ~/GIT/dotfile/.config/astro ~/.config/nvim/lua/user
 ```
 
+## misc
+
 * have to install `gcc/g++` for tree-sitter to compile.
-* remapped `f12` to toggle float terminal.
+* remapped `f12` to toggle float terminal, ctrl-p for 
 * use `MasonInstall xxx-lsp` to install language servers.
 * neo-tree toggle hidden files -> `H`.
 * comment code: `<leader>/` to for current line, otherwise use g -> options.
