@@ -17,6 +17,10 @@ mv ~/.local/share/nvim ~/.local/share/nvim.bak
 git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
 ```
 
+```powershell
+git clone --depth 1 https://github.com/AstroNvim/AstroNvim $env:LOCALAPPDATA\nvim
+```
+
 #### Make SymbolicLink for user config
 
 ```shell
@@ -33,6 +37,6 @@ ln -s ~/GIT/dotfile/.config/astro ~/.config/nvim/lua/user
 * for language specific 'failed to load,..., query: invalid structure at position', need to `:TSInstall ThisLanguage`.
 
 ## Windows
-* create SymbolicLink: `New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE\source\repos\dotfile\.config\astronvim" -Path "$env:LOCALAPPDATA\nvim"`
+* create SymbolicLink: `New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE\source\repos\dotfile\.config\astro" -Path "$env:LOCALAPPDATA\nvim\lua\user"`
 * backup: `Copy-Item -Path "$env:LOCALAPPDATA\nvim" -Destination "$env:LOCALAPPDATA\nvim-backup" -Recurse -Force`
 * remove existing: `rmdir "$env:LOCALAPPDATA\nvim" -Recurse -Force`. `rmdir` command is another alias for the Remove-Item cmdlet.
