@@ -20,18 +20,18 @@ else
 end
 
 ### abbreviations only need to set once
-# abbr top "btm -b"
-# abbr v "nvim"
-# abbr vi "nvim"
-# abbr c "bat"
-# abbr g "git"
-# abbr gl "git pull"
-# abbr gp "git push"
-# abbr gd "git d"
-# abbr gs "git status"
-# abbr ef "nvim ~/.config/fish/config.fish"
-# abbr ev "nvim ~/.vimrc"
-# abbr envim "nvim ~/.config/nvim/init.vim"
+ abbr top "btm -b"
+ abbr v "nvim"
+ abbr vi "nvim"
+ abbr c "bat"
+ abbr g "git"
+ abbr gl "git pull"
+ abbr gp "git push"
+ abbr gd "git d"
+ abbr gs "git status"
+ abbr ef "nvim ~/.config/fish/config.fish"
+ abbr ev "nvim ~/.vimrc"
+ abbr envim "nvim ~/.config/nvim/init.vim"
 
 # reset display rotation/refresh-rate as MacOS catalina does not remember it any more.
 # abbr d2 'displayplacer "id:F42D3DC2-ED3B-550F-83BD-08F41EEC1D50 res:2560x1440 hz:75 color_depth:8 scaling:off origin:(0,0) degree:0" "id:C6033263-C213-FDDE-4F4A-936214D23CB3 res:1200x1920 hz:74 color_depth:8 scaling:off origin:(2560,-180) degree:270" > /dev/null 2>&1 &'
