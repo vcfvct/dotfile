@@ -44,7 +44,7 @@ local maps = {
 maps.n["<F12>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" }
 maps.t["<F12>"] = maps.n["<F12>"]
 maps.n["<C-n>"] = { "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" }
-maps.n["<C-p>"] = {
+maps.n["<C-g>"] = {
   function()
     require("telescope.builtin").live_grep {
       additional_args = function(args) return vim.list_extend(args, { "--hidden", "--no-ignore" }) end,
@@ -52,6 +52,6 @@ maps.n["<C-p>"] = {
   end,
   desc = "Find words in all files",
 }
-maps.n["<C-g>"] = { function() require("telescope.builtin").live_grep { hidden = true } end, desc = "Find words" }
+maps.n["<C-p>"] = { function() require("telescope.builtin").find_files { hidden = true } end, desc = "Find words" }
 
 return maps
