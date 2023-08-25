@@ -33,7 +33,7 @@ local maps = {
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
-    ["<leader>rp"] = { ":%s/", desc = "replace"}
+    ["<leader>rp"] = { ":%s/", desc = "replace" },
   },
   t = {
     -- setting a mapping to false will disable it
@@ -44,7 +44,14 @@ local maps = {
 maps.n["<F12>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" }
 maps.t["<F12>"] = maps.n["<F12>"]
 maps.n["<C-n>"] = { "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" }
-maps.n["<C-p>"] = { function() require("telescope.builtin").find_files() end, desc = "Find files" }
-maps.n["<C-g>"] = { function() require("telescope.builtin").live_grep() end, desc = "Find words" }
+maps.n["<C-p>"] = {
+  function()
+    require("telescope.builtin").live_grep {
+      additional_args = function(args) return vim.list_extend(args, { "--hidden", "--no-ignore" }) end,
+    }
+  end,
+  desc = "Find words in all files",
+}
+maps.n["<C-g>"] = { function() require("telescope.builtin").live_grep { hidden = true } end, desc = "Find words" }
 
-return maps;
+return maps
