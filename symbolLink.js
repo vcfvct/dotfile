@@ -28,7 +28,6 @@ const exec = util.promisify(require('child_process').exec);
     'alacritty',
     'hyper',
     'kitty',
-    'astranvim',
     'ripgrep',
     'zathura',
   ];
