@@ -10,14 +10,14 @@ local maps = {
     -- second key is the lefthand side of the map
 
     -- navigate buffer tabs with `H` and `L`
-    -- L = {
-    --   function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
-    --   desc = "Next buffer",
-    -- },
-    -- H = {
-    --   function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
-    --   desc = "Previous buffer",
-    -- },
+    L = {
+      function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
+      desc = "Next buffer",
+    },
+    H = {
+      function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
+      desc = "Previous buffer",
+    },
 
     -- mappings seen under group name "Buffer"
     ["<leader>bD"] = {
@@ -34,11 +34,18 @@ local maps = {
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     ["<leader>rp"] = { ":%s/", desc = "replace" },
+    d = { '"_d' },
+    x = { '"_x' },
+    c = { '"_c' },
   },
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
   },
+  v = {
+    d = { '"_d' },
+    p = { 'pgvy' },
+  }
 }
 
 maps.n["<F12>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" }
@@ -47,7 +54,7 @@ maps.n["<C-n>"] = { "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" }
 maps.n["<C-g>"] = {
   function()
     require("telescope.builtin").live_grep {
-      additional_args = function(args) return vim.list_extend(args, { "--hidden", "--no-ignore" }) end,
+      additional_args = function(args) return vim.list_extend(args, { "--hidden" }) end,
     }
   end,
   desc = "Find words in all files",
