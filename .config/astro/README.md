@@ -43,3 +43,10 @@ ln -s ~/GIT/dotfile/.config/astro ~/.config/nvim/lua/user
 
 ### tree-sitter compile
 * use zig as c compiler `choco install zig -y`
+
+## shortcuts
+* use `ctrl+|` to create verticle spilit buffer and `ctrl+\` for horizontal ones. And use `ctrl+up/down/left/right` to adjust width/height.
+* `]/[+b` and `]/[+t` to navigate between buffers and tabs. 
+* inside Telescope, when it is `normal` mode(esc), use `j/k` to up and down, or in `insert` mode, use `ctrl+j/k`. In normal mode, use `?` to show all mappings.
+* `]\[+d` to navigate diagnostic. use `<leader>lD` to see all diagnostic.
+* `<leader>lr` to rename Symbol. `<leader>lf` to format buffer. `<leader>la` to get code actions.
