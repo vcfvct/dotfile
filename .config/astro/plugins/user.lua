@@ -18,7 +18,6 @@ return {
   visual_paste = vim.keymap.set("v", "p", "pgvy", default_map_opt),
   format_json = vim.api.nvim_command "com! FormatJSON %!python3 -m json.tool",
   format_xml = vim.api.nvim_command 'com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"',
-  -- format_xml = vim.cmd("com! FormatXML :%!python3 -c \"import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())\""),
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
