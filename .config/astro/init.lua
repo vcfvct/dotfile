@@ -52,6 +52,14 @@ return {
     servers = {
       -- "pyright"
     },
+    mappings = {
+      n = {
+        gi = { 
+          function() vim.lsp.buf.implementation() end,
+          desc = "Implementation of current symbol",
+        },
+      },
+    },
   },
 
   -- Configure require("lazy").setup() options
