@@ -50,3 +50,6 @@ ln -s ~/GIT/dotfile/.config/astro ~/.config/nvim/lua/user
 * inside Telescope, when it is `normal` mode(esc), use `j/k` to up and down, or in `insert` mode, use `ctrl+j/k`. In normal mode, use `?` to show all mappings.
 * `]\[+d` to navigate diagnostic. use `<leader>lD` to see all diagnostic.
 * `<leader>lr` to rename Symbol. `<leader>lf` to format buffer. `<leader>la` to get code actions.
+
+## neovim lua rpel
+* use `:lua` to evaluate commands like `:lua print(jit.os)` to see lua runtime values.
