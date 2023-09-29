@@ -53,3 +53,6 @@ ln -s ~/GIT/dotfile/.config/astro ~/.config/nvim/lua/user
 
 ## neovim lua rpel
 * use `:lua` to evaluate commands like `:lua print(jit.os)` to see lua runtime values.
+
+## Troubleshooting
+* For `query: invalid structure at position 2992 for language lua stack traceback: [C]: in function '_ts_parse_query'`, based on [this github issue reply](https://github.com/LunarVim/LunarVim/issues/3680#issuecomment-1373552082), after running `:echo nvim_get_runtime_file('parser', v:true)`, remove the system `lua.so` under system path( not the one under `nvim-treesitter/parser`).

@@ -2,6 +2,7 @@
 
 ## Working dir
 
+* use `:pwd` to see the current directory.
 * use `:cd` or tcd/lcd to change current working dir so that fzf can conduct searches.
 * in NerdTree, use `C` to open dir under cursor as root. use `cd` to change pwd to dir under cursor. more shortcuts [here](https://www.cheatography.com/stepk/cheat-sheets/vim-nerdtree/).
   * if a file is open , use `:NERDTreeFind` to switch pwd to current dir.
