@@ -51,6 +51,9 @@ ln -s ~/GIT/dotfile/.config/astro ~/.config/nvim/lua/user
 * `]\[+d` to navigate diagnostic. use `<leader>lD` to see all diagnostic.
 * `<leader>lr` to rename Symbol. `<leader>lf` to format buffer. `<leader>la` to get code actions.
 
+## Debugging
+* for python, install `pyright, debugpy, isort`, `black` is optional. Then use f9 to toggle breakpoint and f5 to start. more bindings see `space+d`. [sample video by Micah Halter](https://www.youtube.com/watch?v=04z9v0xMDkw)
+
 ## neovim lua rpel
 * use `:lua` to evaluate commands like `:lua print(jit.os)` to see lua runtime values.
 
