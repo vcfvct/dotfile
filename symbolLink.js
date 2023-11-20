@@ -3,6 +3,8 @@
 // const fs = require('fs');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
+const fs = require('fs');
+const path = require('path');
 
 (async () => {
   const fileList = [
@@ -43,10 +45,18 @@ const exec = util.promisify(require('child_process').exec);
    **/
   async function createFileSymbolLink(sourceName, target) {
     const targetName = target || sourceName;
-    const src = `${process.cwd()}/${sourceName}`;
-    const dest = `${process.env.HOME}/${targetName}`;
-    await executeCmd(`rm ${dest}`);
-    await executeCmd(`ln -s ${src} ${dest}`);
+    const src = path.join(process.cwd(), sourceName);
+    const dest = path.join(process.env.HOME, targetName);
+    if (fs.existsSync(dest)) {
+      await executeCmd(`rm ${dest}`);
+    }
+    if (fs.existsSync(src)) {
+      fs.symlink(src, dest, err => {
+        if (err) console.error(err);
+      });
+    } else {
+      console.error(`Source file ${src} does not exist`);
+    }
   }
 
   async function executeCmd(cmd) {
@@ -63,9 +73,17 @@ const exec = util.promisify(require('child_process').exec);
    * @param {string} dirName
    **/
   async function createDirSymbolLink(dirPath, dirName) {
-    const src = `${process.cwd()}/${dirPath}/${dirName}`;
-    const dest = `${process.env.HOME}/${dirPath}`;
-    await executeCmd(`rm -rf ${dest}/${dirName}`);
-    await executeCmd(`ln -s ${src} ${dest}`);
+    const src = path.join(process.cwd(), dirPath, dirName);
+    const dest = path.join(process.env.HOME, dirPath, dirName);
+    if (fs.existsSync(dest)) {
+      await exec(`rm -rf ${dest}`);
+    }
+    if (fs.existsSync(src)) {
+      fs.symlink(src, dest, err => {
+        if (err) console.error(err);
+      });
+    } else {
+      console.error(`Source directory ${src} does not exist`);
+    }
   }
 })();
