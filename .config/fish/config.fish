@@ -67,4 +67,4 @@ function __check_rvm --on-variable PWD --description 'Do nvm stuff'
   end
 end
 
-# starship init fish | source
+starship init fish | source

@@ -24,8 +24,6 @@ ln -s ~/GIT/dotfile/.config/astro ~/.config/nvim/lua/user
 ```
 
 ## misc
-
-* have to install `gcc/g++` for tree-sitter to compile.
 * remapped `f12` to toggle float terminal, ctrl-p for 
 * use `MasonInstall xxx-lsp` to install language servers.
 * neo-tree toggle hidden files -> `H`.
@@ -42,7 +40,9 @@ ln -s ~/GIT/dotfile/.config/astro ~/.config/nvim/lua/user
 4. create SymbolicLink: `New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE\source\repos\dotfile\.config\astro" -Path "$env:LOCALAPPDATA\nvim\lua\user"`
 
 ### tree-sitter compile
-* need a c compiler similar to `gcc` in linux: use `zig` as c compiler `choco install zig -y`
+* need a c compiler `c/gcc/clang/zig` : 
+  - Windows: `choco install zig -y`
+  - Ubuntu: `sudo apt-get install build-essential`, which will install `gcc`.
 
 ## shortcuts
 * use `ctrl+|` to create verticle spilit buffer and `ctrl+\` for horizontal ones. And use `ctrl+up/down/left/right` to adjust width/height.
