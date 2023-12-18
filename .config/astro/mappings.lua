@@ -50,6 +50,7 @@ local maps = {
 
 maps.n["<F12>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" }
 maps.t["<F12>"] = maps.n["<F12>"]
+maps.t["<c-q>"] = { "<C-\\><C-n>", desc = "de-focus terminal" }
 maps.n["<C-n>"] = { "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" }
 maps.n["<C-g>"] = {
   function()
