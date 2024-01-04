@@ -48,6 +48,7 @@ local maps = {
   }
 }
 
+maps.n["<c-q>"] = { "", desc = "unmap default Quit in normal model" }
 maps.n["<F12>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" }
 maps.t["<F12>"] = maps.n["<F12>"]
 maps.t["<c-q>"] = { "<C-\\><C-n>", desc = "de-focus terminal" }
