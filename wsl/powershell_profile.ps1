@@ -22,11 +22,7 @@ Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnVi
 Set-PSReadLineKeyHandler -Chord 'Ctrl+Oem4' -Function ViCommandMode
 
 Import-Module ZLocation
-
 Import-Module -Name Terminal-Icons
-#Import-Module Az
-
-#FZF
 Import-Module PSFzf
 # Override PSReadLine's history search
 Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+p' `
@@ -53,6 +49,7 @@ Set-Alias -Name vi -Value nvim
 Set-Alias -Name touch -Value new-item
 Set-Alias -Name grep -Value findstr
 
+# `ll` with exa in wsl in available
 Function ll {
 	$target = ''
 	if ($args[0]) {
@@ -69,6 +66,7 @@ function gl { git pull }
 Remove-Item -Path alias:gp -Force
 function gp { git push }
 
+# ctrl+f to accept suggestion
 Set-PSReadLineKeyHandler -Chord "Ctrl+f" -ScriptBlock {
 	[Microsoft.PowerShell.PSConsoleReadLine]::AcceptSuggestion()
 	[Microsoft.PowerShell.PSConsoleReadLine]::EndOfLine()
@@ -76,5 +74,5 @@ Set-PSReadLineKeyHandler -Chord "Ctrl+f" -ScriptBlock {
 Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Key DownArrow -Function HistorySearchForward
-
+# ctrl+e to move forward word
 Set-PSReadLineKeyHandler -chord 'Ctrl+e' -Function ForwardWord
