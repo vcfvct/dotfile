@@ -18,6 +18,9 @@ function OnViModeChange {
 }
 Set-PSReadLineOption -ViModeIndicator Script -ViModeChangeHandler $Function:OnViModeChange
 
+# set nvim as default editor for visual mode.
+Set-Item Env:EDITOR nvim
+
 # use `ctrl+[` to exit from Edit mode to Command mode
 Set-PSReadLineKeyHandler -Chord 'Ctrl+Oem4' -Function ViCommandMode
 
