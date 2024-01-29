@@ -27,7 +27,7 @@ ln -s ~/GIT/dotfile/.config/astro ~/.config/nvim/lua/user
 
 * remapped `f12` to toggle float terminal, ctrl-p for
 * use `MasonInstall xxx-lsp` to install language servers.
-* neo-tree toggle hidden files -> `H`.
+* neo-tree toggle hidden files -> `H`. Use 'D' to search directory(need to install 'fd' on Windows).
 * comment code: `<leader>/` to for current line, otherwise use g -> options.
 * for language specific 'failed to load,..., query: invalid structure at position', need to `:TSInstall ThisLanguage`.
 
