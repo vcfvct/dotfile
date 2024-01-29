@@ -54,7 +54,7 @@ return {
     },
     mappings = {
       n = {
-        gi = { 
+        gi = {
           function() vim.lsp.buf.implementation() end,
           desc = "Implementation of current symbol",
         },

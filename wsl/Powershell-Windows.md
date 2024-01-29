@@ -1,6 +1,7 @@
 # Powershell setup
 
-* Execute with *Admin* PS: `New-Item -ItemType SymbolicLink -Target $env:USERPROFILE\source\repos\dotfile\wsl\powerShell_profile.ps1 -Path $PROFILE`
+* Execute with *Admin* PS: `New-Item -ItemType SymbolicLink -Target $env:USERPROFILE\source\repos\dotfile\wsl\powerShell_profile.ps1 -Path $PROFILE`. The `$PROFILE` is for [Current User, Current Host](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles). The other profiles are saved in note properties of the $PROFILE variable, for example: `$PROFILE.CurrentUserAllHosts`, `$PROFILE.AllUsersAllHosts` etc.
+* To start PowerShell without profiles, use the NoProfile parameter of pwsh.exe, the program that starts PowerShell: `pwsh -NoProfile`.
 
 ## oh-my-posh
 
