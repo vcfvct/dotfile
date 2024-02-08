@@ -1,9 +1,10 @@
-#!/usr/bin/env node
+#!/usr/bin / env node
 
 // const fs = require('fs');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
-const fs = require('fs');
+const fs = require('node:fs/promises');
+const fsSync = require('fs');
 const path = require('path');
 
 (async () => {
@@ -34,6 +35,8 @@ const path = require('path');
     'zathura',
   ];
 
+  const getHomeDir = () => process.env.HOME || process.env.USERPROFILE;
+
   await Promise.allSettled(fileList.map(f => createFileSymbolLink(f)));
   await createFileSymbolLink('.gitignore', '.ignore');
   await Promise.allSettled(dotConfigDirList.map(d => createDirSymbolLink('.config', d)));
@@ -46,17 +49,11 @@ const path = require('path');
   async function createFileSymbolLink(sourceName, target) {
     const targetName = target || sourceName;
     const src = path.join(process.cwd(), sourceName);
-    const dest = path.join(process.env.HOME, targetName);
-    if (fs.existsSync(dest)) {
-      await executeCmd(`rm ${dest}`);
+    const dest = path.join(getHomeDir(), targetName);
+    if (fsSync.existsSync(dest)) {
+      await fs.unlink(dest);
     }
-    if (fs.existsSync(src)) {
-      fs.symlink(src, dest, err => {
-        if (err) console.error(err);
-      });
-    } else {
-      console.error(`Source file ${src} does not exist`);
-    }
+    await createSymLink(src, dest);
   }
 
   async function executeCmd(cmd) {
@@ -74,16 +71,23 @@ const path = require('path');
    **/
   async function createDirSymbolLink(dirPath, dirName) {
     const src = path.join(process.cwd(), dirPath, dirName);
-    const dest = path.join(process.env.HOME, dirPath, dirName);
-    if (fs.existsSync(dest)) {
-      await exec(`rm -rf ${dest}`);
+    const dest = path.join(getHomeDir(), dirPath, dirName);
+    if (fsSync.existsSync(dest)) {
+      await fs.rmdir(dest);
     }
-    if (fs.existsSync(src)) {
-      fs.symlink(src, dest, err => {
-        if (err) console.error(err);
-      });
+    await createSymLink(src, dest);
+  }
+
+
+  async function createSymLink(src, dest) {
+    if (fsSync.existsSync(src)) {
+      try {
+        await fs.symlink(src, dest);
+      } catch (err) {
+        console.error(err);
+      }
     } else {
-      console.error(`Source directory ${src} does not exist`);
+      console.error(`Source ${src} does not exist`);
     }
   }
 })();
