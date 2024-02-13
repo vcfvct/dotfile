@@ -30,6 +30,7 @@ Both fihserman and oh-my-fish are good.
   * [Bob-the-fish theme](https://github.com/oh-my-fish/theme-bobthefish/): `fisher install oh-my-fish/theme-bobthefish`.
   * [Another Famous 'agnoster' theme](https://github.com/oh-my-fish/theme-agnoster): `fisher install oh-my-fish/theme-agnoster`.
   * a *jorgebucaran* theme which does async git, good for large repository: `fisher install jorgebucaran/hydro`.
+  * tide theme similar to powerline10k: `fisher install IlanCosman/tide@v6`, which implements the transient prompt.
 * More packages can be found in this [awesome-fish repo](https://github.com/jorgebucaran/awesome-fish)
 
 ## proxy setup
