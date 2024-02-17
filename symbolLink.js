@@ -1,8 +1,5 @@
 #!/usr/bin / env node
 
-// const fs = require('fs');
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
 const fs = require('node:fs/promises');
 const fsSync = require('fs');
 const path = require('path');
@@ -54,15 +51,6 @@ const path = require('path');
       await fs.unlink(dest);
     }
     await createSymLink(src, dest);
-  }
-
-  async function executeCmd(cmd) {
-    try {
-      console.log(`executing: ${cmd}`);
-      await exec(cmd);
-    } catch (e) {
-      console.error(e);
-    }
   }
 
   /**
