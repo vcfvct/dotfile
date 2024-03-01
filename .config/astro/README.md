@@ -30,6 +30,7 @@ ln -s ~/GIT/dotfile/.config/astro ~/.config/nvim/lua/user
 * neo-tree toggle hidden files -> `H`. Use 'D' to search directory(need to install 'fd' on Windows).
 * comment code: `<leader>/` to for current line, otherwise use g -> options.
 * for language specific 'failed to load,..., query: invalid structure at position', need to `:TSInstall ThisLanguage`.
+* in Telescope live-grep(ctrl-g), after initial search, use `ctrl+space` to future search other keywords to achieve kind of fuzzy searching.
 
 ## Windows
 
