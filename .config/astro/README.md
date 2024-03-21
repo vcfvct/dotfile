@@ -69,3 +69,5 @@ ln -s ~/GIT/dotfile/.config/astro ~/.config/nvim/lua/user
 ## Troubleshooting
 
 * For `query: invalid structure at position 2992 for language lua stack traceback: [C]: in function '_ts_parse_query'`, based on [this github issue reply](https://github.com/LunarVim/LunarVim/issues/3680#issuecomment-1373552082), after running `:echo nvim_get_runtime_file('parser', v:true)`, remove the system `lua.so` under system path( not the one under `nvim-treesitter/parser`).
+* For lsp.log in the `state` dir, which grows overtime, on Windows, it is on `~/AppData/Local/nvim-data/`. in linux it is in `~/.local/state/nvim/lsp.log`
+
