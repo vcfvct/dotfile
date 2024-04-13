@@ -28,6 +28,7 @@ const path = require('path');
     'alacritty',
     'hyper',
     'kitty',
+    'nvim',
     'ripgrep',
     'zathura',
   ];

@@ -1,22 +1,34 @@
-## install nvim
-https://github.com/neovim/neovim/wiki/Installing-Neovim
+# AstroNvim Template
 
+**NOTE:** This is for AstroNvim v4+
 
-### Ubuntu
-> sudo add-apt-repository ppa:neovim-ppa/unstable
+A template for getting started with [AstroNvim](https://github.com/AstroNvim/AstroNvim)
 
-###  Windows
-* when get `[coc.nvim] build/index.js not found, please install dependecies and compile coc.nvim by yarn install`, need to go to `~\AppData\Local\nvim-data\plugged\coc.nvim` and use npm/yarn to install node dependencies for coc.
-* when vim plug failed to update, need to add `set shellcmdflag=-c` in addition to the `set shell=pwsh.exe` according to [this github issue](https://github.com/neovim/neovim/issues/13893#issuecomment-774631930).
+## 🛠️ Installation
 
-### ChromeOS
-* the version 0.9.1 cannot be compiled/installed via `brew` any more throwing some gcc error. Also neovim dropped `deb` distribution after 0.9.0. The alternative is to manually download the `appimage` or `linux64` package from the release page.
+#### Make a backup of your current nvim and shared folder
 
-```sh
-curl -L -o nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod nvim
-sudo mv nvim /usr/local/bin/
+```shell
+mv ~/.config/nvim ~/.config/nvim.bak
+mv ~/.local/share/nvim ~/.local/share/nvim.bak
+mv ~/.local/state/nvim ~/.local/state/nvim.bak
+mv ~/.cache/nvim ~/.cache/nvim.bak
 ```
 
-### Telescope
-* use `<C-c>` to close the modal window instead of hitting esc or `ctrl-[` twice.
+#### Create a new user repository from this template
+
+Press the "Use this template" button above to create a new repository to store your user configuration.
+
+You can also just clone this repository directly if you do not want to track your user configuration in GitHub.
+
+#### Clone the repository
+
+```shell
+git clone https://github.com/<your_user>/<your_repository> ~/.config/nvim
+```
+
+#### Start Neovim
+
+```shell
+nvim
+```
