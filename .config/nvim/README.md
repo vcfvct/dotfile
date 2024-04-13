@@ -1,34 +1,45 @@
-# AstroNvim Template
+# AstroNvim User Configuration Example
 
-**NOTE:** This is for AstroNvim v4+
+A user configuration template for [AstroNvim](https://github.com/AstroNvim/AstroNvim)
 
-A template for getting started with [AstroNvim](https://github.com/AstroNvim/AstroNvim)
 
-## 🛠️ Installation
+## misc
 
-#### Make a backup of your current nvim and shared folder
+* remapped `f12` to toggle float terminal, ctrl-p for
+* use `MasonInstall xxx-lsp` to install language servers.
+* neo-tree toggle hidden files -> `H`. Use 'D' to search directory(need to install 'fd' on Windows).
+* comment code: `<leader>/` to for current line, otherwise use g -> options.
+* for language specific 'failed to load,..., query: invalid structure at position', need to `:TSInstall ThisLanguage`.
+* in Telescope live-grep(ctrl-g), after initial search, use `ctrl+space` to future search other keywords to achieve kind of fuzzy searching.
 
-```shell
-mv ~/.config/nvim ~/.config/nvim.bak
-mv ~/.local/share/nvim ~/.local/share/nvim.bak
-mv ~/.local/state/nvim ~/.local/state/nvim.bak
-mv ~/.cache/nvim ~/.cache/nvim.bak
-```
+## Windows
 
-#### Create a new user repository from this template
+1. backup: `Copy-Item -Path "$env:LOCALAPPDATA\nvim" -Destination "$env:LOCALAPPDATA\nvim-backup" -Recurse -Force`
+2. remove existing: `rmdir "$env:LOCALAPPDATA\nvim" -Recurse -Force`. `rmdir` command is another alias for the Remove-Item cmdlet.
 
-Press the "Use this template" button above to create a new repository to store your user configuration.
+### tree-sitter compile
 
-You can also just clone this repository directly if you do not want to track your user configuration in GitHub.
+* need a c compiler `c/gcc/clang/zig` :
+  * Windows: `choco install zig -y`
+  * Ubuntu: `sudo apt-get install build-essential`, which will install `gcc`.
 
-#### Clone the repository
+## shortcuts
 
-```shell
-git clone https://github.com/<your_user>/<your_repository> ~/.config/nvim
-```
+* use `ctrl+|` to create verticle spilit buffer and `ctrl+\` for horizontal ones. And use `ctrl+up/down/left/right` to adjust width/height.
+* `]/[+b` and `]/[+t` to navigate between buffers and tabs.
+* inside Telescope, when it is `normal` mode(esc), use `j/k` to up and down, or in `insert` mode, use `ctrl+j/k`. In normal mode, use `?` to show all mappings.
+* `]\[+d` to navigate diagnostic. use `<leader>lD` to see all diagnostic.
+* `<leader>lr` to rename Symbol. `<leader>lf` to format buffer. `<leader>la` to get code actions.
 
-#### Start Neovim
+## Debugging
 
-```shell
-nvim
-```
+* for python, install `pyright, debugpy`, `isort and black` are optional. Then use f9 to toggle breakpoint and f5 to start. more bindings see `space+d`. [sample video by Micah Halter](https://www.youtube.com/watch?v=04z9v0xMDkw)
+
+## neovim lua rpel
+
+* use `:lua` to evaluate commands like `:lua print(jit.os)` to see lua runtime values.
+
+## Troubleshooting
+
+* For `query: invalid structure at position 2992 for language lua stack traceback: [C]: in function '_ts_parse_query'`, based on [this github issue reply](https://github.com/LunarVim/LunarVim/issues/3680#issuecomment-1373552082), after running `:echo nvim_get_runtime_file('parser', v:true)`, remove the system `lua.so` under system path( not the one under `nvim-treesitter/parser`).
+* For lsp.log in the `state` dir, which grows overtime, on Windows, it is on `~/AppData/Local/nvim-data/`. in linux it is in `~/.local/state/nvim/lsp.log`
