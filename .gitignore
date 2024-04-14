@@ -21,3 +21,6 @@ yarn-error.log
 dist/
 # python Virtual Environment
 venv/
+
+# nvim lazy lock file
+lazy-lock.json

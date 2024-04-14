@@ -61,10 +61,19 @@ const path = require('path');
   async function createDirSymbolLink(dirPath, dirName) {
     const src = path.join(process.cwd(), dirPath, dirName);
     const dest = path.join(getHomeDir(), dirPath, dirName);
-    if (fsSync.existsSync(dest)) {
-      await fs.rmdir(dest);
+    const stats = await fs.lstat(dest);
+    try {
+      if (stats.isSymbolicLink()) {
+        await fs.unlink(dest);
+      } else if (stats.isDirectory()) {
+        await fs.rm(dest, { recursive: true, force: true })
+      } else {
+        throw new Error(`The destination: ${dest} is not directory/symLink.`)
+      }
+      await createSymLink(src, dest);
+    } catch (e) {
+      console.info(e);
     }
-    await createSymLink(src, dest);
   }
 
 
