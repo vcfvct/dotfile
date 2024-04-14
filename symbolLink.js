@@ -11,7 +11,7 @@ const path = require('path');
     '.coc.vim',
     '.tmux.conf',
     '.tmux.conf.local',
-    '.gitconfig',
+    // '.gitconfig',
     '.gitignore',
     '.eslintrc.js',
     '.oh-my-zsh/custom/vcfvct.zsh',
@@ -35,57 +35,46 @@ const path = require('path');
 
   const getHomeDir = () => process.env.HOME || process.env.USERPROFILE;
 
-  await Promise.allSettled(fileList.map(f => createFileSymbolLink(f)));
-  await createFileSymbolLink('.gitignore', '.ignore');
-  await Promise.allSettled(dotConfigDirList.map(d => createDirSymbolLink('.config', d)));
-  await createDirSymbolLink('.vim/autoload', 'lightline');
+  await Promise.allSettled(fileList.map(f => createSymLink(f)));
+  await createSymLink('.gitignore', '.ignore');
+  await Promise.allSettled(dotConfigDirList.map(d => createSymLink(`.config/${d}`)));
 
   /**
-   * @param {string} sourceName
-   * @param {string} target //optional
+   * @param {string} src, source file path
+   * @param {string} dest, optional, destination file path
+   *
+   * create symLink from src to dest, 
+   * create dest directory if not exists, 
+   * delete dest if exists
    **/
-  async function createFileSymbolLink(sourceName, target) {
-    const targetName = target || sourceName;
-    const src = path.join(process.cwd(), sourceName);
-    const dest = path.join(getHomeDir(), targetName);
-    if (fsSync.existsSync(dest)) {
-      await fs.unlink(dest);
-    }
-    await createSymLink(src, dest);
-  }
-
-  /**
-   * @param {string} dirPath
-   * @param {string} dirName
-   **/
-  async function createDirSymbolLink(dirPath, dirName) {
-    const src = path.join(process.cwd(), dirPath, dirName);
-    const dest = path.join(getHomeDir(), dirPath, dirName);
-    const stats = await fs.lstat(dest);
-    try {
-      if (stats.isSymbolicLink()) {
-        await fs.unlink(dest);
-      } else if (stats.isDirectory()) {
-        await fs.rm(dest, { recursive: true, force: true })
-      } else {
-        throw new Error(`The destination: ${dest} is not directory/symLink.`)
-      }
-      await createSymLink(src, dest);
-    } catch (e) {
-      console.info(e);
-    }
-  }
-
-
   async function createSymLink(src, dest) {
-    if (fsSync.existsSync(src)) {
-      try {
-        await fs.symlink(src, dest);
-      } catch (err) {
-        console.error(err);
+    const destPath = dest || src;
+    const srcFullPath = path.join(process.cwd(), src);
+    const destFullPath = path.join(getHomeDir(), destPath);
+    try {
+      if (!fsSync.existsSync(srcFullPath)) {
+        throw new Error(`Source ${srcFullPath} does not exist`);
       }
-    } else {
-      console.error(`Source ${src} does not exist`);
+      const destParentDir = path.dirname(destFullPath);
+      if (!fsSync.existsSync(destParentDir)) {
+        await fs.mkdir(destParentDir, { recursive: true });
+      }
+      // check dest type, remove dest if exists
+      if (fsSync.existsSync(destFullPath)) {
+        const stats = await fs.lstat(destFullPath);
+        if (stats.isSymbolicLink() || stats.isFile()) {
+          await fs.unlink(destFullPath);
+        } else if (stats.isDirectory()) {
+          await fs.rm(destFullPath, { recursive: true, force: true })
+        } else {
+          throw new Error(`The destination: ${destFullPath} is not directory/symLink.`)
+        }
+      }
+      // create symLink if src exists
+      await fs.symlink(srcFullPath, destFullPath);
+
+    } catch (err) {
+      console.error(err);
     }
   }
 })();
