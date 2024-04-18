@@ -1,4 +1,4 @@
-#!/usr/bin / env node
+#!/usr/bin/env node
 
 const fs = require('node:fs/promises');
 const fsSync = require('fs');
@@ -38,6 +38,7 @@ const path = require('path');
   await Promise.allSettled(fileList.map(f => createSymLink(f)));
   await createSymLink('.gitignore', '.ignore');
   await Promise.allSettled(dotConfigDirList.map(d => createSymLink(`.config/${d}`)));
+  console.info('------ All symLinks created. ------');
 
   /**
    * @param {string} src, source file path
@@ -72,7 +73,7 @@ const path = require('path');
       }
       // create symLink if src exists
       await fs.symlink(srcFullPath, destFullPath);
-
+      console.info(`SymLink created: ${srcFullPath} -> ${destFullPath}`);
     } catch (err) {
       console.error(err);
     }

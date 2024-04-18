@@ -1,7 +1,7 @@
 #!/usr/local/opt/python/bin/python3.7
 import http.server
-import socketserver
 import os
+import socketserver
 from sys import argv
 
 PORT = 3000
