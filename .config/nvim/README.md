@@ -18,6 +18,13 @@ A user configuration template for [AstroNvim](https://github.com/AstroNvim/Astro
 2. remove existing: `rmdir "$env:LOCALAPPDATA\nvim" -Recurse -Force`. `rmdir` command is another alias for the Remove-Item cmdlet.
 3. create SymbolicLink: `New-Item -ItemType SymbolicLink -Target "$env:USERPROFILE\source\repos\dotfile\.config\nvim" -Path "$env:LOCALAPPDATA\nvim"` -->
 
+## Ubuntu
+```sh
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+sudo ln -s /opt/nvim-linux64/bin/nvim /usr/bin/nvim
+```
+
 ### tree-sitter compile
 
 * need a c compiler `c/gcc/clang/zig` :
