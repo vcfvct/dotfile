@@ -1,4 +1,3 @@
-
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
@@ -66,10 +65,8 @@ return {
         ["<leader>rp"] = { ":%s/", desc = "replace" },
         d = { '"_d' },
         x = { '"_x' },
-        c = { '"_c' },-- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+        c = { '"_c' }, -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
         ["<F12>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
-        ["<c-q>"] = { "", desc = "unmap default Quit in normal model" },
-        ["<c-q>"] = { "<C-\\><C-n>", desc = "de-focus terminal" },
         ["<C-n>"] = { "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" },
         ["<C-p>"] = { function() require("telescope.builtin").find_files { hidden = true } end, desc = "Find words" },
         ["<C-g>"] = {
@@ -84,11 +81,12 @@ return {
       t = {
         -- setting a mapping to false will disable it
         -- ["<esc>"] = false,
-        ["<F12>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" }
+        ["<F12>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
+        ["<C-q>"] = { "<C-\\><C-n>", desc = "de-focus terminal" },
       },
       v = {
         d = { '"_d' },
-        p = { 'pgvy' },
+        p = { "pgvy" },
       },
     },
   },
