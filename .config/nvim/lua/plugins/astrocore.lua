@@ -68,6 +68,7 @@ return {
         c = { '"_c' }, -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
         ["<F12>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
         ["<C-n>"] = { "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" },
+        ["<C-_>"] = { function() require("Comment.api").toggle.linewise.current() end, desc = "Toggle line comment" },
         ["<C-p>"] = { function() require("telescope.builtin").find_files { hidden = true } end, desc = "Find words" },
         ["<C-g>"] = {
           function()
