@@ -12,9 +12,9 @@
 #set -xU LSCOLORS Gxfxcxdxbxegedabagacad
 #set -xU EDITOR nvim
 
-if type -q exa
-  alias ll "exa -l --group --icons --sort=modified"
-  alias ls exa
+if type -q eza
+  alias ll "eza -l --group --icons --sort=modified"
+  alias ls eza
 else 
   alias ll "ls -lrth"
 end

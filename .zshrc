@@ -55,9 +55,9 @@ source $ZSH/oh-my-zsh.sh
 
 # zsh-bd
 # . $home/.zsh/plugins/bd/bd.zsh
-if type "exa" > /dev/null; then
-  alias ll="exa -l --group --icons --sort=modified"
-  alias ls="exa"
+if type "eza" > /dev/null; then
+  alias ll="eza -l --group --icons --sort=modified"
+  alias ls="eza"
 else
   alias ll="ls -lrth"
 fi

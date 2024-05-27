@@ -26,10 +26,9 @@ Here `$(uname)` will return either Darwin, Linux, etc.
 
 with `curl -L` which is --location so it would follow redirect(many github distro links has redirect).
 
-## exa
+## eza
 
 * download latest dist from github
-* follow [stpes](https://the.exa.website/install/linux) to put man/executable/completion to corresponding locations
 
 ## rg
 
