@@ -1,7 +1,7 @@
 # for Windows server with choco install, manually add path.
 # $env:Path += ";C:\Tools\neovim\nvim-win64\bin\;C:\ProgramData\chocolatey\bin\;C:\Program Files\GIT\bin;C:\Program Files\nodejs"
 
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\amro.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\powerlevel10k_rainbow.omp.json" | Invoke-Expression
 
 Set-PSReadLineOption -PredictionSource History
 
@@ -52,13 +52,13 @@ Set-Alias -Name vi -Value nvim
 Set-Alias -Name touch -Value new-item
 Set-Alias -Name grep -Value findstr
 
-# `ll` with exa in wsl in available
+# `ll` with eza in wsl in available
 Function ll {
 	$target = ''
 	if ($args[0]) {
 		$target = $args[0] -replace "`\\", "`/"
 	}
-	wsl exa -al --group --icons --sort=modified $target
+	wsl eza -al --group --icons --sort=modified $target
 }
 Function ev { nvim $env:LOCALAPPDATA\nvim\init.vim }
 Function gs { git status }
