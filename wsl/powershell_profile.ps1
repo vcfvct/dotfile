@@ -54,7 +54,7 @@ Set-Alias -Name grep -Value findstr
 
 # `ll` with eza in wsl in available
 Function ll {
-	$target = ''
+	$target = '.'
 	if ($args[0]) {
 		$target = $args[0] -replace "`\\", "`/"
 	}
