@@ -83,7 +83,7 @@ return {
         -- setting a mapping to false will disable it
         -- ["<esc>"] = false,
         ["<F12>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
-        ["<C-q>"] = { "<C-\\><C-n>", desc = "de-focus terminal" },
+        ["<C-m>"] = { "<C-\\><C-n>", desc = "de-focus terminal" },
       },
       v = {
         d = { '"_d' },
