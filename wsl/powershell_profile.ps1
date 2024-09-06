@@ -34,8 +34,6 @@ $null = Register-EngineEvent -SourceIdentifier PowerShell.OnIdle -Action {
 # Override default tab completion
 		Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 # open file with neovim/notepad
-		Function ov { Get-ChildItem . -Recurse -Attributes !Directory | Invoke-Fzf | % { nvim $_ } }
-		Function on { Get-ChildItem . -Recurse -Attributes !Directory | Invoke-Fzf | % { notepad $_ } }
 
 # Import the Chocolatey Profile that contains the necessary code to enable
 # tab-completions to function for `choco`.
@@ -47,28 +45,6 @@ $null = Register-EngineEvent -SourceIdentifier PowerShell.OnIdle -Action {
 			Import-Module "$ChocolateyProfile"
 		}
 
-		Set-Alias -Name open -Value ii
-		Set-Alias -Name which -Value get-command
-		Set-Alias -Name vi -Value nvim
-		Set-Alias -Name touch -Value new-item
-		Set-Alias -Name grep -Value findstr
-
-# `ll` with eza in wsl in available
-		Function ll {
-			$target = '.'
-			if ($args[0]) {
-				$target = $args[0] -replace "`\\", "`/"
-			}
-			wsl eza -al --group --icons --sort=modified $target
-		}
-		Function ev { nvim $env:LOCALAPPDATA\nvim\init.vim }
-		Function gs { git status }
-		Function gd { git diff }
-# remove PowerShell default alias
-		Remove-Item -Path alias:gl -Force
-		function gl { git pull }
-		Remove-Item -Path alias:gp -Force
-		function gp { git push }
 
 # ctrl+f to accept suggestion
 		Set-PSReadLineKeyHandler -Chord "Ctrl+f" -ScriptBlock {
@@ -84,6 +60,12 @@ $null = Register-EngineEvent -SourceIdentifier PowerShell.OnIdle -Action {
     Unregister-Event -SourceIdentifier PowerShell.OnIdle
 }
 
+Set-Alias -Name open -Value ii
+Set-Alias -Name which -Value get-command
+Set-Alias -Name vi -Value nvim
+Set-Alias -Name touch -Value new-item
+Set-Alias -Name grep -Value findstr
+
 function z {
     Import-Module ZLocation
     Remove-Item -Path Function:z
@@ -95,6 +77,24 @@ function fzf {
     fzf @args
 }
 
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\powerlevel10k_rainbow.omp.json" | Invoke-Expression
+Function ov { Get-ChildItem . -Recurse -Attributes !Directory | Invoke-Fzf | % { nvim $_ } }
+Function on { Get-ChildItem . -Recurse -Attributes !Directory | Invoke-Fzf | % { notepad $_ } }
+# `ll` with eza in wsl in available
+Function ll {
+	$target = '.'
+	if ($args[0]) {
+		$target = $args[0] -replace "`\\", "`/"
+	}
+	wsl eza -al --group --icons --sort=modified $target
+}
+Function ev { nvim $env:LOCALAPPDATA\nvim\init.vim }
+Function gs { git status }
+Function gd { git diff }
+# remove PowerShell default alias
+Remove-Item -Path alias:gl -Force
+function gl { git pull }
+Remove-Item -Path alias:gp -Force
+function gp { git push }
 
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\montys.omp.json" | Invoke-Expression
 
