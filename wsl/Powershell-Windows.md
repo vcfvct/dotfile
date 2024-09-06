@@ -1,47 +1,47 @@
 # Powershell setup
 
-* Execute with *Admin* PS: `New-Item -ItemType SymbolicLink -Target $env:USERPROFILE\source\repos\dotfile\wsl\powerShell_profile.ps1 -Path $PROFILE`. The `$PROFILE` is for [Current User, Current Host](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles). The other profiles are saved in note properties of the $PROFILE variable, for example: `$PROFILE.CurrentUserAllHosts`, `$PROFILE.AllUsersAllHosts` etc.
-* To start PowerShell without profiles, use the NoProfile parameter of pwsh.exe, the program that starts PowerShell: `pwsh -NoProfile`.
+- Execute with _Admin_ PS: `New-Item -ItemType SymbolicLink -Target $env:USERPROFILE\source\repos\dotfile\wsl\powerShell_profile.ps1 -Path $PROFILE`. The `$PROFILE` is for [Current User, Current Host](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles). The other profiles are saved in note properties of the $PROFILE variable, for example: `$PROFILE.CurrentUserAllHosts`, `$PROFILE.AllUsersAllHosts` etc.
+- To start PowerShell without profiles, use the NoProfile parameter of pwsh.exe, the program that starts PowerShell: `pwsh -NoProfile`.
 
 ## oh-my-posh
 
-* [oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh)  provides similar stuff with oh-my-zsh.
+- [oh-my-posh](https://github.com/JanDeDobbeleer/oh-my-posh) provides similar stuff with oh-my-zsh.
   if `cannot be loaded because the execution of scripts is disabled on this system.` in powershell, we need to set execution policy by `Set-ExecutionPolicy RemoteSigned`
-* use `notepad $PROFILE`  or `nvim $PROFILE` to edit options like importing modules and other customizations. Typially the location is `C:\Users\YourUserName\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`
-  * if `$PROFILE` does not exist, use `new-item -type file -path $profile -force` to create.
-  * do `. $PROFILE` after change to reload the setting.
-  * example config: see the `powershell_profile.ps1` file.
+- use `notepad $PROFILE` or `nvim $PROFILE` to edit options like importing modules and other customizations. Typially the location is `C:\Users\YourUserName\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1`
+  - if `$PROFILE` does not exist, use `new-item -type file -path $profile -force` to create.
+  - do `. $PROFILE` after change to reload the setting.
+  - example config: see the `powershell_profile.ps1` file.
 
 ## PSReadLine
 
-* [PSReadLine](https://devblogs.microsoft.com/powershell/announcing-psreadline-2-1-with-predictive-intellisense/?WT.mc_id=-blog-scottha) provides auto completion.
-  * `Install-Module PSReadLine -RequiredVersion 2.2.6 -Force`
+- [PSReadLine](https://devblogs.microsoft.com/powershell/announcing-psreadline-2-1-with-predictive-intellisense/?WT.mc_id=-blog-scottha) provides auto completion.
+  - `Install-Module PSReadLine -RequiredVersion 2.2.6 -Force`
 
 ## Z
 
-* [ZLocation](https://github.com/vors/ZLocation) for smart jump.
-  * `Install-Module ZLocation -Force`
+- [ZLocation](https://github.com/vors/ZLocation) for smart jump.
+  - `Install-Module ZLocation -Force` (can be lazy loaded by wrapping in a function)
 
 ## Terminal Icon
 
-* install module: `Install-Module -Name Terminal-Icons -Repository PSGallery`
-* add to $PROFILE: `Import-Module -Name Terminal-Icons -Force`
+- install module: `Install-Module -Name Terminal-Icons -Repository PSGallery`
+- add to $PROFILE: `Import-Module -Name Terminal-Icons -Force`
 
 ## Fzf integration using PSfzf
 
-* installation: 1. `choco install fzf -y`, 2. `Install-Module PSFzf -Force`.
-* config as above example config. [source](https://www.damirscorner.com/blog/posts/20211119-PowerShellModulesForABetterCommandLine.html)
+- installation: 1. `choco install fzf -y`, 2. `Install-Module PSFzf -Force`(can be lazy loaded by wrapping in a function)
+- config as above example config. [source](https://www.damirscorner.com/blog/posts/20211119-PowerShellModulesForABetterCommandLine.html)
 
 ## neovim
 
-* install [chocolatey](https://community.chocolatey.org/courses/installation/installing?method=install-from-powershell-v3). (admin)
-* install [neovim](https://community.chocolatey.org/packages/neovim)
-  * `choco install neovim -y`
-  * the `:echo stdpath(‘config’)` shows config path which is typially `~/AppData/Local/nvim/`. if not exist, create this directory.
-    * create the `init.vim` config file here if not exist. put vim config stuff in.
-    * the `coc.vim` config can also be placed here and referenced in the `init.vim` by: `source ~/AppData/Local/nvim/coc.vim`
-    * the `coc-settings.json` can also be placed here so that coc would load it by default/convention.
-* install [vim-plug](https://dev.to/ritikadas/using-neovim-as-an-effortless-way-to-edit-code-installation-and-setup-guide-for-windows-10-5dhc).
+- install [chocolatey](https://community.chocolatey.org/courses/installation/installing?method=install-from-powershell-v3). (admin)
+- install [neovim](https://community.chocolatey.org/packages/neovim)
+  - `choco install neovim -y`
+  - the `:echo stdpath(‘config’)` shows config path which is typially `~/AppData/Local/nvim/`. if not exist, create this directory.
+    - create the `init.vim` config file here if not exist. put vim config stuff in.
+    - the `coc.vim` config can also be placed here and referenced in the `init.vim` by: `source ~/AppData/Local/nvim/coc.vim`
+    - the `coc-settings.json` can also be placed here so that coc would load it by default/convention.
+- install [vim-plug](https://dev.to/ritikadas/using-neovim-as-an-effortless-way-to-edit-code-installation-and-setup-guide-for-windows-10-5dhc).
 
   ```powershell
     md ~\AppData\Local\nvim\autoload
@@ -55,21 +55,34 @@
     )
   ```
 
-* for `floatterm` to use latest powershell: `let g:floaterm_shell="pwsh.exe -NoLogo"`
+- for `floatterm` to use latest powershell: `let g:floaterm_shell="pwsh.exe -NoLogo"`
 
 ## commands
 
-* `ii .` -> `open .`
-* `gdr` -> `df -h`
-* `get-command` -> `which`
+- `ii .` -> `open .`
+- `gdr` -> `df -h`
+- `get-command` -> `which`
 
 ## environment variable
 
-* env var is typically defined with `$env:`, like `$env:LOCALAPPDATA` points to `$HOME\AppData\Local\`.
-* to define a tmp env var before executing the command, similar to linux, do `$env:FOO='Bar'; python .\myPythonScript`
-* to show all env vars, use Get-ChildItem, `gci env:`, or `ls env:`, or `dir env:`
-* to permanently add path to env, put `$env:Path += ";SomeRandomPath"` at the `$PROFILE` file.
+- env var is typically defined with `$env:`, like `$env:LOCALAPPDATA` points to `$HOME\AppData\Local\`.
+- to define a tmp env var before executing the command, similar to linux, do `$env:FOO='Bar'; python .\myPythonScript`
+- to show all env vars, use Get-ChildItem, `gci env:`, or `ls env:`, or `dir env:`
+- to permanently add path to env, put `$env:Path += ";SomeRandomPath"` at the `$PROFILE` file.
 
 ## Windows Server
 
-* use `start powershell` to get a new instace/window
+- use `start powershell` to get a new instace/window
+
+## Conda startup optimization
+
+- by default in the All Hosts pwsh proifle `$HOME\Documents\PowerShell\profile.ps1`, conda will init with `(& "$HOME\Miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression`.
+- use the conda-hook.ps1 script directly, which might be more efficient. You can find this script in your Conda installation directory and source it in your profile.
+
+```sh
+$condaHook = "$HOME\Miniconda3\shell\condabin\conda-hook.ps1"
+if (Test-Path $condaHook) {
+    . $condaHook
+}
+
+```
