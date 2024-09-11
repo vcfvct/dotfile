@@ -99,7 +99,7 @@ if (Get-Alias -Name gl -ErrorAction SilentlyContinue) {
     Remove-Item -Path alias:gl -Force
 }
 function gl { git pull }
-if (Get-Alias -Name gl -ErrorAction SilentlyContinue) {
+if (Get-Alias -Name gp -ErrorAction SilentlyContinue) {
 		Remove-Item -Path alias:gp -Force
 }
 function gp { git push }
