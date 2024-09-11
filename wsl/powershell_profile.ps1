@@ -57,6 +57,10 @@ $null = Register-EngineEvent -SourceIdentifier PowerShell.OnIdle -Action {
 # ctrl+e to move forward word
 		Set-PSReadLineKeyHandler -chord 'Ctrl+e' -Function ForwardWord
 
+		if (Get-Command fnm -ErrorAction SilentlyContinue) {
+    		fnm env --use-on-cd --shell power-shell | Out-String | Invoke-Expression
+		} 
+
     Unregister-Event -SourceIdentifier PowerShell.OnIdle
 }
 
@@ -91,9 +95,13 @@ Function ev { nvim $env:LOCALAPPDATA\nvim\init.vim }
 Function gs { git status }
 Function gd { git diff }
 # remove PowerShell default alias
-Remove-Item -Path alias:gl -Force
+if (Get-Alias -Name gl -ErrorAction SilentlyContinue) {
+    Remove-Item -Path alias:gl -Force
+}
 function gl { git pull }
-Remove-Item -Path alias:gp -Force
+if (Get-Alias -Name gl -ErrorAction SilentlyContinue) {
+		Remove-Item -Path alias:gp -Force
+}
 function gp { git push }
 
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\montys.omp.json" | Invoke-Expression
