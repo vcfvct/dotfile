@@ -104,5 +104,17 @@ if (Get-Alias -Name gp -ErrorAction SilentlyContinue) {
 }
 function gp { git push }
 
+function gll {
+    $selections = git log --oneline --color=always | 
+        fzf --ansi --no-sort --height 100% `
+            --preview "git show --color=always {1}" `
+            --preview-window right:70%:wrap
+
+    if ($selections) {
+        $commit = $selections -split ' ' | Select-Object -First 1
+        git show $commit
+    }
+}
+
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\montys.omp.json" | Invoke-Expression
 
