@@ -27,6 +27,7 @@
 
 [core]
     pager = delta
+    longpaths = true
 
 [interactive]
     diffFilter = delta --color-only
