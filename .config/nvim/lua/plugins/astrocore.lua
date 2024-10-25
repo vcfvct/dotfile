@@ -89,6 +89,9 @@ return {
         d = { '"_d' },
         p = { "pgvy" },
       },
+      i = {
+        ["<C-V>"] = { "<C-R>+", desc = "ctrl-v Paste in input mode" },
+      },
     },
   },
 }
