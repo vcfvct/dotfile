@@ -33,4 +33,4 @@ foreach ($appName in $appsToRemove) {
 
 # Restart Explorer to refresh taskbar icons
 # Stop-Process -Name explorer -Force
-Start-Process -FilePath "ie5uinit.exe" -ArgumentList "-show"
+Start-Process -FilePath "ie4uinit.exe" -ArgumentList "-show"
