@@ -8,8 +8,12 @@
 # In the Add arguments (optional) field, type:
 # -ExecutionPolicy Bypass -File "C:\Scripts\RemoveTaskbarShortcuts.ps1"
 
-# Define the names of applications to remove from the taskbar
-$appsToRemove = @("Microsoft 365 (Office)", "People (Preview)", "Files (Preview)")
+# Create a set of apps to remove
+$appsToRemove = [System.Collections.Generic.HashSet[string]]@(
+    "Microsoft 365 (Office)", 
+    "People (Preview)", 
+    "Files (Preview)"
+)
 
 # Attempt to get a Shell COM object and the AppsFolder
 $shell = New-Object -ComObject Shell.Application
@@ -21,13 +25,11 @@ if ($appsFolderPath -eq $null) {
 }
 
 # Proceed if AppsFolder was accessed successfully
-foreach ($appName in $appsToRemove) {
-    foreach ($item in $appsFolderPath.Items()) {
-        if ($item.Name -eq $appName) {
-            # Unpin from taskbar
-            $item.InvokeVerb("taskbarunpin")
-            Write-Output "Unpinned $appName from taskbar."
-        }
+foreach ($item in $appsFolderPath.Items()) {
+    if ($appsToRemove.Contains($item.Name)) {
+        # Unpin from taskbar
+        $item.InvokeVerb("taskbarunpin")
+        Write-Output "Unpinned $item.Name from taskbar."
     }
 }
 
