@@ -12,7 +12,8 @@
 $appsToRemove = [System.Collections.Generic.HashSet[string]]@(
     "Microsoft 365 (Office)", 
     "People (Preview)", 
-    "Files (Preview)"
+    "Files (Preview)",
+    "File Search"
 )
 
 # Attempt to get a Shell COM object and the AppsFolder
@@ -29,7 +30,7 @@ foreach ($item in $appsFolderPath.Items()) {
     if ($appsToRemove.Contains($item.Name)) {
         # Unpin from taskbar
         $item.InvokeVerb("taskbarunpin")
-        Write-Output "Unpinned $item.Name from taskbar."
+        Write-Output "Unpinned $appsToRemove from taskbar."
     }
 }
 
