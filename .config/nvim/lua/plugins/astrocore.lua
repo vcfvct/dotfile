@@ -81,8 +81,8 @@ return {
         ["<F12>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
         ["<C-n>"] = { "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" },
         ["<C-_>"] = { function() require("Comment.api").toggle.linewise.current() end, desc = "Toggle line comment" },
-        ["<C-p>"] = { function() Snacks.picker.files() end, desc = "Find files (Snacks)" },
-        ["<C-g>"] = { function()  Snacks.picker.grep() end, desc = "Live grep (Snacks)" },
+        ["<C-p>"] = { function() Snacks.picker.files { hidden = true } end, desc = "Find files (Snacks)" },
+        ["<C-g>"] = { function() Snacks.picker.grep { hidden = true } end, desc = "Live grep (Snacks)" },
       },
       t = {
         -- setting a mapping to false will disable it
