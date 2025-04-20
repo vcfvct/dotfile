@@ -33,8 +33,7 @@ MacOS Mojave disables subpixel antialiasing, also known as font smoothing, by de
 
 In `.gitconfig`, [delta](https://github.com/dandavison/delta) is used for pager and diff. For wsl/chromeos-linux, go to the release page download corresponding `.deb` and install with `sudo dpkg -i xxx.deb`.
 
-```
-### coc nvim
+~~### coc nvim~~
 
 - For coc plugin, use the official recommended way `:CocInstall` instead of vim plug to manage so that it could get auto update. Example:
   > :CocInstall coc-json coc-tsserver coc-eslint coc-pairs coc-git
@@ -45,4 +44,3 @@ In `.gitconfig`, [delta](https://github.com/dandavison/delta) is used for pager 
   - for [project specific settings](https://github.com/neoclide/coc.nvim/wiki/Using-the-configuration-file#configuration-file-resolve), use `./.vim/coc-settings.json` file. one useful setting here we could do is for setting `python.pythonPath` to local `venv`'s python so that the LSP could kick-in.
 - on MacOS, `Terminal->Preferences->Keyboard` set `Use Option as Meta Key`. then map <A-f> to `:Format<cr>`.
   - For iTerm2, need to make it `ESC` in `profiles->keys`, and then add specific mapping to the list
-```
