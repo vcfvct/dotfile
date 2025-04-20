@@ -44,8 +44,8 @@ const path = require('path');
    * @param {string} src, source file path
    * @param {string} dest, optional, destination file path
    *
-   * create symLink from src to dest, 
-   * create dest directory if not exists, 
+   * create symLink from src to dest,
+   * create dest directory if not exists,
    * delete dest if exists
    **/
   async function createSymLink(src, dest) {
