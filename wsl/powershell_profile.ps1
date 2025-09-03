@@ -6,7 +6,16 @@ $null = Register-EngineEvent -SourceIdentifier PowerShell.OnIdle -Action {
 
     Import-Module Terminal-Icons
 
-    Set-PSReadLineOption -PredictionSource History
+# Only run in an interactive ConsoleHost with a real TTY to aovid possible VS build error
+		$interactive = ($Host.Name -eq 'ConsoleHost') -and -not [Console]::IsOutputRedirected -and -not [Console]::IsInputRedirected
+		if ($interactive) {
+    		if (Get-Module -ListAvailable -Name PSReadLine) {
+        		Import-Module PSReadLine -ErrorAction SilentlyContinue
+        		try {
+            		Set-PSReadLineOption -PredictionSource History -ErrorAction Stop
+        		} catch { }
+    		}
+		}
 
 # pwsh vi mode
 		Set-PSReadlineOption -EditMode vi
@@ -60,6 +69,8 @@ $null = Register-EngineEvent -SourceIdentifier PowerShell.OnIdle -Action {
 		if (Get-Command fnm -ErrorAction SilentlyContinue) {
     		fnm env --use-on-cd --shell power-shell | Out-String | Invoke-Expression
 		} 
+
+		fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
 
     Unregister-Event -SourceIdentifier PowerShell.OnIdle
 }
@@ -118,3 +129,4 @@ function gll {
 
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\montys.omp.json" | Invoke-Expression
 
+if (-not (Get-Command poetry -ErrorAction Ignore)) { $env:Path += ";C:\Users\hanli3\AppData\Roaming\Python\Scripts" }
