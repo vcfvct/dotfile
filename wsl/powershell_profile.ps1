@@ -129,4 +129,11 @@ function gll {
 
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\montys.omp.json" | Invoke-Expression
 
-if (-not (Get-Command poetry -ErrorAction Ignore)) { $env:Path += ";C:\Users\hanli3\AppData\Roaming\Python\Scripts" }
+# Expand user bin path
+$binPath = "$HOME\.local\bin"
+# Check if 'uv' is available
+if (Get-Command uv -ErrorAction SilentlyContinue) {
+    if (-not ($env:Path -split ';' | ForEach-Object { $_.Trim() } | Where-Object { $_ -eq $binPath })) {
+        $env:Path += ";$binPath"
+    }
+}
