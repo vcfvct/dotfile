@@ -23,7 +23,7 @@ end
  abbr top "btm -b"
  abbr v "nvim"
  abbr vi "nvim"
- abbr c "bat"
+ abbr c "batcat"
  abbr g "git"
  abbr gl "git pull"
  abbr gp "git push"

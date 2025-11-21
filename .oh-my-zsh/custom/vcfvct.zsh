@@ -16,7 +16,7 @@ function fzf_git_log() {
 function ffe() {
   local file=$(
     fzf --no-multi --select-1 --exit-0 \
-      --preview 'bat --color=always --line-range :500 {}'
+      --preview 'batcat --color=always --line-range :500 {}'
   )
   if [[ -n $file ]]; then
     $EDITOR "$file"
@@ -44,7 +44,7 @@ __fzfcmd() {
 ## file open
 __vcfvct-fo() (
   setopt localoptions pipefail no_aliases 2> /dev/null
-  local file=$(eval "${FZF_DEFAULT_COMMAND}" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS --preview 'bat --color=always --line-range :500 {}'" $(__fzfcmd) -m "$@" | while read item; do
+  local file=$(eval "${FZF_DEFAULT_COMMAND}" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS --preview 'batcat --color=always --line-range :500 {}'" $(__fzfcmd) -m "$@" | while read item; do
     echo -n "${(q)item}"
   done)
   local ret=$?
