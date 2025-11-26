@@ -97,6 +97,10 @@ return {
       },
       i = {
         ["<C-V>"] = { "<C-R>+", desc = "ctrl-v Paste in input mode" },
+        ["<C-f>"] = {
+          function() require("copilot.suggestion").accept_word() end,
+          desc = "Copilot accept word",
+        },
       },
     },
   },
