@@ -81,6 +81,10 @@ Set-Alias -Name vi -Value nvim
 Set-Alias -Name touch -Value new-item
 Set-Alias -Name grep -Value findstr
 
+function up {
+    uv run python @Args
+}
+
 function z {
     Import-Module ZLocation
     Remove-Item -Path Function:z
@@ -137,3 +141,13 @@ if (Get-Command uv -ErrorAction SilentlyContinue) {
         $env:Path += ";$binPath"
     }
 }
+
+# --- Add Winget Miniconda to PATH ---
+		$CondaRoot = "$env:LOCALAPPDATA\Miniconda3"
+# We prefer 'condabin' because it manages the shell environment better than 'Scripts'
+		$CondaBin = Join-Path $CondaRoot "condabin"
+
+		if ((Test-Path $CondaBin) -and ($env:PATH -notlike "*$CondaBin*")) {
+		    $env:PATH = "$CondaBin;$env:PATH"
+		}
+# ------------------------------------
