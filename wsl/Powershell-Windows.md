@@ -1,6 +1,34 @@
 # Powershell setup
 
-- Execute with _Admin_ PS: `New-Item -ItemType SymbolicLink -Target $env:USERPROFILE\source\repos\dotfile\wsl\powerShell_profile.ps1 -Path $PROFILE`. The `$PROFILE` is for [Current User, Current Host](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles). The other profiles are saved in note properties of the $PROFILE variable, for example: `$PROFILE.CurrentUserAllHosts`, `$PROFILE.AllUsersAllHosts` etc.
+- Execute with _Admin_ PS: ~~`New-Item -ItemType SymbolicLink -Target $env:USERPROFILE\source\repos\dotfile\wsl\powerShell_profile.ps1 -Path $PROFILE`. The `$PROFILE` is for [Current User, Current Host](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles).~~ (this method does not work well with multiple machine using onedrive sync. use the below content as `$PROFILE` loader instead.). The other profiles are saved in note properties of the $PROFILE variable, for example: `$PROFILE.CurrentUserAllHosts`, `$PROFILE.AllUsersAllHosts` etc.
+
+```pwsh
+# 1. Define the possible local paths for your dotfiles
+# Using $HOME ensures it works regardless of your Windows username (hanli3 vs others)
+$dotfilePath = "$HOME\source\repos\dotfile\wsl\powerShell_profile.ps1"
+
+# 2. Check if we are running in WSL or native Windows
+$isWsl = $env:WSL_DISTRO_NAME -ne $null
+
+if ($isWsl) {
+    # If you are inside a WSL instance running PowerShell,
+    # you might need the Linux-style path
+    $dotfilePath = "/mnt/c/Users/$env:USER/source/repos/dotfile/wsl/powerShell_profile.ps1"
+}
+
+# 3. Execution Logic
+if (Test-Path $dotfilePath) {
+    # The dot ( . ) means "run this script in the current scope"
+    . $dotfilePath
+}
+else {
+    Write-Host "---" -ForegroundColor Gray
+    Write-Host "Note: Local dotfile profile not found at $dotfilePath" -ForegroundColor Yellow
+    Write-Host "Check if your repo is cloned to the correct location on this machine." -ForegroundColor Gray
+    Write-Host "---" -ForegroundColor Gray
+}
+```
+
 - To start PowerShell without profiles, use the NoProfile parameter of pwsh.exe, the program that starts PowerShell: `pwsh -NoProfile`.
 
 ## oh-my-posh
