@@ -75,7 +75,7 @@ $null = Register-EngineEvent -SourceIdentifier PowerShell.OnIdle -Action {
     Unregister-Event -SourceIdentifier PowerShell.OnIdle
 }
 
-Set-Alias -Name open -Value ii
+Set-Alias -Name open -Value explorer.exe
 Set-Alias -Name which -Value get-command
 Set-Alias -Name vi -Value nvim
 Set-Alias -Name touch -Value new-item
