@@ -131,6 +131,11 @@ function gll {
     }
 }
 
+function getoid {
+    param($user)
+    az ad user show --id $user --query id -o tsv
+}
+
 oh-my-posh init pwsh --config "montys" | Invoke-Expression
 
 # Expand user bin path
