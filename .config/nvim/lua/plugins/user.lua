@@ -62,10 +62,12 @@ return {
   {
     "L3MON4D3/LuaSnip",
     config = function(plugin, opts)
-      require "astronvim.plugins.configs.luasnip"(plugin, opts) -- include the default astronvim config that calls the setup call
       -- add more custom luasnip configuration such as filetype extend or custom snippets
       local luasnip = require "luasnip"
       luasnip.filetype_extend("javascript", { "javascriptreact" })
+
+      -- include the default astronvim config that calls the setup call
+      require "astronvim.plugins.configs.luasnip"(plugin, opts)
     end,
   },
 
@@ -98,16 +100,9 @@ return {
       )
     end,
   },
-  -- alternative is to use jq with: %!jq .
-  format_json = vim.api.nvim_command "com! FormatJSON %!python3 -m json.tool",
-  -- The ‘%’ symbol tells neovim to apply the command to the entire buffer, which is the current file you are editing.
-  -- The ‘!’ symbol tells neovim to run an external command, which is jq in this case.
-  -- The ‘-r’ option tells jq to output raw strings instead of JSON texts. This means that jq will not add quotes or backslashes to the output, which are usually needed for valid JSON.
-  -- The ‘–tab’ option tells jq to use tabs instead of spaces for indentation. This means that jq will indent each level of the JSON object with a tab character, which can make the output more readable and structured.
-  -- The ‘fromjson’ function tells jq to parse the input as a JSON string and output it as a JSON object. This means that jq will convert the input, which is a single line of escaped JSON string, into a multi-line JSON object with proper formatting and indentation.
-  unescape_json = vim.api.nvim_command "com! UnescapeJSON %!jq -r --tab 'fromjson'",
-  format_xml = vim.api.nvim_command 'com! FormatXML :%!python3 -c "import xml.dom.minidom, sys; print(xml.dom.minidom.parse(sys.stdin).toprettyxml())"',
-  file_type = vim.api.nvim_command "au BufNewFile,BufRead *.sap,*.omap setf json",
+  -- NOTE: the `FormatJSON`/`UnescapeJSON`/`FormatXML` user commands and the `*.sap`/`*.omap`
+  -- filetype detection used to live here as string-keyed side effects in this spec.
+  -- They now live in `lua/polish.lua` (commands) and `astrocore.opts.filetypes` (filetypes).
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
