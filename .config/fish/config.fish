@@ -23,7 +23,7 @@ end
  abbr top "btm -b"
  abbr v "nvim"
  abbr vi "nvim"
- abbr c "batcat"
+ abbr c "bat"
  abbr g "git"
  abbr gl "git pull"
  abbr gp "git push"
@@ -47,6 +47,10 @@ bind -M insert \ce forward-word
 bind -M insert \cj history-search-forward
 bind -M insert \ck history-search-backward
 
+# --- Homebrew (Linuxbrew) support for ALL Linux environments ---
+if test -d /home/linuxbrew/.linuxbrew
+    eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+end
 ### set clipboard support for WSL
 if uname -r | grep 'microsoft' > /dev/null
   set -xg BREW_HOME /home/linuxbrew/.linuxbrew
