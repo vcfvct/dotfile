@@ -17,6 +17,9 @@ return {
         -- install formatters
         "stylua",
 
+        -- install debuggers
+        "debugpy",
+
         -- install any other package
         "tree-sitter-cli",
       },

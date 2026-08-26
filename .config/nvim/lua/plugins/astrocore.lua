@@ -81,7 +81,8 @@ return {
         c = { '"_c' }, -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
         ["<F12>"] = { "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" },
         ["<C-n>"] = { "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" },
-        ["<C-_>"] = { function() require("Comment.api").toggle.linewise.current() end, desc = "Toggle line comment" },
+        -- NOTE: `Comment.nvim` was dropped by AstroNvim, this uses Neovim's built in commenting (`:h commenting`)
+        ["<C-_>"] = { "gcc", desc = "Toggle line comment", remap = true },
         ["<C-p>"] = { function() Snacks.picker.files { hidden = true } end, desc = "Find files (Snacks)" },
         ["<C-g>"] = { function() Snacks.picker.grep { hidden = true } end, desc = "Live grep (Snacks)" },
       },

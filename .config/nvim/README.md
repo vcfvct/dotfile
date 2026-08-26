@@ -1,6 +1,6 @@
 # AstroNvim User Configuration Example
 
-A user configuration template for [AstroNvim](https://github.com/AstroNvim/AstroNvim)
+A user configuration template for [AstroNvim](https://github.com/AstroNvim/AstroNvim) (currently tracking **v6**, requires Neovim v0.11+)
 
 ## misc
 
@@ -9,7 +9,7 @@ A user configuration template for [AstroNvim](https://github.com/AstroNvim/Astro
 - neo-tree toggle hidden files -> `H`. Use 'D' to search directory(need to install 'fd' on Windows).
 - comment code: `<leader>/` to for current line, otherwise use g -> options.
 - for language specific 'failed to load,..., query: invalid structure at position', need to `:TSInstall ThisLanguage`.
-- in Telescope live-grep(ctrl-g), after initial search, use `ctrl+space` to future search other keywords to achieve kind of fuzzy searching.
+- in the `snacks.picker` live grep (ctrl-g), keep typing to narrow the results; use `ctrl+j/k` to move through matches without leaving insert mode.
 
 ## Windows
 
@@ -35,7 +35,7 @@ sudo ln -s /opt/nvim-linux64/bin/nvim /usr/bin/nvim
 
 - use `ctrl+|` to create verticle spilit buffer and `ctrl+\` for horizontal ones. And use `ctrl+up/down/left/right` to adjust width/height.
 - `]/[+b` and `]/[+t` to navigate between buffers and tabs.
-- inside Telescope, when it is `normal` mode(esc), use `j/k` to up and down, or in `insert` mode, use `ctrl+j/k`. In normal mode, use `?` to show all mappings.
+- inside `snacks.picker`, when in `normal` mode(esc), use `j/k` to go up and down, or in `insert` mode, use `ctrl+j/k`. Use `?` to show all mappings.
 - `]\[+d` to navigate diagnostic. use `<leader>lD` to see all diagnostic.
 - `<leader>lr` to rename Symbol. `<leader>lf` to format buffer. `<leader>la` to get code actions.
 
@@ -49,6 +49,7 @@ sudo ln -s /opt/nvim-linux64/bin/nvim /usr/bin/nvim
 
 ## Troubleshooting
 
+- `:LspInfo`/`:LspStart`/`:LspRestart`/`:LspStop` were removed in Neovim v0.12. Use `:checkhealth vim.lsp` and the built in `:lsp` command instead (`:h lsp-commands`).
 - For `query: invalid structure at position 2992 for language lua stack traceback: [C]: in function '_ts_parse_query'`, based on [this github issue reply](https://github.com/LunarVim/LunarVim/issues/3680#issuecomment-1373552082), after running `:echo nvim_get_runtime_file('parser', v:true)`, remove the system `lua.so` under system path( not the one under `nvim-treesitter/parser`).
 - For lsp.log in the `state` dir, which grows overtime, on Windows, it is on `~/AppData/Local/nvim-data/`. in linux it is in `~/.local/state/nvim/lsp.log`
 - For Mason error `Installation failed for Package(name=stylua) error="Lockfile exists, installation is already running in another process (pid: 80956). Run with :MasonInstall --force to bypass."`, the `force` install may not work, need to clear the corresponding lock files, with `~/.local/share/nvim/mason/staging`(\*nix) or `C:\Users\<YourUsername>\AppData\Local\nvim-data\mason\staging`(Windows)
