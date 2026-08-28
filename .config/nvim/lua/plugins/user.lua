@@ -22,7 +22,7 @@ return {
 
   -- == Examples of Adding Plugins ==
 
-  "andweeb/presence.nvim",
+  { "andweeb/presence.nvim", enabled = false },
   {
     "ray-x/lsp_signature.nvim",
     event = "BufRead",
