@@ -10,7 +10,7 @@ const path = require('path');
   // Files that are generally safe to link on any platform
   const commonFiles = [
     '.vimrc',
-    '.coc.vim',
+    // '.coc.vim',
     '.gitignore',
     '.eslintrc.js',
     '.tmux.common.conf',
