@@ -28,7 +28,8 @@ on Windows:
 | `.tmux.common.conf` | Portable tmux commands and key bindings shared by both programs |
 | `.tmux.conf` | Unix entry point, terminal integration, and the oh-my-tmux shell engine |
 | `.tmux.conf.local` | Unix oh-my-tmux theme variables and Unix clipboard integration |
-| `.psmux.conf` | Windows entry point, native theme options, PowerShell, and psmux plugins |
+| `.psmux.conf` | Windows entry point, native theme options, and PowerShell settings |
+| `.psmux-battery.ps1` | Read-only Windows battery formatter used by the psmux status line |
 
 Do not put shell commands, platform-specific clipboard tools, terminal capability
 overrides, or plugins in `.tmux.common.conf`. A shared setting should be changed
@@ -38,7 +39,7 @@ there rather than duplicated in both entry points.
 
 - All platforms receive `~/.tmux.common.conf`.
 - Linux, macOS, and WSL receive `~/.tmux.conf` and `~/.tmux.conf.local`.
-- Native Windows receives `~/.psmux.conf`.
+- Native Windows receives `~/.psmux.conf` and `~/.psmux-battery.ps1`.
 
 Run the Node linker from the repository root after cloning:
 
@@ -77,23 +78,30 @@ That shell program reads `.tmux.conf.local` and generates the Unix theme,
 status bar, battery and uptime values, prefix/root/session indicators, clipboard
 bindings, and helper commands. Keep the commented section while using the
 current Unix oh-my-tmux theme. Psmux does not need it because `.psmux.conf` uses
-native style options and PowerShell plugins.
+native style options and a small read-only PowerShell status helper.
 
-#### Windows battery plugin
+#### Windows battery status
 
-The Windows status line expects `#{@battery_display}` from the official
-`psmux-battery` plugin. Install the psmux plugin manager once:
+The psmux status line evaluates `.psmux-battery.ps1` asynchronously every
+`status-interval` seconds. Its encoded PowerShell command expands
+`%USERPROFILE%` at runtime because psmux does not expand `~` or preserve quoted
+paths inside `#(command)`. This also supports profile paths containing spaces.
+The script reads `Win32_Battery` and prints one formatted value to standard
+output. It deliberately does not install hooks or
+call back into psmux, avoiding invalid-console-handle errors from background
+plugin processes.
+
+The battery helper is linked automatically by `symbolLink.js`. Apply changes by
+recreating the links and restarting psmux:
 
 ```powershell
-git clone https://github.com/psmux/psmux-plugins.git "$env:TEMP\psmux-plugins"
-Copy-Item "$env:TEMP\psmux-plugins\ppm" "$env:USERPROFILE\.psmux\plugins\ppm" -Recurse
-Remove-Item "$env:TEMP\psmux-plugins" -Recurse -Force
+node .\symbolLink.js
+psmux kill-server
+psmux
 ```
 
-Start psmux and press `Ctrl+A`, then capital `I`, to install the plugins declared
-in `.psmux.conf`. Reload with `psmux source-file ~/.psmux.conf` or restart the
-server. The status line still works without the plugin; only its battery segment
-is omitted.
+The previously installed `psmux-battery` plugin may remain on disk, but it must
+not be declared in `.psmux.conf`; otherwise its five-second hook will return.
 
 ### macOS specific
 
