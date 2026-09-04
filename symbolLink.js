@@ -26,7 +26,7 @@ const path = require('path');
   ];
 
   // psmux uses this entry point before considering ~/.tmux.conf.
-  const windowsOnlyFiles = ['.psmux.conf'];
+  const windowsOnlyFiles = ['.psmux.conf', '.psmux-battery.ps1'];
 
   // Fish-related files (also Unix-only)
   const fishFiles = [
