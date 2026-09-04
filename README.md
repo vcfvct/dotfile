@@ -40,11 +40,15 @@ there rather than duplicated in both entry points.
 - Linux, macOS, and WSL receive `~/.tmux.conf` and `~/.tmux.conf.local`.
 - Native Windows receives `~/.psmux.conf`.
 
-Run it from the repository root after cloning:
+Run the Node linker from the repository root after cloning:
 
 ```sh
 node symbolLink.js
 ```
+
+On Unix, `./sLinks.sh` is an equivalent Bash alternative. Its file lists are
+kept synchronized with the Unix branch of `symbolLink.js`. The legacy
+`.coc.vim` link is intentionally disabled in both scripts.
 
 Psmux searches for `.psmux.conf` before `.tmux.conf`, so Windows does not execute
 the Unix configuration. Restart the relevant server after changing links or

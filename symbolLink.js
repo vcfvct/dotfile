@@ -12,6 +12,7 @@ const path = require('path');
     '.vimrc',
     // '.coc.vim',
     '.gitignore',
+    '.gitconfig',
     '.eslintrc.js',
     '.tmux.common.conf',
   ];

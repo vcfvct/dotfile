@@ -1,42 +1,72 @@
-repoPath=${HOME}/GIT/dotfile
-rm ~/.zshrc
-ln -s ${repoPath}/.zshrc ~/.zshrc
+#!/usr/bin/env bash
+set -euo pipefail
 
-rm ~/.vimrc
-ln -s ${repoPath}/.vimrc ~/.vimrc
+repo_path=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 
-rm ~/.coc.vim
-ln -s ${repoPath}/.coc.vim ~/.coc.vim
+link_path() {
+  local relative_path=$1
+  local destination_path=${2:-$relative_path}
+  local source_path="${repo_path}/${relative_path}"
+  local target_path="${HOME}/${destination_path}"
 
-rm ~/.tmux.conf
-ln -s ${repoPath}/.tmux.conf ~/.tmux.conf
+  if [[ ! -e "$source_path" ]]; then
+    printf 'Source does not exist, skipping: %s\n' "$source_path" >&2
+    return
+  fi
 
-rm ~/.tmux.conf.local
-ln -s ${repoPath}/.tmux.conf.local ~/.tmux.conf.local
+  mkdir -p -- "$(dirname -- "$target_path")"
+  if [[ -e "$target_path" || -L "$target_path" ]]; then
+    rm -rf -- "$target_path"
+  fi
 
-rm ~/.gitconfig
-ln -s ${repoPath}/.gitconfig ~/.gitconfig
+  ln -s -- "$source_path" "$target_path"
+  printf 'Symbolic link created: %s -> %s\n' "$source_path" "$target_path"
+}
 
-rm ~/.gitignore
-rm ~/.ignore
-ln -s ${repoPath}/.gitignore ~/.gitignore
-ln -s ${repoPath}/.gitignore ~/.ignore
+# Keep these lists synchronized with the Unix branch of symbolLink.js.
+common_files=(
+  '.vimrc'
+  # '.coc.vim' # Disabled for now.
+  '.gitignore'
+  '.gitconfig'
+  '.eslintrc.js'
+  '.tmux.common.conf'
+)
 
-rm ~/.oh-my-zsh/custom/vcfvct.zsh
-ln -s ${repoPath}/.oh-my-zsh/custom/vcfvct.zsh ~/.oh-my-zsh/custom/vcfvct.zsh
+unix_files=(
+  '.zshrc'
+  '.oh-my-zsh/custom/vcfvct.zsh'
+  '.tmux.conf'
+  '.tmux.conf.local'
+)
 
-rm -rf ~/.vim/autoload/lightline
-ln -s ${repoPath}/.vim/autoload/lightline ~/.vim/autoload
+fish_files=(
+  '.config/fish/config.fish'
+  '.config/fish/fishfile'
+  '.config/fish/functions/gll.fish'
+  '.config/fish/functions/wttr.fish'
+  '.config/fish/functions/fish_user_key_bindings.fish'
+  '.config/fish/functions/fzf_find_edit.fish'
+  '.config/fish/functions/fzf_reverse_isearch.fish'
+)
 
-rm -rf ~/.config/fish/config.fish
-ln -s ${repoPath}/.config/fish/config.fish ~/.config/fish
+config_directories=(
+  'alacritty'
+  'hyper'
+  'kitty'
+  'nvim'
+  'ripgrep'
+  'zathura'
+)
 
-rm -rf ~/.config/alacritty
-ln -s ${repoPath}/.config/alacritty ~/.config
+for file in "${common_files[@]}" "${unix_files[@]}" "${fish_files[@]}"; do
+  link_path "$file"
+done
 
-rm -rf ~/.config/nvim
-ln -s ${repoPath}/.config/nvim ~/.config
+link_path '.gitignore' '.ignore'
 
-rm -rf ~/.config/ripgrep
-ln -s ${repoPath}/.config/ripgrep ~/.config
+for directory in "${config_directories[@]}"; do
+  link_path ".config/${directory}"
+done
 
+printf '%s\n' '------ All symbolic links created. ------'
