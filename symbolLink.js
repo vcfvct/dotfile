@@ -13,6 +13,7 @@ const path = require('path');
     '.coc.vim',
     '.gitignore',
     '.eslintrc.js',
+    '.tmux.common.conf',
   ];
 
   // Unix-only files (zsh, tmux, fish, etc.)
@@ -22,6 +23,9 @@ const path = require('path');
     '.tmux.conf',
     '.tmux.conf.local',
   ];
+
+  // psmux uses this entry point before considering ~/.tmux.conf.
+  const windowsOnlyFiles = ['.psmux.conf'];
 
   // Fish-related files (also Unix-only)
   const fishFiles = [
@@ -48,6 +52,7 @@ const path = require('path');
   // Build final file list based on platform
   let fileList = commonFiles.slice();
   if (!isWindows) fileList = fileList.concat(unixOnlyFiles, fishFiles);
+  if (isWindows) fileList = fileList.concat(windowsOnlyFiles);
   if (isWindows) {
     const skipped = unixOnlyFiles.concat(fishFiles).filter(f => fileExistsInRepo(f));
     if (skipped.length) console.info('Skipping Unix-only files on Windows: ' + skipped.join(', '));
