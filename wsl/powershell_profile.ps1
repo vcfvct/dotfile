@@ -67,10 +67,8 @@ $null = Register-EngineEvent -SourceIdentifier PowerShell.OnIdle -Action {
 		Set-PSReadLineKeyHandler -chord 'Ctrl+e' -Function ForwardWord
 
 		if (Get-Command fnm -ErrorAction SilentlyContinue) {
-    		fnm env --use-on-cd --shell power-shell | Out-String | Invoke-Expression
+			fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
 		} 
-
-		fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
 
     Unregister-Event -SourceIdentifier PowerShell.OnIdle
 }
