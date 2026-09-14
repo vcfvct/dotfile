@@ -1,0 +1,29 @@
+{
+  "repository": "https://github.com/vcfvct/dotfile.git",
+  "distro": "Ubuntu-24.04",
+  "linuxUser": "",
+  "homebrewInstallerRevision": "8949852f785a3bacaba2a979d0790337950b0a4a",
+  "nodeVersion": "22",
+  "windowsPackages": [
+    "Git.Git",
+    "Microsoft.PowerShell",
+    "Neovim.Neovim",
+    "marlocarlo.psmux",
+    "JanDeDobbeleer.OhMyPosh",
+    "Schniz.fnm",
+    "junegunn.fzf",
+    "BurntSushi.ripgrep.MSVC",
+    "sharkdp.fd",
+    "zig.zig",
+    "dandavison.delta",
+    "astral-sh.uv",
+    "jqlang.jq",
+    "DEVCOM.JetBrainsMonoNerdFont"
+  ],
+  "powershellModules": [
+    "PSReadLine",
+    "Terminal-Icons",
+    "PSFzf",
+    "ZLocation"
+  ]
+}

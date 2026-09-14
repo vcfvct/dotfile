@@ -1,5 +1,9 @@
 ## My configuration
 
+For portable Windows Dev Box + Ubuntu WSL2 provisioning with Linuxbrew, see
+[devbox setup](devbox/README.md). The repository-root `workload.yaml` is the
+Dev Box customization entry point; the same scripts can run on an existing box.
+
 - VIM
 
   - for fzf.vim, `ctrl+g` is mapped to `:GFiles` to search with .gitignore applied.

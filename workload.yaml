@@ -1,0 +1,29 @@
+$schema: "1.0"
+name: dotfile-linuxbrew
+# WSL platform prerequisites must already be enabled by your image/admin.
+# Publish devbox/ and the updated symbolLink.js before using this remote entry point.
+userTasks:
+  - name: ~/winget
+    parameters:
+      package: Microsoft.PowerShell
+  - name: ~/winget
+    parameters:
+      package: Git.Git
+  - name: ~/powershell
+    parameters:
+      command: |
+        $ErrorActionPreference = 'Stop'
+        $env:PATH = [Environment]::GetEnvironmentVariable('PATH', 'Machine') + ';' + [Environment]::GetEnvironmentVariable('PATH', 'User') + ';' + $env:PATH
+        $repo = Join-Path $env:USERPROFILE 'source\repos\dotfile'
+        # Replace master with a published release tag for a fixed bootstrap revision.
+        if (-not (Test-Path -LiteralPath $repo)) {
+          New-Item -ItemType Directory -Path (Split-Path $repo) -Force | Out-Null
+          git clone --branch master https://github.com/vcfvct/dotfile.git $repo
+          if ($LASTEXITCODE -ne 0) { throw 'Dotfiles clone failed.' }
+        }
+        $bootstrap = Join-Path $repo 'devbox\bootstrap.ps1'
+        if (-not (Test-Path -LiteralPath $bootstrap)) {
+          throw 'Bootstrap files are not published or the existing checkout is outdated. Update it explicitly, preserving local changes.'
+        }
+        pwsh -NoLogo -NoProfile -File $bootstrap -Phase All
+        if ($LASTEXITCODE -ne 0) { throw 'Bootstrap incomplete. Read its log and resume the reported phase.' }
