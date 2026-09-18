@@ -1,0 +1,38 @@
+{
+  "model": "mai-code-1.1-flash",
+  "editorMode": "vim",
+  "defaultPermissionMode": "allow-all",
+  "footer": {
+    "showYolo": true
+  },
+  "tabs": {
+    "enabled": false
+  },
+  "subagents": {
+    "agents": {
+      "task": {
+        "model": "mai-code-1.1-flash",
+        "effortLevel": "medium"
+      },
+      "research": {
+        "model": "gpt-5.6-luna",
+        "effortLevel": "medium",
+        "contextTier": "default"
+      },
+      "explore": {
+        "model": "mai-code-1.1-flash",
+        "effortLevel": "medium"
+      },
+      "general-purpose": {
+        "model": "gpt-5.6-luna",
+        "effortLevel": "medium",
+        "contextTier": "default"
+      },
+      "code-review": {
+        "model": "gpt-5.6-sol",
+        "effortLevel": "medium",
+        "contextTier": "default"
+      }
+    }
+  }
+}
