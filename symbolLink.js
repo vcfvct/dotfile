@@ -18,6 +18,7 @@ const path = require('path');
   const commonFiles = [
     '.vimrc',
     // '.coc.vim',
+    '.copilot/settings.json',
     '.gitignore',
     '.gitconfig',
     '.eslintrc.js',
