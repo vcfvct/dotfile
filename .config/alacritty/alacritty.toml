@@ -1,5 +1,7 @@
-live_config_reload = true
 working_directory = "None"
+
+[general]
+live_config_reload = true
 
 [bell]
 animation = "EaseOutExpo"
@@ -772,10 +774,6 @@ multiplier = 3
 [selection]
 save_to_clipboard = false
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
-
-[shell]
-args = ["~"]
-program = "wsl"
 
 [window]
 dynamic_padding = false
