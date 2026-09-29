@@ -1,6 +1,8 @@
 working_directory = "None"
 
 [general]
+# Change this one import to select a theme; paths are relative to this file.
+import = ["themes/kanagawa.toml"]
 live_config_reload = true
 
 [bell]
@@ -10,38 +12,6 @@ duration = 0
 
 [colors]
 draw_bold_text_with_bright_colors = true
-
-[colors.bright]
-black = "0x676767"
-blue = "0x6871ff"
-cyan = "0x79e7fa"
-green = "0x42d425"
-magenta = "0xff76ff"
-red = "0xf9291b"
-white = "0xfeffff"
-yellow = "0xf1d000"
-
-[colors.cursor]
-cursor = "0xf4d300"
-text = "0xfefef4"
-
-[colors.normal]
-black = "0x000000"
-blue = "0x1477db"
-cyan = "0x00c5c7"
-green = "0x3cdf2b"
-magenta = "0xff2b70"
-red = "0xff2600"
-white = "0xc7c7c7"
-yellow = "0xffe700"
-
-[colors.primary]
-background = "0x173347"
-foreground = "0xfeffff"
-
-[colors.selection]
-background = "0x1f4461"
-text = "0xc1c1c1"
 
 [cursor]
 style = "Block"
