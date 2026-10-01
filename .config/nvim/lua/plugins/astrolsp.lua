@@ -35,9 +35,9 @@ return {
       --   return true
       -- end
     },
-    -- enable servers that you already have installed without mason
+    -- Enable Python LSP; mason.lua ensures Pyright is installed.
     servers = {
-      -- "pyright"
+      "pyright",
     },
     -- customize language server configuration passed to `vim.lsp.config`
     -- client specific configuration can also go in `lsp/` in your configuration root (see `:h lsp-config`)

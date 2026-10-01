@@ -9,16 +9,17 @@ end
 -- TODO(woa): Mason has no win_arm64 builds for lua-language-server, stylua, or
 -- tree-sitter-cli. Skip them on Windows on ARM until native packages exist; do
 -- not fall back to win_x64 emulation.
-local ensure_installed = {}
+-- Pyright runs on Node.js, including on Windows on ARM.
+local ensure_installed = { "pyright" }
 if not is_windows_arm() then
-  ensure_installed = {
+  vim.list_extend(ensure_installed, {
     -- install language servers
     "lua-language-server",
     -- install formatters
     "stylua",
     -- nvim-treesitter (main) needs the `tree-sitter` CLI on PATH
     "tree-sitter-cli",
-  }
+  })
 end
 
 ---@type LazySpec
