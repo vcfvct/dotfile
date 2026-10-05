@@ -79,10 +79,6 @@ function up {
     uv run python @Args
 }
 
-# zoxide provides the `z`/`zi` functions and the directory-tracking prompt hook.
-if (Get-Command zoxide -ErrorAction SilentlyContinue) {
-    zoxide init powershell | Out-String | Invoke-Expression
-}
 function fzf {
     Import-Module PSFzf
     Remove-Item -Path Function:fzf
@@ -130,6 +126,12 @@ function getoid {
 }
 
 oh-my-posh init pwsh --config "montys" | Invoke-Expression
+
+# Initialize zoxide after oh-my-posh, which also defines the prompt.
+# zoxide wraps the current prompt to track visited directories.
+if (Get-Command zoxide -ErrorAction SilentlyContinue) {
+    zoxide init powershell | Out-String | Invoke-Expression
+}
 
 # Expand user bin path
 $binPath = "$HOME\.local\bin"
