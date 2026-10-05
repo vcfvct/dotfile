@@ -1,6 +1,7 @@
 $schema: "1.0"
 name: dotfile-linuxbrew
-# User task stages the checkout and runs read-only Preflight where possible.
+# The Microsoft-configured image supplies Git and PowerShell 7.
+# This user task stages the checkout and runs read-only Preflight.
 # Installers and WSL platform changes are left for an interactive session.
 userTasks:
   - name: ~/powershell
@@ -8,12 +9,12 @@ userTasks:
       command: |
         $ErrorActionPreference = 'Stop'
         $env:PATH = [Environment]::GetEnvironmentVariable('PATH', 'Machine') + ';' + [Environment]::GetEnvironmentVariable('PATH', 'User') + ';' + $env:PATH
-        $repo = Join-Path $env:USERPROFILE 'source\repos\dotfile'
-        if (-not (Get-Command git.exe -ErrorAction SilentlyContinue)) {
-          Write-Warning 'Git is missing. Install it interactively using an approved method, then clone https://github.com/vcfvct/dotfile.git into your source/repos/dotfile folder.'
-          Write-Host 'No software was installed by this customization. Continue with devbox/README.md after cloning.'
-          return
+        foreach ($command in 'git.exe', 'pwsh.exe') {
+          if (-not (Get-Command $command -ErrorAction SilentlyContinue)) {
+            throw "The Dev Box image must supply $command before this user task runs. Install it interactively, then rerun the task."
+          }
         }
+        $repo = Join-Path $env:USERPROFILE 'source\repos\dotfile'
         if (-not (Test-Path -LiteralPath $repo)) {
           New-Item -ItemType Directory -Path (Split-Path $repo) -Force | Out-Null
           git clone --branch master https://github.com/vcfvct/dotfile.git $repo
@@ -23,10 +24,6 @@ userTasks:
         if (-not (Test-Path -LiteralPath $bootstrap)) {
           throw 'Bootstrap files are missing in the existing checkout. Update it explicitly, preserving local changes.'
         }
-        if (Get-Command pwsh.exe -ErrorAction SilentlyContinue) {
-          pwsh -NoLogo -NoProfile -File $bootstrap -Phase Preflight
-          if ($LASTEXITCODE -ne 0) { throw 'Preflight failed. Review its output before proceeding.' }
-        } else {
-          Write-Warning 'PowerShell 7 is missing. Install it interactively before running bootstrap.ps1.'
-        }
+        pwsh -NoLogo -NoProfile -File $bootstrap -Phase Preflight
+        if ($LASTEXITCODE -ne 0) { throw 'Preflight failed. Review its output before proceeding.' }
         Write-Host 'Checkout is staged. Finish setup interactively using devbox/README.md (WslPlatform if needed, then Windows, Wsl, Verify).'
