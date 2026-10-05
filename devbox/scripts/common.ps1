@@ -38,6 +38,51 @@ function Show-WslStatus {
     }
 }
 
+function Assert-WindowsPackagesPresent {
+    param($Settings)
+    # Check usable commands rather than WinGet's per-user inventory: image/team
+    # provisioned packages may not appear in a user's WinGet install history.
+    $commands = @{
+        'Git.Git' = 'git.exe'
+        'Microsoft.PowerShell' = 'pwsh.exe'
+        'Neovim.Neovim' = 'nvim.exe'
+        'marlocarlo.psmux' = 'psmux.exe'
+        'JanDeDobbeleer.OhMyPosh' = 'oh-my-posh.exe'
+        'OpenJS.NodeJS.LTS' = 'node.exe'
+        'junegunn.fzf' = 'fzf.exe'
+        'BurntSushi.ripgrep.MSVC' = 'rg.exe'
+        'sharkdp.fd' = 'fd.exe'
+        'zig.zig' = 'zig.exe'
+        'dandavison.delta' = 'delta.exe'
+        'astral-sh.uv' = 'uv.exe'
+        'jqlang.jq' = 'jq.exe'
+        'ajeetdsouza.zoxide' = 'zoxide.exe'
+    }
+    $missing = @()
+    foreach ($id in $Settings.windowsPackages) {
+        if ($id -eq 'DEVCOM.JetBrainsMonoNerdFont') {
+            $fontPaths = @(
+                (Join-Path $env:WINDIR 'Fonts')
+                (Join-Path $env:LOCALAPPDATA 'Microsoft\Windows\Fonts')
+            )
+            if (-not ($fontPaths | Where-Object {
+                (Test-Path -LiteralPath $_ -PathType Container) -and
+                    (Get-ChildItem -LiteralPath $_ -Filter 'JetBrainsMono*Nerd*.ttf' -File | Select-Object -First 1)
+            })) { $missing += "$id (JetBrains Mono Nerd Font)" }
+            continue
+        }
+        if (-not $commands.ContainsKey($id)) {
+            throw "No preprovisioned package check for $id. Add a command/file check before using this package in user customizations."
+        }
+        if (-not (Get-Command $commands[$id] -ErrorAction SilentlyContinue)) {
+            $missing += "$id ($($commands[$id]))"
+        }
+    }
+    if ($missing.Count) {
+        throw "Missing preprovisioned Windows packages: $($missing -join ', '). Install them in the Dev Box image or an approved team customization, then rerun the user customization. No WinGet installs were attempted."
+    }
+}
+
 function Get-WslNames {
     $output = & wsl.exe --list --quiet 2>&1
     $exitCode = $LASTEXITCODE

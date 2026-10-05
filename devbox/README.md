@@ -84,12 +84,25 @@ Do not run personal phases as LocalSystem or another administrator account.
 
 ## Dev Box YAML
 
-The repository-root `workload.yaml` uses the Microsoft catalog tasks
-`~/winget` and `~/powershell`. Confirm these tasks are available and permitted
-using the VS Code Dev Box extension's **List Available Tasks For This Dev Box**.
-Validate the YAML in the Dev Box portal before provisioning. Project policies,
-WinGet package elevation, endpoint access, and WSL platform prerequisites
-remain prerequisites; user YAML does not bypass them.
+The repository-root `workload.yaml` uses the Microsoft catalog `~/powershell`
+**user task**. Confirm it is available and permitted with the VS Code Dev Box
+extension's **List Available Tasks For This Dev Box**; validate the YAML in the
+Dev Box portal before provisioning. The Dev Box image or an admin-approved team
+customization must provide Git, PowerShell 7, every Windows package in
+`devbox/settings.json`, and WSL2 platform prerequisites **before** this user
+task runs. On a standard user account, WinGet installers that require elevation
+can request UAC and stall or fail unattended; `--silent` and
+`--disable-interactivity` do not bypass UAC. The YAML invokes
+`-PreprovisionedWindows`: it checks for usable tools, the Nerd Font, and a
+registered WSL2 platform service, and fails with a prerequisite message rather
+than invoking WinGet or enabling Windows features. The Wsl phase
+can still register the configured Ubuntu distribution for the signed-in user,
+so the platform must already be enabled and virtualization available. If your
+policy also blocks user-context distro registration, provision it for that
+user through an approved process before running the YAML. Other user-scoped
+operations may still encounter network, policy, or consent prompts. The
+ordinary Windows phase (without the switch) still installs missing WinGet
+packages when run interactively on a personal machine.
 
 **Commit and publish these files before using the YAML on a new machine.**
 The YAML initially clones `master`; choose a published release tag for a fixed
@@ -99,10 +112,10 @@ It never pulls, resets, or overwrites an existing checkout. Update an old
 checkout explicitly after preserving local changes.
 
 When creating a new Dev Box, choose the repository containing `workload.yaml`,
-or upload that YAML locally. User tasks run after first sign-in. They install
-Git/PowerShell and invoke the same `-Phase All` entry point. Provision the WSL
-platform through the image or an admin-approved team task first. The ordinary
-bootstrap remains usable even if your project disables personal customization.
+or upload that YAML locally. The user task runs after first sign-in and invokes
+`-Phase All -PreprovisionedWindows`. Install machine-level prerequisites in the
+image or an admin-approved team task first. The ordinary bootstrap remains
+usable even if your project disables personal customization.
 
 ## Safety and repeatability
 

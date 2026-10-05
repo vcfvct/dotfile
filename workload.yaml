@@ -1,19 +1,20 @@
 $schema: "1.0"
 name: dotfile-linuxbrew
-# WSL platform prerequisites must already be enabled by your image/admin.
-# Publish devbox/ and the updated symbolLink.js before using this remote entry point.
+# Image or approved team customizations must provide WSL2 platform, Git,
+# PowerShell 7, and every Windows package in devbox/settings.json.
+# The Wsl phase registers Ubuntu in this user's account if needed.
+# User tasks never attempt WinGet package installs.
 userTasks:
-  - name: ~/winget
-    parameters:
-      package: Microsoft.PowerShell
-  - name: ~/winget
-    parameters:
-      package: Git.Git
   - name: ~/powershell
     parameters:
       command: |
         $ErrorActionPreference = 'Stop'
         $env:PATH = [Environment]::GetEnvironmentVariable('PATH', 'Machine') + ';' + [Environment]::GetEnvironmentVariable('PATH', 'User') + ';' + $env:PATH
+        foreach ($command in 'git.exe', 'pwsh.exe') {
+          if (-not (Get-Command $command -ErrorAction SilentlyContinue)) {
+            throw "Missing $command. Preinstall it in the Dev Box image or an approved team customization."
+          }
+        }
         $repo = Join-Path $env:USERPROFILE 'source\repos\dotfile'
         # Replace master with a published release tag for a fixed bootstrap revision.
         if (-not (Test-Path -LiteralPath $repo)) {
@@ -25,5 +26,5 @@ userTasks:
         if (-not (Test-Path -LiteralPath $bootstrap)) {
           throw 'Bootstrap files are not published or the existing checkout is outdated. Update it explicitly, preserving local changes.'
         }
-        pwsh -NoLogo -NoProfile -File $bootstrap -Phase All
+        pwsh -NoLogo -NoProfile -File $bootstrap -Phase All -PreprovisionedWindows
         if ($LASTEXITCODE -ne 0) { throw 'Bootstrap incomplete. Read its log and resume the reported phase.' }

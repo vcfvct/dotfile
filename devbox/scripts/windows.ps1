@@ -1,28 +1,33 @@
-param($Settings, [string]$Repo, [switch]$SkipNeovimSync)
+param($Settings, [string]$Repo, [switch]$SkipNeovimSync, [switch]$PreprovisionedWindows)
 . "$PSScriptRoot\common.ps1"
 
-if (-not (Get-Command winget.exe -ErrorAction SilentlyContinue)) {
-    throw 'WinGet is required. Ask your administrator to provision App Installer.'
-}
 Update-ProcessPath
-foreach ($id in $Settings.windowsPackages) {
-    # An existing Node.js release (including non-LTS) should not be downgraded.
-    if ($id -eq 'OpenJS.NodeJS.LTS' -and (Get-Command node.exe -ErrorAction SilentlyContinue)) {
-        Write-Host 'Using existing Node.js installation instead of installing Node.js LTS.'
-        continue
+if ($PreprovisionedWindows) {
+    # User customizations must not invoke installers that could request UAC.
+    Assert-WindowsPackagesPresent $Settings
+} else {
+    if (-not (Get-Command winget.exe -ErrorAction SilentlyContinue)) {
+        throw 'WinGet is required. Ask your administrator to provision App Installer.'
     }
-    # Do not upgrade existing packages on every resume.
-    & winget.exe list --id $id --exact --source winget --accept-source-agreements --disable-interactivity | Out-Host
-    $code = $LASTEXITCODE
-    if ($code -eq 0) { continue }
-    if ($code -ne -1978335212) { throw "WinGet detection failed for $id (exit $code)." }
-    Invoke-Native winget.exe @(
-        'install', '--id', $id, '--exact', '--source', 'winget',
-        '--silent', '--accept-package-agreements', '--accept-source-agreements',
-        '--disable-interactivity'
-    )
+    foreach ($id in $Settings.windowsPackages) {
+        # An existing Node.js release (including non-LTS) should not be downgraded.
+        if ($id -eq 'OpenJS.NodeJS.LTS' -and (Get-Command node.exe -ErrorAction SilentlyContinue)) {
+            Write-Host 'Using existing Node.js installation instead of installing Node.js LTS.'
+            continue
+        }
+        # Do not upgrade existing packages on every resume.
+        & winget.exe list --id $id --exact --source winget --accept-source-agreements --disable-interactivity | Out-Host
+        $code = $LASTEXITCODE
+        if ($code -eq 0) { continue }
+        if ($code -ne -1978335212) { throw "WinGet detection failed for $id (exit $code)." }
+        Invoke-Native winget.exe @(
+            'install', '--id', $id, '--exact', '--source', 'winget',
+            '--silent', '--accept-package-agreements', '--accept-source-agreements',
+            '--disable-interactivity'
+        )
+    }
+    Update-ProcessPath
 }
-Update-ProcessPath
 Assert-NeovimVersion
 Invoke-Native node.exe @('--version')
 
