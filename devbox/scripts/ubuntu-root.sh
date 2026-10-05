@@ -63,6 +63,25 @@ if config.get("user", "default", fallback=None) != sys.argv[1]:
     os.chmod(temp.name, 0o644)
     os.replace(temp.name, path)
 PY
+    # Ubuntu's first-run Insights script passes $0/$1 to `su -c` using Bash
+    # semantics. Fish does not expose those positional parameters the same way.
+    # Keep the user's login shell as fish, but run these OOBE commands in Bash.
+    /home/linuxbrew/.linuxbrew/bin/python3 - <<'PY'
+import pathlib
+import shutil
+import uuid
+
+path = pathlib.Path('/usr/lib/wsl/ubuntu-insights.sh')
+if path.exists():
+    original = path.read_bytes()
+    old = b'su "$user" -c'
+    new = b'su -s /bin/bash "$user" -c'
+    if old in original:
+        backup = pathlib.Path(str(path) + '.devbox-backup-' + uuid.uuid4().hex)
+        shutil.copy2(path, backup)
+        path.write_bytes(original.replace(old, new))
+        print(f'Backup: {backup}')
+PY
 else
     echo "Unknown phase: $phase" >&2
     exit 1

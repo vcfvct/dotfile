@@ -2,7 +2,7 @@ param($Settings, [string]$Repo)
 . "$PSScriptRoot\common.ps1"
 Update-ProcessPath
 Assert-NeovimVersion
-foreach ($command in 'git', 'pwsh', 'nvim', 'psmux', 'fnm', 'fzf', 'rg', 'fd', 'zig', 'delta', 'oh-my-posh', 'uv', 'jq') {
+foreach ($command in 'git', 'pwsh', 'nvim', 'psmux', 'node', 'fzf', 'rg', 'fd', 'zig', 'delta', 'oh-my-posh', 'uv', 'jq', 'zoxide') {
     Get-Command $command -ErrorAction Stop | Select-Object Name, Source | Format-Table
 }
 foreach ($module in $Settings.powershellModules) {
@@ -17,10 +17,7 @@ foreach ($file in '.psmux.conf', '.psmux-battery.ps1', '.tmux.common.conf') {
         (Get-FileHash (Join-Path $env:USERPROFILE $file)).Hash) { throw "Configuration mismatch: $file" }
 }
 if (-not (Test-Path $PROFILE.CurrentUserCurrentHost)) { throw 'PowerShell profile loader is missing.' }
-$fnmEnvironment = & fnm.exe env --shell powershell
-if ($LASTEXITCODE -ne 0) { throw 'Cannot initialize Node for verification.' }
-$fnmEnvironment | Out-String | Invoke-Expression
-Invoke-Native fnm.exe @('use', $Settings.nodeVersion)
+Invoke-Native node.exe @('--version')
 Push-Location $Repo
 $previousHome = $env:HOME
 try {

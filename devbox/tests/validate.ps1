@@ -43,7 +43,12 @@ try {
         $caught = $true
     }
     if (-not $caught) { throw 'Native failure was not propagated.' }
+    $script:emptyWsl = $false
     function wsl.exe {
+        if ($script:emptyWsl) {
+            $global:LASTEXITCODE = -1
+            return "Windows Subsystem for Linux has no`0 installed`0 distributions."
+        }
         $global:LASTEXITCODE = 0
         if ($args -contains '--verbose') {
             '* Ubuntu-24.04       Stopped 2'
@@ -61,6 +66,10 @@ try {
     $caught = $false
     try { Assert-Wsl2 Ubuntu } catch { $caught = $true }
     if (-not $caught) { throw 'Partial distro name was accepted.' }
+    $script:emptyWsl = $true
+    if (@(Get-WslNames).Count -ne 0) { throw 'Empty WSL installation was not recognized.' }
+    $status = Show-WslStatus 6>&1 | Out-String
+    if ($status -notmatch 'no installed distributions yet') { throw 'Empty WSL status was not recognized.' }
 } finally {
     Remove-Item Function:\wsl.exe -ErrorAction SilentlyContinue
     # Delete only files created by this test, then its empty directory.

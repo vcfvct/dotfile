@@ -21,9 +21,31 @@ function Update-ProcessPath {
     ) -join ';'
 }
 
+function Show-WslStatus {
+    if (-not (Get-Command wsl.exe -ErrorAction SilentlyContinue)) {
+        Write-Warning 'WSL is unavailable. Complete WslPlatform before running the Wsl phase.'
+        return
+    }
+    $output = & wsl.exe --list --verbose 2>&1
+    $exitCode = $LASTEXITCODE
+    $text = ($output | Out-String) -replace "`0", ''
+    if ($exitCode -eq 0) {
+        Write-Host $text.TrimEnd()
+    } elseif ($text -match 'no\s+installed\s+distributions|WSL_E_DEFAULT_DISTRO_NOT_FOUND') {
+        Write-Host 'WSL has no installed distributions yet; the Wsl phase will install one.'
+    } else {
+        Write-Warning "WSL status check failed with exit code ${exitCode}. Complete WslPlatform before running the Wsl phase.`n$text"
+    }
+}
+
 function Get-WslNames {
-    $output = & wsl.exe --list --quiet
-    if ($LASTEXITCODE -ne 0) { throw 'Cannot list WSL distributions. Complete WslPlatform first.' }
+    $output = & wsl.exe --list --quiet 2>&1
+    $exitCode = $LASTEXITCODE
+    $text = ($output | Out-String) -replace "`0", ''
+    if ($exitCode -ne 0) {
+        if ($text -match 'no\s+installed\s+distributions|WSL_E_DEFAULT_DISTRO_NOT_FOUND') { return }
+        throw "Cannot list WSL distributions. Complete WslPlatform first. Exit code ${exitCode}:`n$text"
+    }
     @($output | ForEach-Object { ($_ -replace "`0", '').Trim() } | Where-Object { $_ })
 }
 
