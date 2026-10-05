@@ -84,26 +84,30 @@ Do not run personal phases as LocalSystem or another administrator account.
 
 ## Dev Box YAML
 
-The repository-root `workload.yaml` is an **optional, read-only readiness
-notice**, not unattended provisioning. Its Microsoft catalog `~/powershell`
-user task checks whether WinGet, Git, PowerShell 7, and WSL are visible after
-sign-in and prints the result. It neither assumes they are installed nor runs
-WinGet, clones the repository, enables WSL, or starts `bootstrap.ps1`. Confirm
-the task is available with the VS Code Dev Box extension's **List Available
-Tasks For This Dev Box** and validate the YAML in the Dev Box portal. You can
-also skip the YAML entirely and follow the manual steps below.
+The repository-root `workload.yaml` uses the Microsoft catalog `~/powershell`
+user task **after first sign-in** to stage this repository when Git is already
+available. If PowerShell 7 is also available, it runs read-only `Preflight`.
+It never installs software, enables WSL, or runs the mutating bootstrap phases.
+If Git or PowerShell 7 is missing, it prints a manual next step instead of
+assuming an IT-managed image or starting an installer that might request UAC.
+Confirm the task is available with the VS Code Dev Box extension's **List
+Available Tasks For This Dev Box** and validate the YAML in the Dev Box portal.
+The YAML clones `master` only when the checkout does not exist; publish these
+files before using it, or choose a published release tag for a fixed revision.
+It never pulls, resets, or overwrites an existing checkout.
 
-On a new Dev Box, sign in and install Git and PowerShell 7 by an approved method
-if either is missing. WinGet is one option if available; its installers may
-request UAC even with `--silent` and `--disable-interactivity`. If you lack
-permission to approve an installer or enable WSL2, ask your administrator;
-user YAML cannot grant those rights. Then clone the repository and run the
-phases interactively from **Run on an existing Windows Dev Box** above. If WSL2
-needs enabling, use the separate elevated `WslPlatform` phase and reboot as
-instructed before running `Wsl` under your own account. The Windows phase uses
-`devbox/settings.json` as the single list of packages to install and can show
-UAC prompts in your logged-in session. Review its logs and rerun a failed phase
-rather than relying on an unattended customization to approve prompts.
+After sign-in, install missing Git or PowerShell 7 by an approved interactive
+method and clone the repository yourself if the YAML could not do so. WinGet is
+one option if available; its installers may request UAC even with `--silent`
+and `--disable-interactivity`. If you lack permission to approve an installer
+or enable WSL2, ask your administrator; user YAML cannot grant those rights.
+Run `Preflight` if the YAML could not, then use the phases in **Run on an
+existing Windows Dev Box** above. If WSL2 needs enabling, use the separate
+elevated `WslPlatform` phase and reboot as instructed before running `Wsl`
+under your own account. The Windows phase uses `devbox/settings.json` as the
+single list of packages to install and can show UAC prompts in your logged-in
+session. Review its logs and rerun a failed phase rather than relying on an
+unattended customization to approve prompts.
 
 ## Safety and repeatability
 

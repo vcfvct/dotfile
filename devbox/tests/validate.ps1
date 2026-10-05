@@ -22,6 +22,14 @@ $yaml = Get-Content (Join-Path $repo 'workload.yaml') -Raw
 if ($yaml -match 'name:\s*~/winget|(?i)\bwinget(?:\.exe)?\s+install\b|Phase All|PreprovisionedWindows') {
     throw 'Dev Box user customization must not install packages or invoke the bootstrap unattended.'
 }
+if ($yaml -notmatch 'git clone --branch master' -or $yaml -notmatch '-Phase Preflight') {
+    throw 'Dev Box user customization must stage the checkout and run read-only Preflight when available.'
+}
+$command = (($yaml -split 'command:\s*\|\s*\r?\n', 2)[1] -replace '(?m)^ {8}', '')
+$tokens = $null
+$errors = $null
+[Management.Automation.Language.Parser]::ParseInput($command, [ref]$tokens, [ref]$errors) | Out-Null
+if ($errors) { throw "Invalid PowerShell command in workload.yaml: $($errors | Out-String)" }
 Invoke-Native node @('--check', (Join-Path $repo 'symbolLink.js'))
 $bash = Join-Path $env:ProgramFiles 'Git\usr\bin\bash.exe'
 if (-not (Test-Path $bash)) { throw 'Git for Windows bash is required for non-WSL shell syntax validation.' }

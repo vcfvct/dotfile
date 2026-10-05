@@ -1,15 +1,32 @@
 $schema: "1.0"
 name: dotfile-linuxbrew
-# User customization is read-only: no admin rights, WinGet, Git, PowerShell 7,
-# WSL, or particular Dev Box image contents are assumed. Finish setup after sign-in.
+# User task stages the checkout and runs read-only Preflight where possible.
+# Installers and WSL platform changes are left for an interactive session.
 userTasks:
   - name: ~/powershell
     parameters:
       command: |
-        Write-Host 'Dotfile setup is interactive on this Dev Box; no software was installed by this customization.'
-        foreach ($command in 'winget.exe', 'git.exe', 'pwsh.exe', 'wsl.exe') {
-          $found = [bool](Get-Command $command -ErrorAction SilentlyContinue)
-          Write-Host "$command available: $found"
+        $ErrorActionPreference = 'Stop'
+        $env:PATH = [Environment]::GetEnvironmentVariable('PATH', 'Machine') + ';' + [Environment]::GetEnvironmentVariable('PATH', 'User') + ';' + $env:PATH
+        $repo = Join-Path $env:USERPROFILE 'source\repos\dotfile'
+        if (-not (Get-Command git.exe -ErrorAction SilentlyContinue)) {
+          Write-Warning 'Git is missing. Install it interactively using an approved method, then clone https://github.com/vcfvct/dotfile.git into your source/repos/dotfile folder.'
+          Write-Host 'No software was installed by this customization. Continue with devbox/README.md after cloning.'
+          return
         }
-        Write-Host 'After signing in, follow devbox/README.md: install prerequisites with any required UI/admin approval, then run Preflight, Windows, Wsl, and Verify under your account.'
-        Write-Host 'Repository: https://github.com/vcfvct/dotfile'
+        if (-not (Test-Path -LiteralPath $repo)) {
+          New-Item -ItemType Directory -Path (Split-Path $repo) -Force | Out-Null
+          git clone --branch master https://github.com/vcfvct/dotfile.git $repo
+          if ($LASTEXITCODE -ne 0) { throw 'Dotfiles clone failed. Check network access and retry manually.' }
+        }
+        $bootstrap = Join-Path $repo 'devbox\bootstrap.ps1'
+        if (-not (Test-Path -LiteralPath $bootstrap)) {
+          throw 'Bootstrap files are missing in the existing checkout. Update it explicitly, preserving local changes.'
+        }
+        if (Get-Command pwsh.exe -ErrorAction SilentlyContinue) {
+          pwsh -NoLogo -NoProfile -File $bootstrap -Phase Preflight
+          if ($LASTEXITCODE -ne 0) { throw 'Preflight failed. Review its output before proceeding.' }
+        } else {
+          Write-Warning 'PowerShell 7 is missing. Install it interactively before running bootstrap.ps1.'
+        }
+        Write-Host 'Checkout is staged. Finish setup interactively using devbox/README.md (WslPlatform if needed, then Windows, Wsl, Verify).'
