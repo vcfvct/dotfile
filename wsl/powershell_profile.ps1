@@ -66,10 +66,6 @@ $null = Register-EngineEvent -SourceIdentifier PowerShell.OnIdle -Action {
 # ctrl+e to move forward word
 		Set-PSReadLineKeyHandler -chord 'Ctrl+e' -Function ForwardWord
 
-		if (Get-Command fnm -ErrorAction SilentlyContinue) {
-			fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
-		} 
-
     Unregister-Event -SourceIdentifier PowerShell.OnIdle
 }
 
@@ -83,10 +79,9 @@ function up {
     uv run python @Args
 }
 
-function z {
-    Import-Module ZLocation
-    Remove-Item -Path Function:z
-    z @args
+# zoxide provides the `z`/`zi` functions and the directory-tracking prompt hook.
+if (Get-Command zoxide -ErrorAction SilentlyContinue) {
+    zoxide init powershell | Out-String | Invoke-Expression
 }
 function fzf {
     Import-Module PSFzf

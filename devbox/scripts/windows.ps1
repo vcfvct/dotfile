@@ -4,7 +4,13 @@ param($Settings, [string]$Repo, [switch]$SkipNeovimSync)
 if (-not (Get-Command winget.exe -ErrorAction SilentlyContinue)) {
     throw 'WinGet is required. Ask your administrator to provision App Installer.'
 }
+Update-ProcessPath
 foreach ($id in $Settings.windowsPackages) {
+    # An existing Node.js release (including non-LTS) should not be downgraded.
+    if ($id -eq 'OpenJS.NodeJS.LTS' -and (Get-Command node.exe -ErrorAction SilentlyContinue)) {
+        Write-Host 'Using existing Node.js installation instead of installing Node.js LTS.'
+        continue
+    }
     # Do not upgrade existing packages on every resume.
     & winget.exe list --id $id --exact --source winget --accept-source-agreements --disable-interactivity | Out-Host
     $code = $LASTEXITCODE
@@ -18,12 +24,7 @@ foreach ($id in $Settings.windowsPackages) {
 }
 Update-ProcessPath
 Assert-NeovimVersion
-Invoke-Native fnm.exe @('install', $Settings.nodeVersion)
-Invoke-Native fnm.exe @('default', $Settings.nodeVersion)
-$fnmEnvironment = & fnm.exe env --shell powershell
-if ($LASTEXITCODE -ne 0) { throw 'Cannot initialize fnm.' }
-$fnmEnvironment | Out-String | Invoke-Expression
-Invoke-Native fnm.exe @('use', $Settings.nodeVersion)
+Invoke-Native node.exe @('--version')
 
 foreach ($module in $Settings.powershellModules) {
     if (-not (Get-Module -ListAvailable -Name $module)) {

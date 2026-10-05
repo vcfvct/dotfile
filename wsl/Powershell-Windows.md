@@ -47,8 +47,8 @@ else {
 
 ## Z
 
-- [ZLocation](https://github.com/vors/ZLocation) for smart jump.
-  - `Install-Module ZLocation -Force` (can be lazy loaded by wrapping in a function)
+- [zoxide](https://github.com/ajeetdsouza/zoxide) for smart jumps (`z`/`zi`).
+  - Install with WinGet (`winget install --id ajeetdsouza.zoxide --exact`) and load with `zoxide init powershell | Out-String | Invoke-Expression`. The devbox Windows phase installs it.
 
 ## Terminal Icon
 

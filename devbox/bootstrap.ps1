@@ -31,7 +31,7 @@ if ($Phase -eq 'Preflight') {
     $pendingReboot = (Test-Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\RebootPending') -or
         (Test-Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate\Auto Update\RebootRequired')
     Write-Host "Windows servicing reboot pending: $pendingReboot"
-    Invoke-Native wsl.exe @('--list', '--verbose')
+    Show-WslStatus
     Invoke-Native git @('-C', $repo, 'status', '--short')
     Write-Host 'Check approved tasks with VS Code: Dev Box: List Available Tasks For This Dev Box.'
     return

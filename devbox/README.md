@@ -1,6 +1,6 @@
 # Portable Dev Box setup
 
-Windows: WinGet, PowerShell 7, Neovim, psmux, Oh My Posh, fnm/Node,
+Windows: WinGet, PowerShell 7, Neovim, psmux, Oh My Posh, Node.js (existing installation or WinGet LTS),
 fzf, ripgrep, delta, uv, jq, a Nerd Font, and the modules used by
 `wsl\powershell_profile.ps1`.
 
@@ -31,7 +31,7 @@ configuration targets; interactive profile/prompt and multiplexer behavior
 still need checking in a real terminal.
 
 Edit `devbox\settings.json` or supply `-SettingsPath` to keep machine-specific
-choices outside the repository. Default Ubuntu is **Ubuntu-24.04**; existing
+choices outside the repository. Default Ubuntu is **Ubuntu-26.04**; existing
 Ubuntu-22.04, Rancher Desktop, and other distributions are not upgraded,
 deleted, or stopped. To intentionally configure an existing Ubuntu instead:
 
@@ -137,6 +137,11 @@ bootstrap remains usable even if your project disables personal customization.
   unrelated plugins. Homebrew supplies Fisher itself.
 - `/etc/wsl.conf` is backed up before its default-user setting is updated.
   Other parsed settings are preserved, though INI comments/formatting are not.
+- On Ubuntu images whose first-run Insights script assumes a Bash login shell,
+  the Wsl phase backs up `/usr/lib/wsl/ubuntu-insights.sh` and makes its `su`
+  commands use Bash explicitly. This lets first-run setup work with fish as the
+  default shell; it does not choose an Insights consent setting. A package
+  update may replace the script, in which case rerun the Wsl phase if needed.
 - No tokens, passwords, SSH keys, proxy credentials, execution-policy changes,
   broad sudo exceptions, or remote-shell access are installed.
 
