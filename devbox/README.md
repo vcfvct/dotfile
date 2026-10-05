@@ -84,25 +84,26 @@ Do not run personal phases as LocalSystem or another administrator account.
 
 ## Dev Box YAML
 
-The repository-root `workload.yaml` uses the Microsoft catalog tasks
-`~/winget` and `~/powershell`. Confirm these tasks are available and permitted
-using the VS Code Dev Box extension's **List Available Tasks For This Dev Box**.
-Validate the YAML in the Dev Box portal before provisioning. Project policies,
-WinGet package elevation, endpoint access, and WSL platform prerequisites
-remain prerequisites; user YAML does not bypass them.
+The repository-root `workload.yaml` uses the Microsoft catalog `~/powershell`
+user task **after first sign-in**. It expects the Microsoft-configured image to
+supply Git and PowerShell 7, clones the checkout if absent, and runs read-only
+`Preflight`. If either prerequisite is missing, it stops with a clear error
+rather than attempting an unattended install. It never enables WSL or runs the
+mutating bootstrap phases. Confirm the task is available with the VS Code Dev
+Box extension's **List Available Tasks For This Dev Box** and validate the YAML
+in the Dev Box portal. The YAML clones `master` only when the checkout does not
+exist; publish these files before using it, or choose a published release tag
+for a fixed revision. It never pulls, resets, or overwrites an existing checkout.
 
-**Commit and publish these files before using the YAML on a new machine.**
-The YAML initially clones `master`; choose a published release tag for a fixed
-bootstrap version (`git clone --branch` accepts branches/tags, not commit SHAs).
-For a commit SHA, use clone followed by an explicit detached checkout.
-It never pulls, resets, or overwrites an existing checkout. Update an old
-checkout explicitly after preserving local changes.
-
-When creating a new Dev Box, choose the repository containing `workload.yaml`,
-or upload that YAML locally. User tasks run after first sign-in. They install
-Git/PowerShell and invoke the same `-Phase All` entry point. Provision the WSL
-platform through the image or an admin-approved team task first. The ordinary
-bootstrap remains usable even if your project disables personal customization.
+After sign-in, review Preflight and run the remaining phases in **Run on an
+existing Windows Dev Box** above. If WSL2 needs enabling, use the separate
+elevated `WslPlatform` phase and reboot as instructed before running `Wsl`
+under your own account. The Windows phase uses `devbox/settings.json` as the
+single list of packages to install and can show UAC prompts in your logged-in
+session. `--silent` and `--disable-interactivity` do not bypass UAC; if you
+lack permission to approve an installer or enable WSL2, ask your administrator.
+Review the logs and rerun a failed phase rather than relying on an unattended
+customization to approve prompts.
 
 ## Safety and repeatability
 
