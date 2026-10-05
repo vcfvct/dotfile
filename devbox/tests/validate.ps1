@@ -18,6 +18,10 @@ if ($settings.homebrewInstallerRevision -notmatch '^[a-f0-9]{40}$') { throw 'Ins
 if ($settings.windowsPackages.Count -ne @($settings.windowsPackages | Select-Object -Unique).Count) {
     throw 'Duplicate Windows package IDs.'
 }
+$yaml = Get-Content (Join-Path $repo 'workload.yaml') -Raw
+if ($yaml -match 'name:\s*~/winget|(?i)\bwinget(?:\.exe)?\s+install\b|Phase All|PreprovisionedWindows') {
+    throw 'Dev Box user customization must not install packages or invoke the bootstrap unattended.'
+}
 Invoke-Native node @('--check', (Join-Path $repo 'symbolLink.js'))
 $bash = Join-Path $env:ProgramFiles 'Git\usr\bin\bash.exe'
 if (-not (Test-Path $bash)) { throw 'Git for Windows bash is required for non-WSL shell syntax validation.' }
@@ -43,51 +47,6 @@ try {
         $caught = $true
     }
     if (-not $caught) { throw 'Native failure was not propagated.' }
-    $savedPath = $env:PATH
-    try {
-        $env:PATH = $temporary
-        $caught = $false
-        try {
-            Assert-WindowsPackagesPresent ([pscustomobject]@{ windowsPackages = @('Neovim.Neovim') })
-        } catch {
-            if ($_.Exception.Message -notmatch 'Missing preprovisioned Windows packages.*No WinGet installs were attempted') { throw }
-            $caught = $true
-        }
-        if (-not $caught) { throw 'Missing preprovisioned tool was accepted.' }
-    } finally {
-        $env:PATH = $savedPath
-    }
-    $caught = $false
-    try {
-        Assert-WindowsPackagesPresent ([pscustomobject]@{ windowsPackages = @('Unmapped.Package') })
-    } catch {
-        if ($_.Exception.Message -notmatch 'No preprovisioned package check') { throw }
-        $caught = $true
-    }
-    if (-not $caught) { throw 'Unmapped package was accepted.' }
-    $savedWindir = $env:WINDIR
-    $savedLocalAppData = $env:LOCALAPPDATA
-    try {
-        $env:WINDIR = $temporary
-        $env:LOCALAPPDATA = $temporary
-        $fontSettings = [pscustomobject]@{ windowsPackages = @('DEVCOM.JetBrainsMonoNerdFont') }
-        $caught = $false
-        try { Assert-WindowsPackagesPresent $fontSettings } catch { $caught = $true }
-        if (-not $caught) { throw 'Missing preprovisioned font was accepted.' }
-        $fonts = Join-Path $temporary 'Fonts'
-        [IO.Directory]::CreateDirectory($fonts) | Out-Null
-        [IO.File]::WriteAllText((Join-Path $fonts 'JetBrainsMonoNerdFont-Regular.ttf'), '')
-        Assert-WindowsPackagesPresent $fontSettings
-        Remove-Item -LiteralPath (Join-Path $fonts 'JetBrainsMonoNerdFont-Regular.ttf')
-        Remove-Item -LiteralPath $fonts
-    } finally {
-        $env:WINDIR = $savedWindir
-        $env:LOCALAPPDATA = $savedLocalAppData
-    }
-    $yaml = Get-Content (Join-Path $repo 'workload.yaml') -Raw
-    if ($yaml -match 'name:\s*~/winget' -or $yaml -notmatch 'Phase All -PreprovisionedWindows') {
-        throw 'Dev Box user customization must avoid WinGet installs.'
-    }
     $script:emptyWsl = $false
     function wsl.exe {
         if ($script:emptyWsl) {

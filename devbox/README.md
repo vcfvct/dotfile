@@ -84,38 +84,26 @@ Do not run personal phases as LocalSystem or another administrator account.
 
 ## Dev Box YAML
 
-The repository-root `workload.yaml` uses the Microsoft catalog `~/powershell`
-**user task**. Confirm it is available and permitted with the VS Code Dev Box
-extension's **List Available Tasks For This Dev Box**; validate the YAML in the
-Dev Box portal before provisioning. The Dev Box image or an admin-approved team
-customization must provide Git, PowerShell 7, every Windows package in
-`devbox/settings.json`, and WSL2 platform prerequisites **before** this user
-task runs. On a standard user account, WinGet installers that require elevation
-can request UAC and stall or fail unattended; `--silent` and
-`--disable-interactivity` do not bypass UAC. The YAML invokes
-`-PreprovisionedWindows`: it checks for usable tools, the Nerd Font, and a
-registered WSL2 platform service, and fails with a prerequisite message rather
-than invoking WinGet or enabling Windows features. The Wsl phase
-can still register the configured Ubuntu distribution for the signed-in user,
-so the platform must already be enabled and virtualization available. If your
-policy also blocks user-context distro registration, provision it for that
-user through an approved process before running the YAML. Other user-scoped
-operations may still encounter network, policy, or consent prompts. The
-ordinary Windows phase (without the switch) still installs missing WinGet
-packages when run interactively on a personal machine.
+The repository-root `workload.yaml` is an **optional, read-only readiness
+notice**, not unattended provisioning. Its Microsoft catalog `~/powershell`
+user task checks whether WinGet, Git, PowerShell 7, and WSL are visible after
+sign-in and prints the result. It neither assumes they are installed nor runs
+WinGet, clones the repository, enables WSL, or starts `bootstrap.ps1`. Confirm
+the task is available with the VS Code Dev Box extension's **List Available
+Tasks For This Dev Box** and validate the YAML in the Dev Box portal. You can
+also skip the YAML entirely and follow the manual steps below.
 
-**Commit and publish these files before using the YAML on a new machine.**
-The YAML initially clones `master`; choose a published release tag for a fixed
-bootstrap version (`git clone --branch` accepts branches/tags, not commit SHAs).
-For a commit SHA, use clone followed by an explicit detached checkout.
-It never pulls, resets, or overwrites an existing checkout. Update an old
-checkout explicitly after preserving local changes.
-
-When creating a new Dev Box, choose the repository containing `workload.yaml`,
-or upload that YAML locally. The user task runs after first sign-in and invokes
-`-Phase All -PreprovisionedWindows`. Install machine-level prerequisites in the
-image or an admin-approved team task first. The ordinary bootstrap remains
-usable even if your project disables personal customization.
+On a new Dev Box, sign in and install Git and PowerShell 7 by an approved method
+if either is missing. WinGet is one option if available; its installers may
+request UAC even with `--silent` and `--disable-interactivity`. If you lack
+permission to approve an installer or enable WSL2, ask your administrator;
+user YAML cannot grant those rights. Then clone the repository and run the
+phases interactively from **Run on an existing Windows Dev Box** above. If WSL2
+needs enabling, use the separate elevated `WslPlatform` phase and reboot as
+instructed before running `Wsl` under your own account. The Windows phase uses
+`devbox/settings.json` as the single list of packages to install and can show
+UAC prompts in your logged-in session. Review its logs and rerun a failed phase
+rather than relying on an unattended customization to approve prompts.
 
 ## Safety and repeatability
 

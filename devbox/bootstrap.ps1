@@ -6,8 +6,7 @@ param(
     [string]$SettingsPath = (Join-Path $PSScriptRoot 'settings.json'),
     [string]$Distro,
     [string]$LinuxUser,
-    [switch]$SkipNeovimSync,
-    [switch]$PreprovisionedWindows
+    [switch]$SkipNeovimSync
 )
 
 . "$PSScriptRoot\scripts\common.ps1"
@@ -44,19 +43,13 @@ if ($Phase -eq 'WslPlatform') {
 if ([Security.Principal.WindowsIdentity]::GetCurrent().IsSystem) {
     throw 'Run personal setup under your Windows account, not LocalSystem.'
 }
-if ($PreprovisionedWindows -and $Phase -in 'Wsl', 'All') {
-    if (-not (Get-Command wsl.exe -ErrorAction SilentlyContinue) -or
-        -not (Get-Service vmcompute -ErrorAction SilentlyContinue)) {
-        throw 'WSL2 platform prerequisites are missing. Enable them in the Dev Box image or an approved team customization before running user tasks.'
-    }
-}
 $logDirectory = Join-Path $env:LOCALAPPDATA 'dotfile-devbox\logs'
 [IO.Directory]::CreateDirectory($logDirectory) | Out-Null
 $log = Join-Path $logDirectory "$((Get-Date).ToString('yyyyMMdd-HHmmss'))-$Phase.log"
 Start-Transcript -Path $log | Out-Null
 try {
     if ($Phase -in 'Windows', 'All') {
-        & "$PSScriptRoot\scripts\windows.ps1" -Settings $settings -Repo $repo -SkipNeovimSync:$SkipNeovimSync -PreprovisionedWindows:$PreprovisionedWindows
+        & "$PSScriptRoot\scripts\windows.ps1" -Settings $settings -Repo $repo -SkipNeovimSync:$SkipNeovimSync
     }
     if ($Phase -in 'Wsl', 'All') {
         & "$PSScriptRoot\scripts\wsl-user.ps1" -Settings $settings -Repo $repo -SkipNeovimSync:$SkipNeovimSync

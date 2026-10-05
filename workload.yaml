@@ -1,30 +1,15 @@
 $schema: "1.0"
 name: dotfile-linuxbrew
-# Image or approved team customizations must provide WSL2 platform, Git,
-# PowerShell 7, and every Windows package in devbox/settings.json.
-# The Wsl phase registers Ubuntu in this user's account if needed.
-# User tasks never attempt WinGet package installs.
+# User customization is read-only: no admin rights, WinGet, Git, PowerShell 7,
+# WSL, or particular Dev Box image contents are assumed. Finish setup after sign-in.
 userTasks:
   - name: ~/powershell
     parameters:
       command: |
-        $ErrorActionPreference = 'Stop'
-        $env:PATH = [Environment]::GetEnvironmentVariable('PATH', 'Machine') + ';' + [Environment]::GetEnvironmentVariable('PATH', 'User') + ';' + $env:PATH
-        foreach ($command in 'git.exe', 'pwsh.exe') {
-          if (-not (Get-Command $command -ErrorAction SilentlyContinue)) {
-            throw "Missing $command. Preinstall it in the Dev Box image or an approved team customization."
-          }
+        Write-Host 'Dotfile setup is interactive on this Dev Box; no software was installed by this customization.'
+        foreach ($command in 'winget.exe', 'git.exe', 'pwsh.exe', 'wsl.exe') {
+          $found = [bool](Get-Command $command -ErrorAction SilentlyContinue)
+          Write-Host "$command available: $found"
         }
-        $repo = Join-Path $env:USERPROFILE 'source\repos\dotfile'
-        # Replace master with a published release tag for a fixed bootstrap revision.
-        if (-not (Test-Path -LiteralPath $repo)) {
-          New-Item -ItemType Directory -Path (Split-Path $repo) -Force | Out-Null
-          git clone --branch master https://github.com/vcfvct/dotfile.git $repo
-          if ($LASTEXITCODE -ne 0) { throw 'Dotfiles clone failed.' }
-        }
-        $bootstrap = Join-Path $repo 'devbox\bootstrap.ps1'
-        if (-not (Test-Path -LiteralPath $bootstrap)) {
-          throw 'Bootstrap files are not published or the existing checkout is outdated. Update it explicitly, preserving local changes.'
-        }
-        pwsh -NoLogo -NoProfile -File $bootstrap -Phase All -PreprovisionedWindows
-        if ($LASTEXITCODE -ne 0) { throw 'Bootstrap incomplete. Read its log and resume the reported phase.' }
+        Write-Host 'After signing in, follow devbox/README.md: install prerequisites with any required UI/admin approval, then run Preflight, Windows, Wsl, and Verify under your account.'
+        Write-Host 'Repository: https://github.com/vcfvct/dotfile'
