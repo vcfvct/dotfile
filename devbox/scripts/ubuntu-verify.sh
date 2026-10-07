@@ -6,7 +6,7 @@ scripts=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 prefix=/home/linuxbrew/.linuxbrew
 eval "$("$prefix/bin/brew" shellenv bash)"
 export PATH="$prefix/opt/node@22/bin:$PATH"
-for command in brew fish nvim tmux git node fzf rg bat eza delta fd jq python3 uv btm; do
+for command in brew fish nvim tmux git node fzf zoxide rg bat eza delta fd jq python3 uv btm; do
     resolved=$(command -v "$command")
     [[ $resolved == "$prefix/"* ]] || {
         echo "$command is not provided by Linuxbrew: $resolved" >&2; exit 1;
@@ -17,6 +17,7 @@ node "$scripts/../../symbolLink.js" --devbox --verify
 [[ $(readlink -f "$HOME/.config/nvim") == "$checkout/.config/nvim" ]]
 [[ $(readlink -f "$HOME/.config/fish/config.fish") == "$checkout/.config/fish/config.fish" ]]
 fish -c 'functions -q fisher; and functions -q nvm; and functions -q fish_prompt'
+fish -i -c 'functions -q __zoxide_z; and functions -q __zoxide_zi; and functions -q z; and functions -q zi'
 fish --version
 nvim --version | head -n 3
 tmux -V

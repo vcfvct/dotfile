@@ -5,7 +5,7 @@ fzf, ripgrep, delta, uv, jq, a Nerd Font, and the modules used by
 `wsl\powershell_profile.ps1`.
 
 Ubuntu: **Homebrew/Linuxbrew** provides all developer tools in `Brewfile`,
-including fish, Fisher, Neovim, tmux, Git, Node, and the tools used by the
+including fish, Fisher, zoxide, Neovim, tmux, Git, Node, and the tools used by the
 dotfiles. No developer-tool PPAs are added. `apt-get` is used only for missing
 Homebrew OS prerequisites: build-essential, procps, curl, file, git,
 ca-certificates, and sudo. Git from apt bootstraps Homebrew; brewed Git is
@@ -135,7 +135,10 @@ customization to approve prompts.
   lockfile; use `-SkipNeovimSync` when that is unwanted.
 - Fisher reads the repository's legacy `fishfile` explicitly, maps the old
   fish-nvm name to nvm.fish, and installs missing plugins without deleting
-  unrelated plugins. Homebrew supplies Fisher itself.
+  unrelated plugins. The retired `jethrokuan/z` plugin is removed in favor of
+  zoxide; its history is not imported automatically (see
+  [the migration notes](../fish-install-config.md#zoxide-smart-directory-jumps)).
+  Homebrew supplies Fisher itself and zoxide.
 - `/etc/wsl.conf` is backed up before its default-user setting is updated.
   Other parsed settings are preserved, though INI comments/formatting are not.
 - On Ubuntu images whose first-run Insights script assumes a Bash login shell,
@@ -153,13 +156,15 @@ the transcript, correct the prerequisite, and rerun that phase.
 ## Validate changes without provisioning
 
 ```powershell
-node --test .\devbox\tests\linker.test.cjs
+node --test .\devbox\tests\linker.test.cjs .\devbox\tests\fish-plugins.test.cjs
 pwsh -NoProfile -File .\devbox\tests\validate.ps1
 ```
 
 The tests use temporary homes and do not install software or change your
 profiles. They cover backup preservation, missing-source failure, linked-parent
-rejection, broken links, Windows Neovim mapping, and no-op reruns.
+rejection, broken links, Windows Neovim mapping, and no-op reruns. Fish plugin
+migration tests also check targeted removal, fresh installs, and failure handling;
+they skip when fish is unavailable.
 
 References:
 

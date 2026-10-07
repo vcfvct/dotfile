@@ -49,7 +49,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions zsh-syntax-highlighting vi-mode z zsh-nvm colored-man-pages zsh-better-npm-completion)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting vi-mode zsh-nvm colored-man-pages zsh-better-npm-completion)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,5 +86,10 @@ bindkey -v "^k" history-beginning-search-backward
 bindkey -v "^j" history-beginning-search-forward
 # no duplicated commands in history search
 setopt HIST_IGNORE_ALL_DUPS
-export VOLTA_HOME="$HOME/.volta"
+# export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+# Smart directory jumps (z/zi), after Oh My Zsh's compinit and PATH setup.
+if command -v zoxide >/dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi

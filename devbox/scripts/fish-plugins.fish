@@ -8,6 +8,15 @@ if not functions -q fisher
     exit 1
 end
 set --local installed (fisher list)
+# zoxide replaces jethrokuan/z; leave all unrelated plugins alone.
+if contains -- jethrokuan/z $installed
+    if not type -q zoxide
+        echo "Install zoxide before removing jethrokuan/z." >&2
+        exit 1
+    end
+    fisher remove jethrokuan/z; or exit 1
+    set installed (fisher list)
+end
 while read --local plugin
     set plugin (string trim -- "$plugin")
     if test -z "$plugin"; or string match -q '#*' -- "$plugin"

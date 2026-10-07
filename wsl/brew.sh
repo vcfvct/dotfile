@@ -12,6 +12,7 @@ brew install unzip -f
 brew install bat -f
 brew install rg -f
 brew install fzf -f
+brew install zoxide -f
 brew install exa -f
 brew install neovim -f
 
