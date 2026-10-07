@@ -13,8 +13,9 @@ sudo add-apt-repository ppa:neovim-ppa/unstable -y
 sudo apt update -y
 sudo apt install neovim -y
 
-## tmux/fzf/rg/bat/eza
+## tmux/fzf/zoxide/rg/bat/eza
 sudo apt install fzf -y
+sudo apt install zoxide -y
 sudo apt install ripgrep -y
 sudo apt install bat -y
 sudo apt install eza -y

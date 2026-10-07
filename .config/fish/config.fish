@@ -71,3 +71,8 @@ end
 
 # opencode
 fish_add_path ~/.opencode/bin
+
+# Smart directory jumps (z/zi), after PATH setup.
+if status is-interactive; and type -q zoxide
+  zoxide init fish | source
+end

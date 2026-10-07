@@ -18,7 +18,7 @@ Both fihserman and oh-my-fish are good.
 * omf: https://github.com/oh-my-fish/oh-my-fish
 
 ### add packages(OR from the `fishfile`)
-* `z`, which is for smart jump: `fisher install jethrokuan/z`
+* Smart jumps use the standalone `zoxide` binary, not a Fisher plugin (see below).
 * `nvm`, node version manager: `fisher install jorgebucaran/fish-nvm`. 
 * `bd`, smart dir back `fisher install 0rax/fish-bd`
 * Theme that shows git information/context 
@@ -32,6 +32,46 @@ Both fihserman and oh-my-fish are good.
   * a *jorgebucaran* theme which does async git, good for large repository: `fisher install jorgebucaran/hydro`.
   * tide theme similar to powerline10k: `fisher install IlanCosman/tide@v6`, which implements the transient prompt.
 * More packages can be found in this [awesome-fish repo](https://github.com/jorgebucaran/awesome-fish)
+
+## zoxide smart directory jumps
+
+[Zoxide](https://github.com/ajeetdsouza/zoxide) replaces both Fish's `jethrokuan/z`
+and Oh My Zsh's `z` plugin. Install it on each macOS/Linux/WSL environment:
+
+```sh
+brew install zoxide fzf
+# Alternatively, on Ubuntu (repository versions may be older):
+sudo apt install zoxide fzf
+```
+
+The repo's [Fish config](.config/fish/config.fish) initializes zoxide in interactive
+shells after PATH setup. The [Zsh config](.zshrc) initializes it after Oh My Zsh
+(including `compinit`) and PATH setup, and no longer loads the `z` plugin.
+Both skip initialization when the binary is missing. `z` jumps to a matching
+directory, `zi` selects interactively with fzf, and `cd` stays unchanged.
+Use fzf 0.51.0+ for interactive selection/completion. Use zoxide 0.10.0+ with
+Fish builds that embed their standard functions (older zoxide versions expect
+`functions/cd.fish` to exist on disk).
+
+On an existing Fish installation, run `fisher list` and, if listed, remove the
+old plugin with `fisher remove jethrokuan/z`. The Dev Box bootstrap does this
+for you; simply removing it from `fishfile` does not uninstall existing copies.
+Restart the shell after removing it so its old hooks/functions are unloaded.
+
+Optionally import old history **once**, before removing any old data files
+(adjust paths for `Z_DATA`, `_Z_DATA`, or `XDG_DATA_HOME` overrides):
+
+```sh
+# zoxide 0.10+: Fish's jethrokuan/z default database:
+env _Z_DATA="$HOME/.local/share/z/data" zoxide import --merge z
+# Oh My Zsh's z default database:
+env _Z_DATA="$HOME/.z" zoxide import --merge z
+```
+
+Only import files that exist. With zoxide 0.9.x, use
+`zoxide import --from=z "path/to/z/db"` instead; check `zoxide import --help`
+for your installed version. History imports are not run at shell startup. Fish and Zsh share zoxide's database on the same OS/user;
+Windows PowerShell and WSL use separate databases by default.
 
 ## proxy setup
 * run below command to set the encoded password on ENV. 
