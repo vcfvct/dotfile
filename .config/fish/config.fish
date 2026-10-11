@@ -76,3 +76,10 @@ fish_add_path ~/.opencode/bin
 if status is-interactive; and type -q zoxide
   zoxide init fish | source
 end
+
+# pnpm
+set -gx PNPM_HOME "/home/hanli3/.local/share/pnpm"
+if not string match -q -- "$PNPM_HOME/bin" $PATH
+  set -gx PATH "$PNPM_HOME/bin" $PATH
+end
+# pnpm end
