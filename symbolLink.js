@@ -32,8 +32,8 @@ const path = require('path');
     '.tmux.conf.local',
   ];
 
-  // psmux uses this entry point before considering ~/.tmux.conf.
-  const windowsOnlyFiles = ['.psmux.conf', '.psmux-battery.ps1'];
+  // VsVim reads ~/.vsvimrc; psmux prefers ~/.psmux.conf over ~/.tmux.conf.
+  const windowsOnlyFiles = ['.vsvimrc', '.psmux.conf', '.psmux-battery.ps1'];
 
   // Fish-related files (also Unix-only)
   const fishFiles = [
@@ -53,6 +53,7 @@ const path = require('path');
     'kitty',
     'nvim',
     'ripgrep',
+    'wezterm',
     'zathura',
   ];
   const dotConfigDirsUnixOnly = new Set(['zathura']);

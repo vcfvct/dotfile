@@ -31,6 +31,32 @@ test('plan is JSON, maps Windows nvim correctly, and writes nothing', t => {
   assert.deepEqual(fs.readdirSync(home), ['AppData']);
 });
 
+test('Windows-only files are copied on Windows and excluded on Unix', t => {
+  const { home, run } = fixture(t);
+  const result = run(['--plan']);
+  assert.equal(result.status, 0, result.stderr);
+  const plan = JSON.parse(result.stdout);
+  const windowsFiles = ['.vsvimrc', '.psmux.conf', '.psmux-battery.ps1'];
+  for (const file of windowsFiles) {
+    const entry = plan.find(item => item.source === path.join(repo, file));
+    if (process.platform === 'win32') {
+      assert.ok(entry, `${file} is missing from the Windows plan`);
+      assert.equal(entry.destination, path.join(home, file));
+      assert.equal(entry.mode, 'copy');
+    } else {
+      assert.equal(entry, undefined, `${file} must not be installed on Unix`);
+    }
+  }
+  if (process.platform === 'win32') {
+    assert.equal(run().status, 0);
+    for (const file of windowsFiles) {
+      assert.equal(fs.lstatSync(path.join(home, file)).isSymbolicLink(), false);
+      assert.deepEqual(fs.readFileSync(path.join(home, file)), fs.readFileSync(path.join(repo, file)));
+    }
+    assert.equal(run(['--verify']).status, 0);
+  }
+});
+
 test('existing files and directories are backed up and reruns are no-ops', t => {
   const { home, local, run } = fixture(t);
   const nvim = path.join(process.platform === 'win32' ? local : path.join(home, '.config'), 'nvim');

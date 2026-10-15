@@ -51,6 +51,10 @@ Run the Node linker from the repository root after cloning:
 node symbolLink.js
 ```
 
+Native Windows also receives `~/.vsvimrc` for VsVim. The general linker includes
+`~/.config/wezterm` on all platforms. The narrowed `--devbox` manifest omits
+terminal configs and copies Windows files instead of creating file symlinks.
+
 On Unix, `./sLinks.sh` is an equivalent Bash alternative. Its file lists are
 kept synchronized with the Unix branch of `symbolLink.js`. The legacy
 `.coc.vim` link is intentionally disabled in both scripts.
