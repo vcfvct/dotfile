@@ -56,6 +56,7 @@ config_directories=(
   'kitty'
   'nvim'
   'ripgrep'
+  'wezterm'
   'zathura'
 )
 
