@@ -283,6 +283,10 @@ tmux_conf_copy_to_os_clipboard=true
 
 # Shared key and mode settings live in ~/.tmux.common.conf.
 
+# Distinguish Shift/Ctrl/Alt+Enter from plain Enter (Pi, tmux >= 3.5).
+set -g extended-keys on
+set -g extended-keys-format csi-u
+
 # replace C-b by C-a instead of using both prefixes
 # set -gu prefix2
 # unbind C-a
