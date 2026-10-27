@@ -24,6 +24,12 @@ const path = require('path');
     '.tmux.common.conf',
   ];
 
+  // Pi app config: keep only the shared settings file in the repo; other runtime
+  // files stay local to each machine.
+  const piFiles = ['.pi/agent/settings.template.json'];
+  const destinationFor = file => file === '.pi/agent/settings.template.json'
+    ? '.pi/agent/settings.json' : file;
+
   // Unix-only files (zsh, tmux, fish, etc.)
   const unixOnlyFiles = [
     '.zshrc',
@@ -60,6 +66,7 @@ const path = require('path');
 
   // Build final file list based on platform
   let fileList = commonFiles.slice();
+  fileList = fileList.concat(piFiles);
   if (!isWindows) fileList = fileList.concat(unixOnlyFiles, fishFiles);
   if (isWindows) fileList = fileList.concat(windowsOnlyFiles);
   if (isWindows) {
@@ -78,10 +85,10 @@ const path = require('path');
 
   if (devbox) {
     const allowed = new Set([
-      ...commonFiles, ...windowsOnlyFiles, ...fishFiles,
+      ...commonFiles, ...piFiles, ...windowsOnlyFiles, ...fishFiles,
       '.tmux.conf', '.tmux.conf.local',
     ]);
-    const entries = fileList.filter(f => allowed.has(f)).map(f => [f, f]);
+    const entries = fileList.filter(f => allowed.has(f)).map(f => [f, destinationFor(f)]);
     entries.push(['.gitignore', '.ignore']);
     entries.push(['.config/nvim', isWindows
       ? path.join(process.env.LOCALAPPDATA, 'nvim') : '.config/nvim']);
@@ -130,7 +137,7 @@ const path = require('path');
   }
   if (planOnly || verifyOnly) throw new Error('--plan and --verify require --devbox');
 
-  await Promise.allSettled(fileList.map(function (f) { return createSymLink(f); }));
+  await Promise.allSettled(fileList.map(function (f) { return createSymLink(f, destinationFor(f)); }));
   await createSymLink('.gitignore', '.ignore');
   await Promise.allSettled(dotConfigs.map(function (d) { return createSymLink('.config/' + d); }));
   console.info('------ All symLinks created (or attempted). ------');

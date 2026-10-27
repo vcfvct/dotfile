@@ -111,6 +111,35 @@ psmux
 The previously installed `psmux-battery` plugin may remain on disk, but it must
 not be declared in `.psmux.conf`; otherwise its five-second hook will return.
 
+### Pi settings
+
+Shared Pi defaults live in [`.pi/agent/settings.template.json`](.pi/agent/settings.template.json).
+They include the model, packages, Vim clipboard preference, disabled built-in MCP
+extension, and `"tuiMode": "regular"`. Changelog read state stays machine-local
+and is not part of the template.
+
+After cloning or pulling on another machine, run from the repository root:
+
+```sh
+node symbolLink.js --devbox --plan
+node symbolLink.js --devbox
+node symbolLink.js --devbox --verify
+pi update --extensions
+```
+
+This applies the full Dev Box dotfile manifest, including the Pi template as
+`~/.pi/agent/settings.json`. The installer backs up existing files before replacing
+them. Windows copies the settings, so rerun it after pulling updates. Unix and
+WSL symlink the template, so Pi settings edits there also change the repo file.
+Review those edits before committing, and leave `lastChangelogVersion` out of PRs.
+The general `node symbolLink.js` command also installs the Pi settings, but replaces
+existing files without backups and requires file symlink support on Windows.
+
+Edit the template to share future changes. Credentials, sessions, MCP server
+configuration, installed packages, and other runtime state remain local. Log in
+with `/login` on each machine, and restart Pi after applying the settings.
+The Bash `sLinks.sh` alternative does not install Pi settings.
+
 ### macOS specific
 
 #### macos finder open in new tab
