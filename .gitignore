@@ -26,3 +26,17 @@ venv/
 lazy-lock.json
 
 .opencode/
+
+# Pi runtime state: keep local per-machine
+.pi/agent/settings.json
+.pi/agent/auth.json
+.pi/agent/mcp.json
+.pi/agent/mcp-cache.json
+.pi/agent/models-store.json
+.pi/agent/trust.json
+.pi/agent/run-history.jsonl
+.pi/agent/sessions/
+.pi/agent/missions/
+
+# Shared template for onboarding/copying defaults only
+!.pi/agent/settings.template.json
