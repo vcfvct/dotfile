@@ -41,6 +41,7 @@ there rather than duplicated in both entry points.
 
 `symbolLink.js` selects the entry points automatically:
 
+- All platforms receive `~/.copilot/settings.json`.
 - All platforms receive `~/.tmux.common.conf`.
 - Linux, macOS, and WSL receive `~/.tmux.conf` and `~/.tmux.conf.local`.
 - Native Windows receives `~/.psmux.conf` and `~/.psmux-battery.ps1`.
