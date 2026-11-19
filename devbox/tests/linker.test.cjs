@@ -28,6 +28,19 @@ test('plan is JSON, maps Windows nvim correctly, and writes nothing', t => {
   const plan = JSON.parse(result.stdout);
   assert.ok(plan.some(entry => entry.destination === path.join(
     process.platform === 'win32' ? local : path.join(home, '.config'), 'nvim')));
+  const skillSource = path.join(repo, '.agents', 'skills', 'review-ado-pr');
+  for (const destination of [
+    path.join(home, '.pi', 'agent', 'skills', 'review-ado-pr'),
+    path.join(home, '.copilot', 'skills', 'review-ado-pr'),
+    path.join(home, '.config', 'opencode', 'skills', 'review-ado-pr'),
+  ]) {
+    const entry = plan.find(item => item.source === skillSource && item.destination === destination);
+    if (process.platform === 'win32') {
+      assert.ok(entry, `${destination} is missing from the Windows plan`);
+    } else {
+      assert.equal(entry, undefined, `${destination} must not be installed on Unix`);
+    }
+  }
   assert.deepEqual(fs.readdirSync(home), ['AppData']);
 });
 
