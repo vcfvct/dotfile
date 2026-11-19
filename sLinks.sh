@@ -27,6 +27,7 @@ link_path() {
 common_files=(
   '.vimrc'
   # '.coc.vim' # Disabled for now.
+  '.copilot/settings.json'
   '.gitignore'
   '.gitconfig'
   '.eslintrc.js'
