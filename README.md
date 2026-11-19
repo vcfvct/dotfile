@@ -140,6 +140,28 @@ configuration, installed packages, and other runtime state remain local. Log in
 with `/login` on each machine, and restart Pi after applying the settings.
 The Bash `sLinks.sh` alternative does not install Pi settings.
 
+### Shared agent skills
+
+The portable `review-ado-pr` Agent Skill lives at
+[`.agents/skills/review-ado-pr`](.agents/skills/review-ado-pr). Its Python helper
+keeps the Azure DevOps and local-diff logic in one place while the host agents use
+the standard `SKILL.md` workflow.
+
+On native Windows, the dotfile linker shares that directory with each supported agent:
+
+- `~/.pi/agent/skills/review-ado-pr`
+- `~/.copilot/skills/review-ado-pr`
+- `~/.config/opencode/skills/review-ado-pr`
+
+Run `node symbolLink.js` or `node symbolLink.js --devbox` to create or refresh the
+Windows junctions. Unix, WSL, and macOS omit these links, and the Unix-only
+`sLinks.sh` does not install the skill. The source remains in the repository so
+other platforms can opt in manually later.
+
+The Pi `review_ado_pr` extension can remain installed during migration, but the
+skill is independent and can be used with `/review-ado-pr` or automatically when
+an Azure DevOps PR review is requested.
+
 ### macOS specific
 
 #### macos finder open in new tab

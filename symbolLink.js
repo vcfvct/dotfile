@@ -29,6 +29,11 @@ const path = require('path');
   const piFiles = ['.pi/agent/settings.template.json'];
   const destinationFor = file => file === '.pi/agent/settings.template.json'
     ? '.pi/agent/settings.json' : file;
+  const agentSkillLinks = isWindows ? [
+    ['.agents/skills/review-ado-pr', '.pi/agent/skills/review-ado-pr'],
+    ['.agents/skills/review-ado-pr', '.copilot/skills/review-ado-pr'],
+    ['.agents/skills/review-ado-pr', '.config/opencode/skills/review-ado-pr'],
+  ] : [];
 
   // Unix-only files (zsh, tmux, fish, etc.)
   const unixOnlyFiles = [
@@ -93,6 +98,7 @@ const path = require('path');
     entries.push(['.config/nvim', isWindows
       ? path.join(process.env.LOCALAPPDATA, 'nvim') : '.config/nvim']);
     entries.push(['.config/ripgrep', '.config/ripgrep']);
+    entries.push(...agentSkillLinks);
     const plan = entries.map(([source, destination]) => ({
       source: path.resolve(process.cwd(), source),
       destination: path.resolve(getHomeDir(), destination),
@@ -138,6 +144,7 @@ const path = require('path');
   if (planOnly || verifyOnly) throw new Error('--plan and --verify require --devbox');
 
   await Promise.allSettled(fileList.map(function (f) { return createSymLink(f, destinationFor(f)); }));
+  await Promise.allSettled(agentSkillLinks.map(([source, destination]) => createSymLink(source, destination)));
   await createSymLink('.gitignore', '.ignore');
   await Promise.allSettled(dotConfigs.map(function (d) { return createSymLink('.config/' + d); }));
   console.info('------ All symLinks created (or attempted). ------');
